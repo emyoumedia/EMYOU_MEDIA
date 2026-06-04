@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | EmYou Media</title>
+  <meta name="description" content="EmYou Media Blog — insights on digital marketing, SEO, paid advertising, branding, content strategy, and business growth.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://emyoumedia.com/blog.html">
+  <meta name="theme-color" content="#020B4F">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+  <style>
+    .blog-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem; }
+    .blog-card { background:var(--glass-bg);border:var(--glass-border);border-radius:var(--r);overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s; }
+    .blog-card:hover { transform:translateY(-6px);box-shadow:var(--s3);border-color:rgba(123,47,247,.30); }
+    .blog-card-img { aspect-ratio:16/9;overflow:hidden;background:var(--accent-dark); }
+    .blog-card-img img { width:100%;height:100%;object-fit:cover;opacity:.70;transition:opacity .4s,transform .5s;filter:grayscale(20%); }
+    .blog-card:hover .blog-card-img img { opacity:.90;transform:scale(1.04);filter:grayscale(0); }
+    .blog-card-body { padding:1.5rem; }
+    .blog-cat { font-family:var(--ff);font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:.6rem; }
+    .blog-card-body h4 { font-family:var(--ff);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.5rem;line-height:1.4; }
+    .blog-card-body p { font-family:var(--ff);font-size:.76rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem; }
+    .blog-meta { display:flex;align-items:center;gap:1rem; }
+    .blog-meta span { font-family:var(--ff);font-size:.65rem;color:var(--text-muted); }
+    .blog-read { font-family:var(--ff);font-size:.68rem;font-weight:700;background:var(--grad-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.04em; }
+    .topic-pills { display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center; }
+    .topic-pill { font-family:var(--ff);font-size:.68rem;font-weight:600;letter-spacing:.10em;text-transform:uppercase;padding:8px 18px;border:1px solid rgba(123,47,247,.25);border-radius:var(--rpill);color:var(--text-secondary);background:rgba(123,47,247,.06);transition:all .3s;cursor:pointer; }
+    .topic-pill:hover,.topic-pill.active { border-color:var(--purple);background:rgba(123,47,247,.15);color:var(--white); }
+    @media(max-width:900px){.blog-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:550px){.blog-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header><nav id="nav" aria-label="Main navigation"><div class="nav-inner">
+  <a href="index.html" class="nlogo"><img src="logo.png" alt="EmYou Media" width="48" height="48" onerror="this.style.display='none'"><div class="nlogo-text"><span class="n1">EmYou Media</span><span class="n2">Creative · Digital · Growth</span></div></a>
+  <ul class="nlinks">
+    <li><a href="about.html">About</a></li>
+    <li class="ndrop"><a href="services.html">Services ▾</a><div class="ndrop-menu"><a href="digital-marketing.html">Digital Marketing</a><a href="media-production.html">Media Production</a><a href="services.html">All Services</a></div></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="services.html#industries">Industries</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="ncta">Get Free Consultation</a>
+  <button class="ham" id="ham" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav></header>
+<div class="mmenu" id="mm" role="dialog" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="about.html" onclick="closeMobileMenu()">About Us</a>
+  <a href="digital-marketing.html" onclick="closeMobileMenu()">Digital Marketing</a>
+  <a href="media-production.html" onclick="closeMobileMenu()">Media Production</a>
+  <a href="services.html" onclick="closeMobileMenu()">All Services</a>
+  <a href="portfolio.html" onclick="closeMobileMenu()">Portfolio</a>
+  <a href="blog.html" onclick="closeMobileMenu()">Blog</a>
+  <a href="careers.html" onclick="closeMobileMenu()">Careers</a>
+  <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+  <a href="contact.html" onclick="closeMobileMenu()" class="mm-cta">Get Free Consultation →</a>
+</div>
+<main id="main">
+
+<section class="page-hero" aria-labelledby="blog-heading">
+  <div class="page-hero-inner">
+    <p class="eyebrow rv"><span class="dot"></span>Insights & Strategy</p>
+    <h1 class="h1 rv d1" id="blog-heading">The EmYou <span class="gt">Blog</span></h1>
+    <p class="rv d2">Strategy, creativity, and growth — practical insights for businesses that want to win in the digital world.</p>
+  </div>
+</section>
+
+<!-- Topics Filter -->
+<section class="sec sec-accent" aria-label="Blog categories">
+  <div class="wrap">
+    <div class="topic-pills rv">
+      <span class="topic-pill active">All Topics</span>
+      <span class="topic-pill">Digital Marketing</span>
+      <span class="topic-pill">SEO</span>
+      <span class="topic-pill">Paid Advertising</span>
+      <span class="topic-pill">Branding</span>
+      <span class="topic-pill">Content Strategy</span>
+      <span class="topic-pill">Business Growth</span>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Posts -->
+<section class="sec sec-dark" aria-labelledby="posts-heading">
+  <div class="wrap">
+    <div class="blog-grid">
+
+      <article class="blog-card rv">
+        <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=700&q=80" alt="Meta Ads Guide" loading="lazy"></div>
+        <div class="blog-card-body">
+          <p class="blog-cat">Paid Advertising</p>
+          <h4>The Complete Meta Ads Guide for Indian Businesses in 2026</h4>
+          <p>Everything you need to know about running profitable Meta campaigns — from audience setup to creative strategy and bidding.</p>
+          <div class="blog-meta"><span>May 2026</span><span>·</span><span>8 min read</span><span class="blog-read" style="margin-left:auto">Read →</span></div>
+        </div>
+      </article>
+
+      <article class="blog-card rv d1">
+        <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80" alt="SEO 2026" loading="lazy"></div>
+        <div class="blog-card-body">
+          <p class="blog-cat">SEO</p>
+          <h4>SEO in 2026: What Still Works and What to Stop Doing</h4>
+          <p>The search landscape has changed. Here's an honest breakdown of the SEO tactics that drive real organic growth today.</p>
+          <div class="blog-meta"><span>Apr 2026</span><span>·</span><span>6 min read</span><span class="blog-read" style="margin-left:auto">Read →</span></div>
+        </div>
+      </article>
+
+      <article class="blog-card rv d2">
+        <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=700&q=80" alt="Branding" loading="lazy"></div>
+        <div class="blog-card-body">
+          <p class="blog-cat">Branding</p>
+          <h4>Why Your Brand Identity is Your Most Valuable Business Asset</h4>
+          <p>Beyond logos and colors — what brand identity really means and how to build one that earns trust and loyalty.</p>
+          <div class="blog-meta"><span>Apr 2026</span><span>·</span><span>5 min read</span><span class="blog-read" style="margin-left:auto">Read →</span></div>
+        </div>
+      </article>
+
+      <article class="blog-card rv">
+        <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700&q=80" alt="Content Strategy" loading="lazy"></div>
+        <div class="blog-card-body">
+          <p class="blog-cat">Content Strategy</p>
+          <h4>How to Build a Content Strategy That Actually Generates Leads</h4>
+          <p>A step-by-step framework for creating content that attracts the right audience and converts them into customers.</p>
+          <div class="blog-meta"><span>Mar 2026</span><span>·</span><span>7 min read</span><span class="blog-read" style="margin-left:auto">Read →</span></div>
+        </div>
+      </article>
+
+      <article class="blog-card rv d1">
+        <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=80" alt="Google Ads" loading="lazy"></div>
+        <div class="blog-card-body">
+          <p class="blog-cat">Paid Advertising</p>
+          <h4>Google Ads vs Meta Ads: Which Platform Should You Choose?</h4>
+          <p>A data-driven comparison of the two biggest ad platforms to help you decide where to invest your marketing budget.</p>
+          <div class="blog-meta"><span>Mar 2026</span><span>·</span><span>6 min read</span><span class="blog-read" style="margin-left:auto">Read →</span></div>
+        </div>
+      </article>
+
+      <article class="blog-card rv d2">
+        <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=700&q=80" alt="Business Growth" loading="lazy"></div>
+        <div class="blog-card-body">
+          <p class="blog-cat">Business Growth</p>
+          <h4>5 Digital Marketing Mistakes That Are Costing Your Business Leads</h4>
+          <p>The most common and costly mistakes we see businesses making with their digital presence — and how to fix them.</p>
+          <div class="blog-meta"><span>Feb 2026</span><span>·</span><span>5 min read</span><span class="blog-read" style="margin-left:auto">Read →</span></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter CTA -->
+<section class="sec sec-accent" aria-labelledby="nl-heading">
+  <div class="wrap" style="max-width:680px;text-align:center">
+    <p class="eyebrow rv" style="justify-content:center"><span class="dot"></span>Weekly Insights</p>
+    <h2 class="h2 rv d1" id="nl-heading" style="margin-top:1rem;font-size:clamp(1.8rem,4vw,3rem)">
+      Get Strategy Insights<br><span class="gt">Delivered Weekly.</span>
+    </h2>
+    <p class="rv d2" style="font-family:var(--ff);font-size:.88rem;color:var(--text-secondary);margin:1rem auto 2rem;line-height:1.8;max-width:440px">
+      No fluff — just practical digital marketing insights, case studies, and growth strategies sent every week.
+    </p>
+    <form class="rv d3" style="display:flex;gap:.75rem;max-width:460px;margin:0 auto;flex-wrap:wrap" onsubmit="return false">
+      <input type="email" placeholder="your@email.com" style="flex:1;min-width:200px;background:var(--glass-bg);border:var(--glass-border);border-radius:var(--rpill);padding:13px 20px;color:var(--white);font-family:var(--ff);font-size:.84rem;outline:none">
+      <button type="submit" class="btn btn-primary" style="flex-shrink:0">Subscribe →</button>
+    </form>
+    <p class="rv d4" style="font-family:var(--ff);font-size:.64rem;color:var(--text-muted);margin-top:.85rem">No spam. Unsubscribe any time.</p>
+  </div>
+</section>
+
+<section class="cta-band"><div class="wrap">
+  <h2 class="h2 rv" style="font-size:clamp(1.8rem,4vw,3.2rem)">Ready to Put This Into <span class="gt">Practice?</span></h2>
+  <p class="sub rv d1">Let our team build and execute the strategy for you — so you can focus on running your business.</p>
+  <div class="btn-row rv d2"><a href="contact.html" class="btn btn-primary">Book Free Strategy Call →</a><a href="services.html" class="btn btn-secondary">Explore Services</a></div>
+</div></section>
+
+</main>
+<footer><div class="foot-top">
+  <div class="foot-brand"><a href="index.html" class="flogo"><img src="logo.png" alt="EmYou Media" width="44" height="44" onerror="this.style.display='none'"><div class="nlogo-text"><span class="n1">EmYou Media</span><span class="n2">Creative · Digital · Growth</span></div></a><p>A full-service creative and digital growth company. Based in Bangalore, India.</p></div>
+  <div class="foot-col"><h6>Company</h6><a href="about.html">About Us</a><a href="portfolio.html">Portfolio</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a></div>
+  <div class="foot-col"><h6>Services</h6><a href="digital-marketing.html">Digital Marketing</a><a href="media-production.html">Media Production</a><a href="services.html">Technology</a><a href="services.html">All Services</a></div>
+  <div class="foot-col"><h6>Connect</h6><a href="https://www.instagram.com/emyoudigitalmarketing" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/company/emyou-digital-marketing/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/profile.php?id=61575408970606" target="_blank" rel="noopener">Facebook</a><a href="mailto:hello@emyoumedia.com">Email Us</a></div>
+</div><div class="foot-bot"><p>© 2026 EmYou Media. All rights reserved. · Bangalore, India</p><div class="fsoc"><a href="https://www.instagram.com/emyoudigitalmarketing" target="_blank" rel="noopener" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a></div></div></footer>
+<div class="fab"><a class="fab-wa" href="https://wa.me/918296793486" target="_blank" rel="noopener" aria-label="WhatsApp"><span class="fab-lbl">WhatsApp Us</span><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.856L.057 23.571a.5.5 0 0 0 .612.612l5.715-1.475A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.523-5.16-1.43l-.36-.216-3.815.984.999-3.726-.235-.38A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg></a><a class="fab-ph" href="tel:+918296793486" aria-label="Call"><span class="fab-lbl">Call Us</span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></a></div>
+<script src="main.js"></script>
+</body></html>
