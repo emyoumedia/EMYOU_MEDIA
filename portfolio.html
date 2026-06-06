@@ -4,165 +4,415 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio | EmYou Media</title>
-  <meta name="description" content="EmYou Media portfolio — websites, ad campaigns, video editing, creative designs, and case studies showcasing our work across industries.">
+  <meta name="description" content="EmYou Media portfolio — real work, real results. See how we built and market Saanidhya Builders, a construction company in Coimbatore.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://emyoumedia.com/portfolio.html">
-  <meta name="theme-color" content="var(--primary-dark)">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 
-  <!-- ══ ANALYTICS & TRACKING ══ -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
-  <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-    document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'XXXXXXXXXXXXXXXX');
-    fbq('track', 'PageView');
-  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 
   <style>
-    .port-filter {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      margin-bottom: 3rem;
-    }
-    .pf-btn {
-      font-family: var(--fb);
-      font-size: .68rem;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      padding: 10px 20px;
-      border: 1px solid rgba(123,47,247,.18);
-      background: transparent;
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: all .3s;
-    }
-    .pf-btn:hover, .pf-btn.active {
-      border-color: var(--orange);
-      color: var(--purple);
-      background: rgba(123,47,247,.05);
-    }
-    .port-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-    }
-    .port-card {
-      background:var(--glass-bg);
-      border: 1px solid rgba(123,47,247,.12);
-      overflow: hidden;
-      transition: transform .3s, box-shadow .3s;
-    }
-    .port-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(123,47,247,.15); }
-    .port-img {
-      aspect-ratio: 16/10;
-      overflow: hidden;
-      background: var(--accent-dark);
-    }
-    .port-img img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform .5s, opacity .4s;
-      opacity: .75;
-      filter: grayscale(20%);
-    }
-    .port-card:hover .port-img img { transform: scale(1.05); opacity: 1; filter: grayscale(0); }
-    .port-body { padding: 1.5rem; }
-    .port-cat {
-      font-family: var(--fb);
-      font-size: .58rem;
-      font-weight: 700;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: .5rem;
-    }
-    .port-body h4 {
-      font-family: var(--fd);
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--primary-dark);
-      margin-bottom: .4rem;
-      letter-spacing: -.01em;
-    }
-    .port-body p {
-      font-family: var(--fb);
-      font-size: .76rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-bottom: 1rem;
-    }
-    .port-result {
+    /* ── LIVE BADGE ── */
+    .live-badge {
       display: inline-flex;
       align-items: center;
-      gap: .5rem;
-      font-family: var(--fb);
-      font-size: .68rem;
-      font-weight: 600;
-      color: var(--purple);
-      letter-spacing: .04em;
+      gap: .45rem;
+      background: rgba(37,211,102,.10);
+      border: 1px solid rgba(37,211,102,.30);
+      border-radius: 999px;
+      padding: .3rem .85rem;
+      font-family: var(--ff);
+      font-size: .60rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #25D366;
     }
-    .port-result::before {
-      content: '';
-      width: 20px; height: 1px;
-      background: var(--orange);
+    .live-dot {
+      width: 7px; height: 7px;
+      background: #25D366;
+      border-radius: 50%;
+      animation: pulse-green 1.6s ease-in-out infinite;
+      flex-shrink: 0;
     }
-    @media (max-width: 900px) { .port-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 550px) { .port-grid { grid-template-columns: 1fr; } }
+    @keyframes pulse-green {
+      0%,100% { box-shadow: 0 0 0 2px rgba(37,211,102,.35); }
+      50%      { box-shadow: 0 0 0 7px rgba(37,211,102,0); }
+    }
 
-    .case-card {
-      background: var(--primary-dark);
-      border: 1px solid rgba(123,47,247,.12);
-      padding: 2.5rem;
-      position: relative;
+    /* ── FEATURED CLIENT CARD ── */
+    .client-hero {
+      background: var(--glass-bg);
+      border: 1px solid rgba(123,47,247,.18);
+      border-radius: 20px;
       overflow: hidden;
+      position: relative;
     }
-    .case-card::before {
+    .client-hero::before {
       content: '';
       position: absolute; top: 0; left: 0; right: 0;
       height: 2px;
       background: var(--grad);
     }
-    .case-stats {
-      display: flex;
-      gap: 2rem;
-      margin: 1.5rem 0;
-      flex-wrap: wrap;
+    .client-hero-img {
+      width: 100%;
+      aspect-ratio: 21/8;
+      overflow: hidden;
+      position: relative;
+      background: #0a0020;
     }
-    .case-stat span {
-      display: block;
-      font-family: var(--fd);
-      font-size: 2rem;
-      font-weight: 700;
+    @media (max-width: 600px) {
+      .client-hero-img { aspect-ratio: 16/9; }
+    }
+    .client-hero-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: .32;
+      filter: grayscale(15%);
+      transition: opacity .5s, transform .5s;
+    }
+    .client-hero:hover .client-hero-img img {
+      opacity: .48;
+      transform: scale(1.03);
+    }
+    .client-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom,
+        transparent 0%,
+        rgba(2,11,79,.55) 60%,
+        rgba(2,11,79,.90) 100%);
+    }
+    .client-hero-badge-row {
+      position: absolute;
+      top: 1.5rem; left: 1.5rem;
+      display: flex; gap: .6rem; flex-wrap: wrap;
+      z-index: 2;
+    }
+    .client-hero-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 2rem 2rem 2.5rem;
+      z-index: 2;
+    }
+    .client-hero-label h2 {
+      font-family: var(--ff);
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      margin: .6rem 0 .5rem;
+      letter-spacing: -.01em;
+    }
+    .client-hero-label p {
+      font-family: var(--ff);
+      font-size: .82rem;
+      color: rgba(255,255,255,.50);
+      line-height: 1.7;
+      max-width: 580px;
+      margin-bottom: 1.25rem;
+    }
+    .tag-row { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .stag {
+      font-family: var(--ff);
+      font-size: .58rem; font-weight: 600;
+      letter-spacing: .10em; text-transform: uppercase;
+      color: rgba(255,255,255,.50);
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      padding: .22rem .7rem;
+    }
+    .visit-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-family: var(--ff);
+      font-size: .72rem;
+      font-weight: 600;
+      color: rgba(120,180,255,.85);
+      letter-spacing: .04em;
+      margin-top: .85rem;
+      transition: color .2s;
+    }
+    .visit-link:hover { color: #fff; }
+
+    /* ── CLIENT BODY (below image) ── */
+    .client-body {
+      padding: 2.5rem 2rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem 3rem;
+    }
+    @media (max-width: 700px) {
+      .client-body { grid-template-columns: 1fr; padding: 1.75rem 1.25rem; gap: 1.5rem; }
+    }
+
+    /* ── SCOPE BLOCK ── */
+    .scope-block h5 {
+      font-family: var(--ff);
+      font-size: .60rem; font-weight: 700;
+      letter-spacing: .20em; text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1rem;
+    }
+    .scope-list { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+    .scope-list li {
+      display: flex; align-items: flex-start; gap: .65rem;
+      font-family: var(--ff);
+      font-size: .80rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .scope-list li::before {
+      content: '';
+      width: 16px; height: 16px;
+      min-width: 16px;
+      border-radius: 50%;
       background: var(--grad);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      margin-top: .12rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .5rem;
+      background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4L3.5 6.5L9 1' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 10px;
+      background-color: transparent;
+      border: 1.5px solid rgba(123,47,247,.50);
+    }
+
+    /* ── DELIVERABLE MINI CARDS ── */
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .6rem;
+    }
+    .deliv-card {
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(123,47,247,.15);
+      border-radius: 10px;
+      padding: .9rem 1rem;
+      transition: border-color .3s, background .3s;
+    }
+    .deliv-card:hover {
+      border-color: rgba(123,47,247,.35);
+      background: rgba(123,47,247,.07);
+    }
+    .deliv-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+    .deliv-label {
+      font-family: var(--ff);
+      font-size: .68rem; font-weight: 600;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* ── WHAT WE DID — DETAIL CARDS ── */
+    .work-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 900px) { .work-detail-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 520px)  { .work-detail-grid { grid-template-columns: 1fr; } }
+
+    .wd-card {
+      background: var(--glass-bg);
+      border: 1px solid rgba(123,47,247,.14);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform .3s, box-shadow .3s, border-color .3s;
+    }
+    .wd-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(123,47,247,.18); border-color: rgba(123,47,247,.32); }
+    .wd-img {
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      background: var(--accent-dark);
+      position: relative;
+    }
+    .wd-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: .35;
+      filter: grayscale(20%);
+      transition: opacity .4s, transform .4s;
+    }
+    .wd-card:hover .wd-img img { opacity: .60; transform: scale(1.05); }
+    .wd-body { padding: 1.4rem; }
+    .wd-cat {
+      font-family: var(--ff);
+      font-size: .58rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: .4rem;
+    }
+    .wd-body h4 {
+      font-family: var(--ff);
+      font-size: .96rem; font-weight: 700;
+      color: var(--white); margin-bottom: .4rem;
+    }
+    .wd-body p {
+      font-family: var(--ff);
+      font-size: .74rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ── COMING SOON GRID ── */
+    .coming-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+    @media (max-width: 700px) { .coming-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 430px) { .coming-grid { grid-template-columns: 1fr; } }
+
+    .coming-card {
+      border: 1px dashed rgba(123,47,247,.20);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      background: rgba(255,255,255,.02);
+      transition: border-color .3s, background .3s;
+    }
+    .coming-card:hover {
+      border-color: rgba(123,47,247,.38);
+      background: rgba(123,47,247,.05);
+    }
+    .coming-icon {
+      font-size: 1.8rem;
+      opacity: .45;
+      margin-bottom: .65rem;
+    }
+    .coming-label {
+      font-family: var(--ff);
+      font-size: .70rem;
+      color: rgba(255,255,255,.28);
+      line-height: 1.6;
+    }
+    .coming-card.cta-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-color: rgba(123,47,247,.25);
+      background: rgba(123,47,247,.04);
+    }
+    .coming-plus {
+      font-family: var(--ff);
+      font-size: 2.5rem; font-weight: 800;
+      background: var(--grad);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
-      line-height: 1;
-      margin-bottom: .2rem;
+      line-height: 1; margin-bottom: .6rem;
     }
-    .case-stat p {
-      font-family: var(--fb);
-      font-size: .68rem;
+
+    /* ── APPROACH SECTION ── */
+    .approach-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+    @media (max-width: 700px) { .approach-grid { grid-template-columns: 1fr; } }
+
+    .approach-card {
+      background: var(--glass-bg);
+      border: 1px solid rgba(123,47,247,.14);
+      border-radius: 16px;
+      padding: 1.75rem;
+      position: relative; overflow: hidden;
+      transition: transform .3s, border-color .3s;
+    }
+    .approach-card:hover { transform: translateY(-4px); border-color: rgba(123,47,247,.32); }
+    .approach-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--grad);
+      transform: scaleY(0); transform-origin: top;
+      transition: transform .4s;
+    }
+    .approach-card:hover::before { transform: scaleY(1); }
+    .approach-num {
+      font-family: var(--ff);
+      font-size: 3.5rem; font-weight: 800;
+      background: var(--grad);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: .10; line-height: 1;
+      position: absolute; top: 1rem; right: 1.25rem;
+    }
+    .approach-card h4 {
+      font-family: var(--ff);
+      font-size: .94rem; font-weight: 700;
+      color: var(--white); margin-bottom: .5rem;
+    }
+    .approach-card p {
+      font-family: var(--ff);
+      font-size: .76rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    /* ── HONEST MANIFESTO BAND ── */
+    .manifesto-band {
+      background: var(--accent-dark);
+      border-top: 1px solid rgba(123,47,247,.18);
+      border-bottom: 1px solid rgba(123,47,247,.18);
+      padding: 3.5rem 0;
+      position: relative; overflow: hidden;
+    }
+    .manifesto-band::before {
+      content: '';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 600px; height: 250px;
+      background: radial-gradient(ellipse, rgba(123,47,247,.10), transparent 70%);
+      pointer-events: none;
+    }
+    .manifesto-inner {
+      max-width: 720px; margin: 0 auto;
+      padding: 0 clamp(20px,5vw,48px);
+      text-align: center;
+      position: relative; z-index: 1;
+    }
+    .manifesto-inner p.lead {
+      font-family: var(--ff);
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 600;
+      color: rgba(255,255,255,.80);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    .manifesto-inner p.sub {
+      font-family: var(--ff);
+      font-size: .82rem;
       color: rgba(255,255,255,.35);
-      letter-spacing: .06em;
-      text-transform: uppercase;
+      line-height: 1.85;
     }
+    .promise-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .65rem;
+      margin-top: 2rem;
+    }
+    .promise-pill {
+      display: flex; align-items: center; gap: .4rem;
+      font-family: var(--ff);
+      font-size: .65rem; font-weight: 600;
+      color: rgba(255,255,255,.55);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 999px;
+      padding: .35rem .9rem;
+    }
+    .promise-pill span { color: #7af97a; font-size: .75rem; }
   </style>
 </head>
 <body>
@@ -216,179 +466,327 @@
 <!-- PAGE HERO -->
 <section class="page-hero" aria-labelledby="port-heading">
   <div class="page-hero-inner">
-    <p class="eyebrow rv">Our Work</p>
-    <h1 class="h1 rv d1" id="port-heading">Portfolio &<br><span class="gt">Case Studies</span></h1>
-    <p class="rv d2">Real work. Real results. A growing collection of websites, campaigns, videos, and brand transformations across industries.</p>
+    <p class="eyebrow rv"><span class="dot"></span>Our Work</p>
+    <h1 class="h1 rv d1" id="port-heading">
+      Real Work.<br><span class="gt">Real Results.</span>
+    </h1>
+    <p class="rv d2">
+      We're a new agency — and we own that proudly. Every project gets our full attention,
+      our sharpest thinking, and our genuine drive to prove ourselves. Here's what we've built so far.
+    </p>
   </div>
 </section>
 
-<!-- ══ FILTERS + PORTFOLIO GRID ══ -->
-<section id="work" class="sec sec-dark" aria-labelledby="work-heading">
+<!-- ══ FEATURED CLIENT ══ -->
+<section class="sec sec-dark" aria-labelledby="client-heading" style="padding-top:2rem">
   <div class="wrap">
+
     <div class="rv mb3">
-      <h2 class="h2" id="work-heading" style="margin-bottom:1.5rem">
-        Sample <span class="gt">Work</span>
+      <p class="eyebrow"><span class="dot"></span>Featured Client</p>
+      <h2 class="h2 h2-w" id="client-heading" style="margin-top:1rem">
+        Saanidhya Builders —<br><span class="gt">Construction · Coimbatore</span>
       </h2>
-      <div class="port-filter" role="group" aria-label="Filter portfolio by category">
-        <button class="pf-btn active" onclick="filterPort(this, 'all')">All Work</button>
-        <button class="pf-btn" onclick="filterPort(this, 'websites')">Websites</button>
-        <button class="pf-btn" onclick="filterPort(this, 'ads')">Ad Campaigns</button>
-        <button class="pf-btn" onclick="filterPort(this, 'video')">Video Editing</button>
-        <button class="pf-btn" onclick="filterPort(this, 'design')">Creative Designs</button>
-        <button class="pf-btn" onclick="filterPort(this, 'cases')">Case Studies</button>
+    </div>
+
+    <!-- Big featured card -->
+    <div class="client-hero rv d1">
+      <div class="client-hero-img">
+        <img
+          src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80"
+          alt="Saanidhya Builders — Construction Company Coimbatore"
+          loading="eager">
+        <div class="client-hero-overlay"></div>
+        <div class="client-hero-badge-row">
+          <span class="live-badge"><span class="live-dot"></span>Live Project</span>
+          <span class="eyebrow" style="font-size:.55rem;padding:4px 12px">Real Estate · Coimbatore</span>
+        </div>
+        <div class="client-hero-label">
+          <h2>Saanidhya Builders</h2>
+          <p>
+            Trusted construction company in Coimbatore — residential, commercial & turnkey projects.
+            Led by Sandeep Kumar (Business Head) and Sankar (Execution Head).
+          </p>
+          <div class="tag-row">
+            <span class="stag">Website Design & Dev</span>
+            <span class="stag">SEO</span>
+            <span class="stag">Google Ads</span>
+            <span class="stag">Meta Ads</span>
+            <span class="stag">Social Media</span>
+            <span class="stag">Lead Generation</span>
+            <span class="stag">Content Strategy</span>
+          </div>
+          <a href="https://saanidhyabuilders.com/" target="_blank" rel="noopener" class="visit-link">
+            ↗ Visit Live Website — saanidhyabuilders.com
+          </a>
+        </div>
+      </div>
+
+      <!-- Detail body -->
+      <div class="client-body">
+
+        <!-- Scope of work -->
+        <div class="scope-block">
+          <h5>Scope of Work</h5>
+          <ul class="scope-list">
+            <li>Full website design & development — from scratch, conversion-focused</li>
+            <li>SEO setup — on-page, technical, local Coimbatore keywords</li>
+            <li>Google & Meta ad campaigns for lead generation</li>
+            <li>Social media management — Instagram & Facebook content</li>
+            <li>Brand positioning — messaging, tone, and visual direction online</li>
+            <li>Ongoing digital marketing management</li>
+          </ul>
+        </div>
+
+        <!-- Deliverables mini cards -->
+        <div>
+          <h5 style="font-family:var(--ff);font-size:.60rem;font-weight:700;letter-spacing:.20em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem">Deliverables</h5>
+          <div class="deliverables-grid">
+            <div class="deliv-card">
+              <div class="deliv-icon">🌐</div>
+              <div class="deliv-label">Full Website<br>Design & Dev</div>
+            </div>
+            <div class="deliv-card">
+              <div class="deliv-icon">🔍</div>
+              <div class="deliv-label">SEO &<br>Local Search</div>
+            </div>
+            <div class="deliv-card">
+              <div class="deliv-icon">📣</div>
+              <div class="deliv-label">Google &<br>Meta Ads</div>
+            </div>
+            <div class="deliv-card">
+              <div class="deliv-icon">📲</div>
+              <div class="deliv-label">Social Media<br>Management</div>
+            </div>
+            <div class="deliv-card">
+              <div class="deliv-icon">🎯</div>
+              <div class="deliv-label">Lead Gen<br>Funnels</div>
+            </div>
+            <div class="deliv-card">
+              <div class="deliv-icon">📝</div>
+              <div class="deliv-label">Content &<br>Brand Voice</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <div class="port-grid" id="port-grid">
+    <!-- What we actually built — 3 detail cards -->
+    <div class="rv d2" style="margin-top:3.5rem">
+      <p class="eyebrow" style="margin-bottom:1rem"><span class="dot"></span>What We Built</p>
+    </div>
+    <div class="work-detail-grid">
 
-      <div class="port-card rv" data-cat="websites">
-        <div class="port-img"><img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80" alt="Real Estate Website" loading="lazy"></div>
-        <div class="port-body">
-          <p class="port-cat">Websites</p>
-          <h4>Real Estate Developer Website</h4>
-          <p>A high-converting website for a Bangalore-based builder — featuring project galleries, floor plan downloads, and WhatsApp lead capture.</p>
-          <span class="port-result">+3× Increase in Site Enquiries</span>
+      <div class="wd-card rv d1">
+        <div class="wd-img">
+          <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=700&q=80"
+               alt="Saanidhya Builders Website" loading="lazy">
+        </div>
+        <div class="wd-body">
+          <p class="wd-cat">Website Development</p>
+          <h4>Conversion-First Website</h4>
+          <p>
+            Designed and developed the full saanidhyabuilders.com — featuring project galleries,
+            service pages, a process walkthrough, and WhatsApp + call lead capture on every page.
+            Built for Coimbatore home buyers searching online.
+          </p>
         </div>
       </div>
 
-      <div class="port-card rv d1" data-cat="ads">
-        <div class="port-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="Meta Ad Campaign" loading="lazy"></div>
-        <div class="port-body">
-          <p class="port-cat">Ad Campaigns</p>
-          <h4>Meta Ads — Healthcare Clinic</h4>
-          <p>Full-funnel Meta campaign targeting Bangalore residents for a speciality clinic — awareness, lead generation, and retargeting layers.</p>
-          <span class="port-result">₹18 Cost Per Lead Achieved</span>
+      <div class="wd-card rv d2">
+        <div class="wd-img">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80"
+               alt="Performance Marketing Campaigns" loading="lazy">
+        </div>
+        <div class="wd-body">
+          <p class="wd-cat">Performance Marketing</p>
+          <h4>Google & Meta Ad Campaigns</h4>
+          <p>
+            Running targeted Google Search and Meta campaigns to reach homebuyers in Coimbatore
+            looking for residential construction, villa construction, and turnkey projects.
+            Campaigns built around high-intent local keywords.
+          </p>
         </div>
       </div>
 
-      <div class="port-card rv d2" data-cat="video">
-        <div class="port-img"><img src="https://images.unsplash.com/photo-1536240478700-b869ad10a2eb?w=800&q=80" alt="Brand Film" loading="lazy"></div>
-        <div class="port-body">
-          <p class="port-cat">Video Editing</p>
-          <h4>Brand Film — Lifestyle Brand</h4>
-          <p>A cinematic 90-second brand film edited for a D2C lifestyle brand's launch — used across Instagram, YouTube, and paid campaigns.</p>
-          <span class="port-result">2.4M Organic Views</span>
+      <div class="wd-card rv d3">
+        <div class="wd-img">
+          <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=700&q=80"
+               alt="Social Media Marketing" loading="lazy">
+        </div>
+        <div class="wd-body">
+          <p class="wd-cat">Social Media & SEO</p>
+          <h4>Digital Brand Presence</h4>
+          <p>
+            Managing Instagram and Facebook content to build trust and visibility for Saanidhya Builders.
+            SEO optimised for Coimbatore construction keywords — residential construction, turnkey projects,
+            home builders, and villa construction.
+          </p>
         </div>
       </div>
 
-      <div class="port-card rv" data-cat="design">
-        <div class="port-img"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80" alt="Brand Identity Design" loading="lazy"></div>
-        <div class="port-body">
-          <p class="port-cat">Creative Designs</p>
-          <h4>Brand Identity — Restaurant Chain</h4>
-          <p>Complete visual identity — logo system, colour palette, menu design, and social media templates for a 3-location restaurant chain.</p>
-          <span class="port-result">Brand Launched Across All Locations</span>
+    </div>
+
+    <!-- About the client -->
+    <div class="rv d2" style="margin-top:3.5rem;background:var(--glass-bg);border:1px solid rgba(123,47,247,.15);border-radius:20px;padding:clamp(1.75rem,3vw,2.5rem);position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem 3rem" class="client-about-grid">
+        <div>
+          <p style="font-family:var(--ff);font-size:.60rem;font-weight:700;letter-spacing:.20em;text-transform:uppercase;color:var(--orange);margin-bottom:.75rem">About the Client</p>
+          <h3 style="font-family:var(--ff);font-size:clamp(1.1rem,2vw,1.5rem);font-weight:700;color:var(--white);margin-bottom:.85rem;line-height:1.25">
+            Saanidhya Builders<br>
+            <span style="font-size:.85em;font-weight:500;color:var(--text-secondary)">Construction Company · Coimbatore, Tamil Nadu</span>
+          </h3>
+          <p style="font-family:var(--ff);font-size:.80rem;color:var(--text-secondary);line-height:1.8">
+            Saanidhya Builders is a trusted construction company in Coimbatore, led by
+            Sandeep Kumar (Business Head) and Sankar (Execution Head). They specialise in
+            residential homes, commercial buildings, and turnkey construction — delivering
+            quality projects with full transparency and structural warranties of 10–15 years.
+          </p>
+        </div>
+        <div>
+          <p style="font-family:var(--ff);font-size:.60rem;font-weight:700;letter-spacing:.20em;text-transform:uppercase;color:var(--orange);margin-bottom:.75rem">Client At a Glance</p>
+          <div style="display:flex;flex-direction:column;gap:.65rem">
+            <div style="display:flex;gap:.75rem;align-items:flex-start">
+              <span style="font-size:.9rem;min-width:1.2rem">🏗️</span>
+              <div>
+                <div style="font-family:var(--ff);font-size:.70rem;font-weight:700;color:var(--white);margin-bottom:.15rem">9+ Projects Completed</div>
+                <div style="font-family:var(--ff);font-size:.68rem;color:var(--text-muted)">Across Coimbatore</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:.75rem;align-items:flex-start">
+              <span style="font-size:.9rem;min-width:1.2rem">📅</span>
+              <div>
+                <div style="font-family:var(--ff);font-size:.70rem;font-weight:700;color:var(--white);margin-bottom:.15rem">Serving Since 2023</div>
+                <div style="font-family:var(--ff);font-size:.68rem;color:var(--text-muted)">3 projects currently ongoing</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:.75rem;align-items:flex-start">
+              <span style="font-size:.9rem;min-width:1.2rem">🛡️</span>
+              <div>
+                <div style="font-family:var(--ff);font-size:.70rem;font-weight:700;color:var(--white);margin-bottom:.15rem">10–15 Year Structural Warranty</div>
+                <div style="font-family:var(--ff);font-size:.68rem;color:var(--text-muted)">Plus 1–3 year waterproofing warranty</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:.75rem;align-items:flex-start">
+              <span style="font-size:.9rem;min-width:1.2rem">🏠</span>
+              <div>
+                <div style="font-family:var(--ff);font-size:.70rem;font-weight:700;color:var(--white);margin-bottom:.15rem">Residential · Commercial · Turnkey</div>
+                <div style="font-family:var(--ff);font-size:.68rem;color:var(--text-muted)">Full construction services</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="port-card rv d1" data-cat="ads">
-        <div class="port-img"><img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80" alt="Google Ads Campaign" loading="lazy"></div>
-        <div class="port-body">
-          <p class="port-cat">Ad Campaigns</p>
-          <h4>Google Ads — Education Institute</h4>
-          <p>Search and Performance Max campaigns for a coaching centre targeting students appearing for competitive exams across Karnataka.</p>
-          <span class="port-result">40% Reduction in Cost Per Admission</span>
-        </div>
-      </div>
-
-      <div class="port-card rv d2" data-cat="video">
-        <div class="port-img"><img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=80" alt="Instagram Reels" loading="lazy"></div>
-        <div class="port-body">
-          <p class="port-cat">Video Editing</p>
-          <h4>Instagram Reels — Fitness Brand</h4>
-          <p>Monthly reels production for a gym chain — transformation content, trainer spotlights, and offer announcements edited for maximum reach.</p>
-          <span class="port-result">8× Growth in Followers in 6 Months</span>
-        </div>
-      </div>
-
-      <div class="port-card rv" data-cat="websites">
-        <div class="port-img"><img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&q=80" alt="E-commerce Website" loading="lazy"></div>
-        <div class="port-body">
-          <p class="port-cat">Websites</p>
-          <h4>E-commerce Store — Skincare Brand</h4>
-          <p>A Shopify-based e-commerce site with custom landing pages, subscription flows, and Meta Pixel integration for retargeting campaigns.</p>
-          <span class="port-result">₹12L Revenue in First 90 Days</span>
-        </div>
-      </div>
-
-      <div class="port-card rv d1" data-cat="design">
-        <div class="port-img"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80" alt="Ad Creative Design" loading="lazy"></div>
-        <div class="port-body">
-          <p class="port-cat">Creative Designs</p>
-          <h4>Ad Creative System — Real Estate</h4>
-          <p>A modular ad creative system — 40+ static and animated ad variants across formats, sizes, and audience segments for a property developer.</p>
-          <span class="port-result">CTR Improved by 2.8× vs Previous Creatives</span>
-        </div>
-      </div>
-
-      <div class="port-card rv d2" data-cat="cases">
-        <div class="port-img"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Case Study" loading="lazy"></div>
-        <div class="port-body">
-          <p class="port-cat">Case Studies</p>
-          <h4>Full-Service Growth — Salon Chain</h4>
-          <p>End-to-end digital transformation: new website, Meta ads, SEO, Instagram content, and monthly reporting — for a 5-location salon chain.</p>
-          <span class="port-result">4× Revenue Growth in 12 Months</span>
-        </div>
-      </div>
-
+      <style>
+        @media (max-width: 600px) {
+          .client-about-grid { grid-template-columns: 1fr !important; }
+        }
+      </style>
     </div>
 
   </div>
 </section>
 
-<!-- ══ CASE STUDIES ══ -->
-<section id="case-studies" class="sec sec-dark" aria-labelledby="cases-heading">
+<!-- ══ OUR APPROACH ══ -->
+<section class="sec sec-surface" aria-labelledby="approach-heading">
   <div class="wrap">
     <div class="rv text-center mb3">
-      <p class="eyebrow">Deep Dives</p>
-      <h2 class="h2 h2-w" id="cases-heading" style="margin-top:1rem">
-        Featured <span class="gt">Case Studies</span>
+      <p class="eyebrow"><span class="dot"></span>How We Work</p>
+      <h2 class="h2 h2-w" id="approach-heading" style="margin-top:1rem">
+        The EmYou <span class="gt">Approach</span>
       </h2>
+      <p style="font-family:var(--ff);font-size:.85rem;color:var(--text-secondary);max-width:440px;margin:1rem auto 0;line-height:1.8">
+        Every project we take on follows the same disciplined process — strategy first, execution second, results always.
+      </p>
     </div>
-
-    <div style="display:flex;flex-direction:column;gap:1.25rem">
-
-      <div class="case-card rv">
-        <p style="font-family:var(--fb);font-size:.60rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem">Case Study 01 — Real Estate</p>
-        <h3 style="font-family:var(--fd);font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:600;color:var(--white);margin-bottom:.75rem">How We Generated 3× More Leads for a Bangalore Builder</h3>
-        <p style="font-family:var(--fb);font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.8;max-width:680px;margin-bottom:1.5rem">A custom home construction company in Coimbatore was spending on digital ads but seeing poor lead quality. We rebuilt their funnel from scratch — new landing pages, new creative, better targeting, and a WhatsApp follow-up system.</p>
-        <div class="case-stats">
-          <div class="case-stat"><span>3×</span><p>Lead Volume</p></div>
-          <div class="case-stat"><span>60%</span><p>Lower CPA</p></div>
-          <div class="case-stat"><span>4mo</span><p>Time to Results</p></div>
-        </div>
-        <div style="display:flex;gap:.5rem;flex-wrap:wrap">
-          <span style="font-family:var(--fb);font-size:.62rem;font-weight:600;letter-spacing:.10em;text-transform:uppercase;color:rgba(123,47,247,.60);border:1px solid rgba(123,47,247,.18);padding:4px 10px">Meta Ads</span>
-          <span style="font-family:var(--fb);font-size:.62rem;font-weight:600;letter-spacing:.10em;text-transform:uppercase;color:rgba(123,47,247,.60);border:1px solid rgba(123,47,247,.18);padding:4px 10px">Landing Pages</span>
-          <span style="font-family:var(--fb);font-size:.62rem;font-weight:600;letter-spacing:.10em;text-transform:uppercase;color:rgba(123,47,247,.60);border:1px solid rgba(123,47,247,.18);padding:4px 10px">WhatsApp CRM</span>
-        </div>
+    <div class="approach-grid">
+      <div class="approach-card rv">
+        <div class="approach-num">01</div>
+        <h4>Deep Discovery</h4>
+        <p>Before writing a single line of code or launching a single ad, we study your business, your competitors, and your customers. For Saanidhya Builders, that meant understanding the Coimbatore construction market, buyer behaviour, and what makes them stand out.</p>
       </div>
-
-      <div class="case-card rv d1">
-        <p style="font-family:var(--fb);font-size:.60rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem">Case Study 02 — E-commerce</p>
-        <h3 style="font-family:var(--fd);font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:600;color:var(--white);margin-bottom:.75rem">Scaling a D2C Skincare Brand from Launch to ₹12L Revenue</h3>
-        <p style="font-family:var(--fb);font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.8;max-width:680px;margin-bottom:1.5rem">A new skincare brand needed everything — brand identity, website, content, and paid campaigns. We built the entire digital stack and ran growth campaigns across Meta and Google simultaneously.</p>
-        <div class="case-stats">
-          <div class="case-stat"><span>₹12L</span><p>Revenue — 90 Days</p></div>
-          <div class="case-stat"><span>4.2×</span><p>ROAS on Meta</p></div>
-          <div class="case-stat"><span>12k</span><p>New Customers</p></div>
-        </div>
-        <div style="display:flex;gap:.5rem;flex-wrap:wrap">
-          <span style="font-family:var(--fb);font-size:.62rem;font-weight:600;letter-spacing:.10em;text-transform:uppercase;color:rgba(123,47,247,.60);border:1px solid rgba(123,47,247,.18);padding:4px 10px">Brand Identity</span>
-          <span style="font-family:var(--fb);font-size:.62rem;font-weight:600;letter-spacing:.10em;text-transform:uppercase;color:rgba(123,47,247,.60);border:1px solid rgba(123,47,247,.18);padding:4px 10px">Web Dev</span>
-          <span style="font-family:var(--fb);font-size:.62rem;font-weight:600;letter-spacing:.10em;text-transform:uppercase;color:rgba(123,47,247,.60);border:1px solid rgba(123,47,247,.18);padding:4px 10px">Meta + Google Ads</span>
-        </div>
+      <div class="approach-card rv d1">
+        <div class="approach-num">02</div>
+        <h4>Strategy Before Execution</h4>
+        <p>We build a clear plan — which channels, which audiences, which messages — before spending a rupee on ads. Every piece of work has a defined purpose tied to a real business goal.</p>
       </div>
+      <div class="approach-card rv d2">
+        <div class="approach-num">03</div>
+        <h4>Build for Conversion</h4>
+        <p>A website that looks good but doesn't generate leads is decoration. Everything we build — pages, ads, content — is engineered to turn visitors into enquiries and enquiries into customers.</p>
+      </div>
+      <div class="approach-card rv d1">
+        <div class="approach-num">04</div>
+        <h4>Test, Learn, Improve</h4>
+        <p>We don't set campaigns and forget. We watch the numbers, test new angles, cut what's not working, and double down on what is. Continuous optimisation is how results compound over time.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ══ HONEST MANIFESTO ══ -->
+<div class="manifesto-band rv">
+  <div class="manifesto-inner">
+    <p class="eyebrow" style="justify-content:center;margin-bottom:1.25rem"><span class="dot"></span>Our Promise</p>
+    <p class="lead">
+      We're a young agency with sharp skills and something to prove.<br>
+      That's exactly why you should work with us.
+    </p>
+    <p class="sub">
+      We don't have a decade of case studies — but we have hunger, current skills, and a team that treats every client
+      like they're our most important one. Because right now, they are.
+    </p>
+    <div class="promise-row">
+      <div class="promise-pill"><span>✓</span> No fake numbers</div>
+      <div class="promise-pill"><span>✓</span> You own all your assets</div>
+      <div class="promise-pill"><span>✓</span> Direct access to the team doing the work</div>
+      <div class="promise-pill"><span>✓</span> Transparent reporting, always</div>
+      <div class="promise-pill"><span>✓</span> Strategy meeting before anything begins</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ COMING SOON ══ -->
+<section class="sec sec-dark" aria-labelledby="coming-heading">
+  <div class="wrap">
+    <div class="rv text-center mb3">
+      <p class="eyebrow"><span class="dot"></span>Growing Portfolio</p>
+      <h2 class="h2 h2-w" id="coming-heading" style="margin-top:1rem">
+        More Work <span class="gt">Coming Soon</span>
+      </h2>
+      <p style="font-family:var(--ff);font-size:.85rem;color:var(--text-secondary);max-width:440px;margin:1rem auto 0;line-height:1.8">
+        We're actively working with new clients. Every project we complete gets added here.
+      </p>
+    </div>
+    <div class="coming-grid rv d1">
+      <div class="coming-card">
+        <div class="coming-icon">🎬</div>
+        <div class="coming-label">Video & Reels<br>Editing Projects</div>
+      </div>
+      <div class="coming-card">
+        <div class="coming-icon">🏥</div>
+        <div class="coming-label">Healthcare &<br>Clinic Marketing</div>
+      </div>
+      <div class="coming-card cta-card">
+        <div class="coming-plus">+</div>
+        <div class="coming-label" style="margin-bottom:1.1rem;color:rgba(255,255,255,.38)">Your business<br>featured here next</div>
+        <a href="contact.html" class="btn btn-secondary" style="font-size:.68rem;padding:10px 22px;min-height:auto">
+          Work With Us →
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-band">
+<section class="cta-band" aria-label="Get started">
   <div class="wrap">
-    <h2 class="h2 h2-w rv" style="font-size:clamp(2rem,5vw,3.8rem)">Ready to Be Our<br><span class="gt">Next Success Story?</span></h2>
-    <p class="rv d1">Let's discuss your goals and build a clear plan to achieve them.</p>
+    <p class="eyebrow" style="justify-content:center;margin-bottom:1rem"><span class="dot"></span>Ready to Grow?</p>
+    <h2 class="h2 h2-w rv" style="font-size:clamp(2rem,5vw,3.8rem)">
+      Ready to Be Our<br><span class="gt">Next Success Story?</span>
+    </h2>
+    <p class="rv d1 sub">Let's talk about your goals. We'll build a clear, honest plan to get you there.</p>
     <div class="btn-row rv d2">
       <a href="contact.html" class="btn btn-primary">Book Free Strategy Call →</a>
       <a href="contact.html" class="btn btn-secondary">Request Proposal</a>
@@ -401,40 +799,45 @@
 <footer>
   <div class="foot-top">
     <div class="foot-brand">
-      <a href="index.html" class="flogo"><img src="logo.png" alt="EmYou Media" width="44" height="44" onerror="this.style.display='none'"><div class="nlogo-text"><span class="n1">EmYou Media</span><span class="n2">Creative · Digital · Growth</span></div></a>
+      <a href="index.html" class="flogo">
+        <img src="logo.png" alt="EmYou Media" width="44" height="44" onerror="this.style.display='none'">
+        <div class="nlogo-text"><span class="n1">EmYou Media</span><span class="n2">Creative · Digital · Growth</span></div>
+      </a>
       <p>A full-service creative and digital growth company. Based in Bangalore, India.</p>
     </div>
     <div class="foot-col"><h6>Company</h6><a href="about.html">About Us</a><a href="portfolio.html">Portfolio</a><a href="blog.html">Blog</a><a href="careers.html">Careers</a></div>
-    <div class="foot-col"><h6>Services</h6><a href="digital-marketing.html">Digital Marketing</a><a href="media-production.html">Media Production</a><a href="services.html">Technology</a><a href="services.html">All Services</a></div>
-    <div class="foot-col"><h6>Connect</h6><a href="https://www.instagram.com/emyoudigitalmarketing" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/company/emyou-digital-marketing/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/profile.php?id=61575408970606" target="_blank" rel="noopener">Facebook</a><a href="mailto:hello@emyoumedia.com">Email Us</a></div>
+    <div class="foot-col"><h6>Services</h6><a href="digital-marketing.html">Digital Marketing</a><a href="media-production.html">Media Production</a><a href="services.html">All Services</a></div>
+    <div class="foot-col"><h6>Connect</h6>
+      <a href="https://www.instagram.com/emyoudigitalmarketing" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/company/emyou-digital-marketing/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.facebook.com/profile.php?id=61575408970606" target="_blank" rel="noopener">Facebook</a>
+      <a href="mailto:hello@emyoumedia.com">Email Us</a>
+    </div>
   </div>
   <div class="foot-bot">
     <p>© 2026 EmYou Media. All rights reserved. · Bangalore, India</p>
     <div class="fsoc">
-      <a href="https://www.instagram.com/emyoudigitalmarketing" target="_blank" rel="noopener" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-      <a href="https://www.linkedin.com/company/emyou-digital-marketing/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+      <a href="https://www.instagram.com/emyoudigitalmarketing" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/emyou-digital-marketing/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
     </div>
   </div>
 </footer>
 
 <div class="fab">
-  <a class="fab-wa" href="https://wa.me/918296793486" target="_blank" rel="noopener" aria-label="WhatsApp"><span class="fab-lbl">WhatsApp Us</span><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.856L.057 23.571a.5.5 0 0 0 .612.612l5.715-1.475A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.523-5.16-1.43l-.36-.216-3.815.984.999-3.726-.235-.38A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg></a>
-  <a class="fab-ph" href="tel:+918296793486" aria-label="Call"><span class="fab-lbl">Call Us</span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></a>
+  <a class="fab-wa" href="https://wa.me/918296793486" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <span class="fab-lbl">WhatsApp Us</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.856L.057 23.571a.5.5 0 0 0 .612.612l5.715-1.475A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.523-5.16-1.43l-.36-.216-3.815.984.999-3.726-.235-.38A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+  </a>
+  <a class="fab-ph" href="tel:+918296793486" aria-label="Call">
+    <span class="fab-lbl">Call Us</span>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+  </a>
 </div>
 
-<script>
-function filterPort(btn, cat) {
-  document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.port-card').forEach(card => {
-    if (cat === 'all' || card.dataset.cat === cat) {
-      card.style.display = '';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-}
-</script>
 <script src="main.js"></script>
 </body>
 </html>

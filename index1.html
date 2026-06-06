@@ -1,3 +1,22 @@
+ot experience claims)
+Portfolio → replace fake grid with real Saanidhya Builders work + honest "we're growing" framing
+Testimonials → remove fake client quotes, replace with something compelling without testimonials
+Desktop scroll overlap on stats → fix z-index/position issue
+Now I have a clear picture. Let me fix all the issues directly in the HTML:
+
+
+Ran 2 commands
+Ran 2 commands
+Now let me build the full fixed HTML with all corrections:
+
+
+Write the full fixed index.html
+Write the full fixed index.html
+
+Write the full fixed index.html
+bash
+
+cat > /home/claude/index.html << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +43,46 @@
 
   <!-- STATS: force 4-col on mobile + fix desktop scroll overlap -->
   <style>
-   
+    /* ── STATS ROW: always single horizontal line ── */
+    .stats-row {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      justify-content: center;
+      align-items: stretch;
+      gap: 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .stats-row::-webkit-scrollbar { display: none; }
+    .stat-cell {
+      flex: 1 0 0;
+      min-width: 72px;
+      padding: 1.5rem 0.5rem;
+      text-align: center;
+    }
+    .stat-n {
+      display: block;
+      font-size: clamp(1.1rem, 3.5vw, 2.2rem) !important;
+      line-height: 1.1;
+    }
+    .stat-l {
+      display: block;
+      font-size: clamp(0.48rem, 1.3vw, 0.62rem) !important;
+      line-height: 1.4;
+      margin-top: 0.3rem;
+    }
+
+    /* ── FIX: desktop scroll overlap on stats ── */
+    .sec-dark, section.sec-dark {
+      position: relative;
+      z-index: 1;
+    }
+    header, #nav {
+      z-index: 100;
+    }
+
     /* ── PORTFOLIO: new honest layout ── */
     .port-featured {
       display: grid;
@@ -167,10 +225,9 @@
     }
     .trust-promise-item {
       padding: 1.5rem;
-      
+      border: 1px solid rgba(0,0,0,.07);
       border-radius: 12px;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.08);
+      background: #fff;
       transition: transform .2s, box-shadow .2s;
     }
     .trust-promise-item:hover {
@@ -185,13 +242,13 @@
       font-family: var(--fd, 'Poppins', sans-serif);
       font-size: .85rem;
       font-weight: 600;
-      color: #fff;
+      color: #0a0a0a;
       margin: 0 0 .4rem;
     }
     .trust-promise-item p {
       font-family: var(--fb, 'Poppins', sans-serif);
       font-size: .72rem;
-     color: rgba(255,255,255,.45);
+      color: rgba(0,0,0,.45);
       line-height: 1.65;
       margin: 0;
     }
@@ -416,7 +473,8 @@
     </div>
 
     <!-- Trust badges -->
-<div class="rv d4" style="display:grid;grid-template-columns:auto 1px auto 1px auto 1px auto;gap:0 1.5rem;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,.06);align-items:center">      <div>
+    <div class="rv d4" style="display:flex;flex-wrap:wrap;gap:2rem;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,.06)">
+      <div>
         <div style="font-family:var(--fd);font-size:1.6rem;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">360°</div>
         <div style="font-family:var(--fb);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.30)">Growth Solutions</div>
       </div>
@@ -514,24 +572,24 @@
   </div>
 </section>
 
-<!-- ══ STATS ══ -->
-<section class="sec-dark" aria-label="Agency stats">
+<!-- ══ STATS — 4 cols, always one row ══ -->
+<section class="sec-dark" aria-label="Agency stats" style="position:relative;z-index:1;">
   <div class="stats-row rv">
     <div class="stat-cell">
       <span class="stat-n">360°</span>
       <span class="stat-l">Growth Solutions</span>
     </div>
     <div class="stat-cell">
-      <span class="stat-n">2×</span>
-      <span class="stat-l">More Impact with Creative + Marketing</span>
+      <span class="stat-n">2-in-1</span>
+      <span class="stat-l">Creative + Marketing</span>
     </div>
     <div class="stat-cell">
       <span class="stat-n">100%</span>
-      <span class="stat-l">First Team</span>
+      <span class="stat-l">Skill-First Team</span>
     </div>
     <div class="stat-cell">
-      <span class="stat-n">100%</span>
-      <span class="stat-l">Strategy-First Execution</span>
+      <span class="stat-n">∞</span>
+      <span class="stat-l">Scalable Growth</span>
     </div>
   </div>
 </section>
@@ -888,3 +946,5 @@
 <script src="main.js"></script>
 </body>
 </html>
+HTMLEOF
+echo "Done. Lines: $(wc -l < /home/claude/index.html)"

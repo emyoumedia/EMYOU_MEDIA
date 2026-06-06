@@ -53,6 +53,7 @@
   /* Spacing */
   --sec: clamp(5rem, 10vw, 9rem);
   --wrap: 1200px;
+  --page-hero-bottom: 3rem; 
 }
 
 /* ── Base ── */
@@ -476,7 +477,7 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: clamp(4rem, 8vh, 7rem);
+  padding-bottom: clamp(6rem, 8vh, 7rem);
 }
 /* Background image layer */
 .hero-bg {
@@ -541,7 +542,7 @@ a { text-decoration: none; color: inherit; }
   border-radius: var(--rpill);
   padding: 6px 16px;
   background: rgba(255,140,66,.08);
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
 }
 .hero-badge .dot {
   width: 6px; height: 6px;
@@ -566,10 +567,13 @@ a { text-decoration: none; color: inherit; }
 
 /* Page hero (inner pages) */
 .page-hero {
-  padding: 160px clamp(20px,5vw,48px) 80px;
+  padding: 160px clamp(20px,5vw,48px) 3rem;
   background: var(--primary-dark);
   position: relative; overflow: hidden;
 }
+
+
+
 .page-hero::before {
   content: '';
   position: absolute; top: -120px; right: -80px;
@@ -588,6 +592,9 @@ a { text-decoration: none; color: inherit; }
   max-width: var(--wrap); margin: 0 auto;
   position: relative; z-index: 1;
 }
+.page-hero + .sec {
+  padding-top: 3rem;
+} 
 .page-hero .h1 { font-size: clamp(2.4rem, 5.5vw, 5rem); margin: 1rem 0 1.5rem; }
 .page-hero p {
   font-family: var(--ff); font-size: clamp(.88rem,1.4vw,1rem);
