@@ -482,6 +482,557 @@
   </div>
 </div>
 
+
+
+<!-- ══START GROWTH CITY ══ -->
+<section id="growth-city" aria-label="EmYou Growth City" style="position:relative;overflow:hidden;background:#020B4F;padding:0;">
+
+<style>
+  #gc-wrapper {
+    position:relative; width:100%; background:#020B4F;
+    font-family:'Poppins',sans-serif; height:560px;
+    user-select:none; -webkit-user-select:none;
+  }
+  #gc-canvas {
+    display:block; width:100%; height:100%;
+    touch-action:none;
+  }
+  /* Invisible interaction layer */
+  #gc-layer {
+    position:absolute; inset:0; z-index:5; touch-action:none; cursor:grab;
+  }
+  #gc-layer:active { cursor:grabbing; }
+  /* Overlay sits above layer for HUD, below buttons */
+  #gc-overlay {
+    position:absolute; inset:0; z-index:6; pointer-events:none;
+  }
+  /* Progress bar */
+  #gc-bar {
+    position:absolute; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg,#7B2FF7,#D946EF,#FF8C42);
+    transition:width .6s cubic-bezier(.4,0,.2,1);
+  }
+  /* Mode buttons — top centre */
+  #gc-modes {
+    position:absolute; top:14px; left:50%; transform:translateX(-50%);
+    display:flex; gap:8px; pointer-events:all; z-index:10;
+  }
+  .gc-mbtn {
+    font-family:'Poppins',sans-serif; font-size:10px; font-weight:600;
+    padding:6px 16px; border-radius:999px;
+    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14);
+    color:rgba(255,255,255,.6); cursor:pointer; transition:all .2s;
+    letter-spacing:.06em; text-transform:uppercase;
+    -webkit-tap-highlight-color:transparent; touch-action:manipulation;
+  }
+  .gc-mbtn.on { background:rgba(123,47,247,.4); border-color:#7B2FF7; color:#fff; }
+
+  /* ── HUD card — bottom of canvas ── */
+  #gc-hud {
+    position:absolute; bottom:70px; left:50%; transform:translateX(-50%);
+    width:88%; max-width:460px;
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    pointer-events:none;
+  }
+  #gc-stage-label {
+    font-family:'Poppins',sans-serif; font-size:.55rem; font-weight:700;
+    letter-spacing:.22em; text-transform:uppercase; color:#FF8C42;
+    opacity:0; transition:opacity .4s;
+  }
+  #gc-hud-title {
+    font-family:'Poppins',sans-serif; font-size:clamp(15px,4vw,21px);
+    font-weight:800; color:#fff; text-align:center; line-height:1.1;
+    letter-spacing:-.01em;
+    opacity:0; transform:translateY(10px);
+    transition:opacity .45s, transform .45s;
+    text-shadow:0 0 28px rgba(123,47,247,.7);
+  }
+  #gc-hud-sub {
+    font-family:'Poppins',sans-serif; font-size:clamp(11px,2.5vw,13px);
+    color:rgba(255,255,255,.5); text-align:center; line-height:1.65;
+    opacity:0; transform:translateY(8px);
+    transition:opacity .45s .08s, transform .45s .08s;
+  }
+  #gc-dots {
+    display:flex; gap:7px; margin-top:4px; pointer-events:none;
+  }
+  .gc-dot {
+    width:6px; height:6px; border-radius:50%;
+    background:rgba(255,255,255,.2); transition:all .35s;
+  }
+  .gc-dot.on {
+    background:linear-gradient(135deg,#7B2FF7,#FF8C42);
+    transform:scale(1.5); box-shadow:0 0 6px rgba(123,47,247,.7);
+  }
+
+  /* ── PREV / NEXT BUTTONS ── */
+  #gc-nav {
+    position:absolute; bottom:14px; left:50%; transform:translateX(-50%);
+    display:flex; align-items:center; gap:12px; z-index:10; pointer-events:all;
+  }
+  .gc-nav-btn {
+    font-family:'Poppins',sans-serif; font-size:11px; font-weight:700;
+    letter-spacing:.08em; text-transform:uppercase;
+    display:flex; align-items:center; gap:6px;
+    padding:10px 22px; border-radius:999px;
+    border:1.5px solid rgba(255,255,255,.18);
+    background:rgba(10,4,40,.6); color:rgba(255,255,255,.75);
+    cursor:pointer; transition:all .2s;
+    -webkit-tap-highlight-color:transparent; touch-action:manipulation;
+    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  }
+  .gc-nav-btn:hover, .gc-nav-btn:active {
+    background:rgba(123,47,247,.35); border-color:#7B2FF7; color:#fff;
+  }
+  .gc-nav-btn:disabled {
+    opacity:.25; pointer-events:none;
+  }
+  #gc-step-count {
+    font-family:'Poppins',sans-serif; font-size:11px; font-weight:600;
+    color:rgba(255,255,255,.35); letter-spacing:.12em; min-width:36px;
+    text-align:center;
+  }
+
+  /* Section header */
+  .gc-head {
+    text-align:center; padding:3rem 1.25rem 1.5rem; background:#020B4F;
+  }
+  .gc-head-ey {
+    font-family:'Poppins',sans-serif; font-size:.58rem; font-weight:700;
+    letter-spacing:.22em; text-transform:uppercase; color:#FF8C42;
+    display:block; margin-bottom:.7rem;
+  }
+  .gc-head h2 {
+    font-family:'Poppins',sans-serif; font-size:clamp(1.5rem,5vw,2.6rem);
+    font-weight:800; color:#fff; line-height:1.1; letter-spacing:-.02em;
+    margin-bottom:.85rem;
+  }
+  .gc-head h2 .gt {
+    background:linear-gradient(90deg,#7B2FF7,#D946EF,#FF8C42);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .gc-head p {
+    font-family:'Poppins',sans-serif; font-size:.85rem;
+    color:rgba(255,255,255,.38); max-width:400px; margin:0 auto; line-height:1.8;
+  }
+  @media(max-width:640px){
+    #gc-wrapper{ height:480px; }
+    #gc-hud{ bottom:76px; }
+  }
+  @media(max-width:380px){
+    #gc-wrapper{ height:420px; }
+    .gc-nav-btn{ padding:9px 16px; font-size:10px; }
+  }
+</style>
+
+<div class="gc-head">
+  <span class="gc-head-ey">Our Growth Story</span>
+  <h2>Fly Through the<br><span class="gt">EmYou Growth City</span></h2>
+  <p>Each floor is a service. Navigate through the city to see how we build brands that dominate.</p>
+</div>
+
+<div id="gc-wrapper">
+  <canvas id="gc-canvas"></canvas>
+  <div id="gc-layer"></div>
+  <div id="gc-overlay">
+    <div id="gc-bar"></div>
+    <div id="gc-modes">
+      <button class="gc-mbtn on" id="gc-btn-tour" onclick="gcSetMode('tour')">Tour</button>
+      <button class="gc-mbtn"    id="gc-btn-free" onclick="gcSetMode('free')">Explore</button>
+    </div>
+    <div id="gc-hud">
+      <div id="gc-stage-label"></div>
+      <div id="gc-hud-title"></div>
+      <div id="gc-hud-sub"></div>
+      <div id="gc-dots"></div>
+    </div>
+    <div id="gc-nav">
+      <button class="gc-nav-btn" id="gc-prev" onclick="gcStep(-1)">← Prev</button>
+      <span id="gc-step-count">1 / 7</span>
+      <button class="gc-nav-btn" id="gc-next" onclick="gcStep(1)">Next →</button>
+    </div>
+  </div>
+</div>
+</section>
+
+<script>
+(function(){
+  /* ── Guard ── */
+  if(typeof THREE==='undefined'||typeof gsap==='undefined') return;
+
+  var wrap  = document.getElementById('gc-wrapper');
+  var cnv   = document.getElementById('gc-canvas');
+  var layer = document.getElementById('gc-layer');
+
+  function GW(){ return wrap.offsetWidth||360; }
+  function GH(){ return wrap.offsetHeight||480; }
+
+  /* ── Renderer ── */
+  var R = new THREE.WebGLRenderer({canvas:cnv,antialias:true,alpha:false});
+  R.setPixelRatio(Math.min(devicePixelRatio,2));
+  R.setSize(GW(),GH());
+  R.shadowMap.enabled=true;
+  R.shadowMap.type=THREE.PCFSoftShadowMap;
+  R.toneMapping=THREE.ACESFilmicToneMapping;
+  R.toneMappingExposure=1.15;
+
+  /* ── Scene ── */
+  var S=new THREE.Scene();
+  S.background=new THREE.Color(0x020B4F);
+  S.fog=new THREE.FogExp2(0x020B4F,0.020);
+
+  /* ── Camera ── */
+  var C=new THREE.PerspectiveCamera(52,GW()/GH(),.1,200);
+  C.position.set(0,12,28); C.lookAt(0,3,0);
+
+  /* Animated camera target (what lookAt tracks) */
+  var camPos  = {x:0,y:12,z:28};
+  var camLook = {x:0,y:3,z:0};
+
+  /* ── Lights ── */
+  S.add(new THREE.AmbientLight(0x1a1040,.9));
+  var sun=new THREE.DirectionalLight(0xffffff,.55);
+  sun.position.set(10,20,10); sun.castShadow=true; S.add(sun);
+  function PL(c,i,x,y,z){var l=new THREE.PointLight(c,i,35);l.position.set(x,y,z);S.add(l);return l;}
+  var PL1=PL(0x7B2FF7,1.6,-8,6,-5);
+  var PL2=PL(0xD946EF,1.3,8,5,-8);
+  var PL3=PL(0xFF8C42,1.1,0,4,10);
+
+  /* ── Ground + Grid + Road ── */
+  var gnd=new THREE.Mesh(new THREE.PlaneGeometry(120,120),
+    new THREE.MeshStandardMaterial({color:0x04082a,roughness:.9,metalness:.1}));
+  gnd.rotation.x=-Math.PI/2; gnd.receiveShadow=true; S.add(gnd);
+  var grid=new THREE.GridHelper(80,40,0x1a1060,0x0d0830);
+  grid.position.y=.01; S.add(grid);
+  var roadM=new THREE.Mesh(new THREE.PlaneGeometry(6,110),
+    new THREE.MeshStandardMaterial({color:0x080820,roughness:.8}));
+  roadM.rotation.x=-Math.PI/2; roadM.position.y=.02; S.add(roadM);
+  for(var ri=-12;ri<=12;ri++){
+    var dm=new THREE.Mesh(new THREE.PlaneGeometry(.25,1.5),
+      new THREE.MeshStandardMaterial({color:0xFFD700,emissive:0xFFD700,emissiveIntensity:.3}));
+    dm.rotation.x=-Math.PI/2; dm.position.set(0,.03,ri*4); S.add(dm);
+  }
+
+  /* ── Building factory ── */
+  function mkB(o){
+    var x=o.x||0,z=o.z||0,w=o.w||2,d=o.d||2,h=o.h||5;
+    var col=o.color||0x1a1060,em=o.emissive||0x7B2FF7,ei=o.ei||.08;
+    var wc=o.wc||0xaaddff,wr=o.wr||4,wco=o.wco||2,gc2=o.gc||0x7B2FF7;
+    var g=new THREE.Group();
+    var body=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),
+      new THREE.MeshStandardMaterial({color:col,emissive:em,emissiveIntensity:ei,roughness:.55,metalness:.35}));
+    body.position.y=h/2; body.castShadow=true; body.receiveShadow=true; g.add(body);
+    /* rooftop */
+    var top=new THREE.Mesh(new THREE.BoxGeometry(w*.88,.22,d*.88),
+      new THREE.MeshStandardMaterial({color:gc2,emissive:gc2,emissiveIntensity:.65,roughness:.3,metalness:.6}));
+    top.position.y=h+.11; g.add(top);
+    /* windows */
+    var wM=new THREE.MeshStandardMaterial({color:wc,emissive:wc,emissiveIntensity:.45,transparent:true,opacity:.82,roughness:.1});
+    for(var r=0;r<wr;r++)for(var c=0;c<wco;c++){
+      var wn=new THREE.Mesh(new THREE.PlaneGeometry(.34,.48),wM);
+      wn.position.set((c-(wco-1)/2)*(w/(wco+.5)),1+r*(h*.78/wr),d/2+.01); g.add(wn);
+    }
+    /* glow orb */
+    var orb=new THREE.Mesh(new THREE.SphereGeometry(.28,8,8),
+      new THREE.MeshStandardMaterial({color:gc2,emissive:gc2,emissiveIntensity:1.6,transparent:true,opacity:.72}));
+    orb.position.y=.28; g.add(orb);
+    g.position.set(x,0,z);
+    g.userData={orb:orb,body:body};
+    S.add(g); return g;
+  }
+
+  /* ── City ── */
+  var BLDS=[];
+  /* Stop 0 – Entrance / Brand */
+  BLDS.push(mkB({x:-5,z:8,w:2.5,d:2.5,h:5,  color:0x0d0a3a,emissive:0x7B2FF7,ei:.12,gc:0x7B2FF7,wr:3,wco:2}));
+  BLDS.push(mkB({x:5, z:8,w:2.5,d:2.5,h:5.5,color:0x0d0a3a,emissive:0x7B2FF7,ei:.10,gc:0x9B4FF7,wr:3,wco:2}));
+  /* Stop 1 – Digital Marketing */
+  BLDS.push(mkB({x:-6,z:-2,w:3,d:3,h:8,color:0x08102e,emissive:0x2563EB,ei:.15,gc:0x3B82F6,wc:0x93C5FD,wr:5,wco:2}));
+  BLDS.push(mkB({x:6, z:-2,w:3,d:3,h:7,color:0x08102e,emissive:0x1D4ED8,ei:.12,gc:0x60A5FA,wc:0xBAE6FD,wr:4,wco:2}));
+  BLDS.push(mkB({x:-9,z:-5,w:2,d:2,h:6,color:0x081428,emissive:0x059669,ei:.15,gc:0x10B981,wc:0x6EE7B7,wr:4,wco:2}));
+  /* Stop 2 – Web & App */
+  BLDS.push(mkB({x:7, z:-10,w:3.5,d:3,h:9,color:0x0a0820,emissive:0x7C3AED,ei:.18,gc:0x8B5CF6,wc:0xC4B5FD,wr:5,wco:2}));
+  BLDS.push(mkB({x:-7,z:-10,w:3,d:3,h:8,  color:0x0a0820,emissive:0x6D28D9,ei:.15,gc:0x7C3AED,wc:0xA78BFA,wr:5,wco:2}));
+  /* Stop 3 – Media */
+  BLDS.push(mkB({x:-5,z:-18,w:4,d:3.5,h:7,  color:0x120810,emissive:0xD946EF,ei:.18,gc:0xD946EF,wc:0xF0ABFC,wr:4,wco:3}));
+  BLDS.push(mkB({x:5, z:-18,w:3.5,d:3,h:7.5,color:0x100812,emissive:0xA21CAF,ei:.15,gc:0xE879F9,wc:0xF5D0FE,wr:4,wco:2}));
+  /* Stop 4 – Lead Gen */
+  BLDS.push(mkB({x:-5,z:-26,w:3,d:3,h:10,color:0x140a04,emissive:0xEA580C,ei:.2,gc:0xFF8C42,wc:0xFDBA74,wr:6,wco:2}));
+  BLDS.push(mkB({x:5, z:-26,w:3,d:3,h:11,color:0x140a04,emissive:0xD97706,ei:.2,gc:0xFBBF24,wc:0xFDE68A,wr:6,wco:2}));
+  /* Stop 5 – Growth Tower */
+  var SKY=mkB({x:0,z:-36,w:5,d:5,h:22,color:0x0a0220,emissive:0x7B2FF7,ei:.35,gc:0xFF8C42,wc:0xFDE68A,wr:10,wco:4});
+  BLDS.push(SKY);
+  /* Fillers */
+  [{x:-12,z:5,h:3},{x:12,z:5,h:3.5},{x:-12,z:-8,h:3},{x:12,z:-8,h:2.5},
+   {x:-13,z:-16,h:4},{x:13,z:-16,h:3},{x:-12,z:-24,h:4.5},{x:12,z:-24,h:4}].forEach(function(f){
+    mkB({x:f.x,z:f.z,w:1.5,d:1.5,h:f.h,color:0x060820,emissive:0x1a1060,ei:.05,gc:0x3a2080,wr:2,wco:1});
+  });
+
+  /* ── Stars + particles ── */
+  var sG=new THREE.BufferGeometry(),sP=new Float32Array(600*3);
+  for(var i=0;i<600;i++){sP[i*3]=(Math.random()-.5)*200;sP[i*3+1]=Math.random()*80+10;sP[i*3+2]=(Math.random()-.5)*200;}
+  sG.setAttribute('position',new THREE.BufferAttribute(sP,3));
+  S.add(new THREE.Points(sG,new THREE.PointsMaterial({color:0xffffff,size:.18,transparent:true,opacity:.55})));
+  var pG=new THREE.BufferGeometry(),pP=new Float32Array(180*3);
+  for(var j=0;j<180;j++){pP[j*3]=(Math.random()-.5)*44;pP[j*3+1]=Math.random()*28;pP[j*3+2]=(Math.random()-.5)*84-10;}
+  pG.setAttribute('position',new THREE.BufferAttribute(pP,3));
+  S.add(new THREE.Points(pG,new THREE.PointsMaterial({color:0x9B4FF7,size:.11,transparent:true,opacity:.5})));
+
+  /* ── STOPS — each defines camera pos + look + content ── */
+  var STOPS = [
+    { pos:[0,12,28],   look:[0,4,0],    label:'Stop 01',
+      title:'EmYou Growth City',
+      sub:'Scroll, swipe, or tap Next to fly through — every building is a service that builds your brand.' },
+    { pos:[0,7,14],    look:[0,4,-2],   label:'Stop 02',
+      title:'Brand Strategy',
+      sub:'Every great business starts with a clear identity. We build yours from the ground up.' },
+    { pos:[0,6,2],     look:[0,3.5,-8], label:'Stop 03',
+      title:'Digital Marketing District',
+      sub:'Google Ads, Meta Ads, SEO — performance campaigns built for measurable, compounding growth.' },
+    { pos:[0,5,-7],    look:[0,4,-14],  label:'Stop 04',
+      title:'Web & App Development',
+      sub:'Conversion-first websites and apps. Fast, beautiful, and built to scale your business.' },
+    { pos:[0,5,-16],   look:[0,4,-22],  label:'Stop 05',
+      title:'Media Production Studios',
+      sub:'Video editing, reels, ad films — content that stops the scroll and builds brand loyalty.' },
+    { pos:[0,5,-25],   look:[0,5.5,-32],label:'Stop 06',
+      title:'Lead Gen & Performance',
+      sub:'Qualified leads, repeatable funnels, real ROI. This is where strategy meets execution.' },
+    { pos:[0,8,-30],   look:[0,11,-36], label:'Stop 07',
+      title:'The Growth Tower',
+      sub:'Your business — dominant, memorable, unstoppable. This is what EmYou builds for you.' }
+  ];
+
+  /* Build dots */
+  var dotsEl = document.getElementById('gc-dots');
+  STOPS.forEach(function(_,i){
+    var d=document.createElement('div');
+    d.className='gc-dot'; dotsEl.appendChild(d);
+  });
+
+  /* ── CURRENT STOP state ── */
+  var curStop = 0;
+  var isAnimating = false;
+
+  /* GSAP tween targets — camera reads these every frame */
+  var camTgt = {
+    px:STOPS[0].pos[0], py:STOPS[0].pos[1], pz:STOPS[0].pos[2],
+    lx:STOPS[0].look[0],ly:STOPS[0].look[1],lz:STOPS[0].look[2]
+  };
+
+  /* ── ELEVATOR fly to stop ── */
+  function flyToStop(idx, dir){
+    if(isAnimating) return;
+    idx = Math.max(0, Math.min(STOPS.length-1, idx));
+    if(idx === curStop) return;
+    isAnimating = true;
+    curStop = idx;
+    var st = STOPS[idx];
+
+    /* Hide HUD */
+    document.getElementById('gc-hud-title').style.opacity='0';
+    document.getElementById('gc-hud-title').style.transform='translateY(10px)';
+    document.getElementById('gc-hud-sub').style.opacity='0';
+    document.getElementById('gc-hud-sub').style.transform='translateY(8px)';
+    document.getElementById('gc-stage-label').style.opacity='0';
+
+    /* Elevator tween — two-phase like threejs-journey:
+       1. rise/drop slightly on Y (the "lift" feel)
+       2. travel to destination with power3.inOut */
+    var midY = camTgt.py + (dir > 0 ? -1.5 : 1.5); /* dip before going */
+
+    var tl = gsap.timeline({
+      onComplete: function(){
+        isAnimating = false;
+        showHUD(idx);
+        updateNav();
+      }
+    });
+
+    /* Phase 1: quick dip/rise (0.18s) */
+    tl.to(camTgt, {
+      py: midY,
+      duration: 0.18,
+      ease: 'power2.in'
+    });
+
+    /* Phase 2: full travel (0.9s) with power3.inOut — smooth elevator */
+    tl.to(camTgt, {
+      px: st.pos[0],
+      py: st.pos[1],
+      pz: st.pos[2],
+      lx: st.look[0],
+      ly: st.look[1],
+      lz: st.look[2],
+      duration: 0.92,
+      ease: 'power3.inOut'
+    });
+
+    /* Progress bar */
+    document.getElementById('gc-bar').style.width = ((idx/(STOPS.length-1))*100)+'%';
+
+    /* Dots */
+    dotsEl.querySelectorAll('.gc-dot').forEach(function(d,i){
+      d.classList.toggle('on', i<=idx);
+    });
+
+    /* Step counter */
+    document.getElementById('gc-step-count').textContent = (idx+1)+' / '+STOPS.length;
+  }
+
+  function showHUD(idx){
+    var st = STOPS[idx];
+    var tEl=document.getElementById('gc-hud-title');
+    var sEl=document.getElementById('gc-hud-sub');
+    var lEl=document.getElementById('gc-stage-label');
+    lEl.textContent=st.label; lEl.style.opacity='1';
+    tEl.textContent=st.title;
+    tEl.style.opacity='1'; tEl.style.transform='translateY(0)';
+    sEl.textContent=st.sub;
+    sEl.style.opacity='1'; sEl.style.transform='translateY(0)';
+  }
+
+  function updateNav(){
+    document.getElementById('gc-prev').disabled = (curStop===0);
+    document.getElementById('gc-next').disabled = (curStop===STOPS.length-1);
+    document.getElementById('gc-step-count').textContent = (curStop+1)+' / '+STOPS.length;
+  }
+
+  /* ── Public step function (Prev/Next buttons) ── */
+  window.gcStep = function(dir){
+    flyToStop(curStop+dir, dir);
+  };
+
+  /* ── Scroll / wheel (desktop) ── */
+  var wheelCooldown = false;
+  layer.addEventListener('wheel', function(e){
+    if(gcMode==='tour' && !wheelCooldown){
+      wheelCooldown=true;
+      setTimeout(function(){wheelCooldown=false;},700);
+      flyToStop(curStop + (e.deltaY>0?1:-1), e.deltaY>0?1:-1);
+      e.preventDefault();
+    }
+  },{passive:false});
+
+  /* ── Touch swipe (mobile) ── */
+  var touchStartY=0, touchStartX=0;
+  layer.addEventListener('touchstart',function(e){
+    touchStartY=e.touches[0].clientY;
+    touchStartX=e.touches[0].clientX;
+    if(gcMode==='free'){gcFreeLX=e.touches[0].clientX;gcFreeLY=e.touches[0].clientY;}
+  },{passive:true});
+
+  layer.addEventListener('touchmove',function(e){
+    if(gcMode==='free'){
+      var dx=e.touches[0].clientX-gcFreeLX;
+      var dy=e.touches[0].clientY-gcFreeLY;
+      gcFreeAz+=dx*.008; gcFreeEl+=dy*.003;
+      gcFreeEl=Math.max(.15,Math.min(1.2,gcFreeEl));
+      gcFreeLX=e.touches[0].clientX; gcFreeLY=e.touches[0].clientY;
+      e.preventDefault();
+    }
+  },{passive:false});
+
+  layer.addEventListener('touchend',function(e){
+    if(gcMode!=='tour') return;
+    var dy=touchStartY-e.changedTouches[0].clientY;
+    var dx=touchStartX-e.changedTouches[0].clientX;
+    if(Math.abs(dy)>Math.abs(dx) && Math.abs(dy)>40){
+      flyToStop(curStop+(dy>0?1:-1), dy>0?1:-1);
+    }
+  },{passive:true});
+
+  /* ── Free explore ── */
+  var gcMode='tour';
+  var gcFreeDrag=false,gcFreeLX=0,gcFreeLY=0,gcFreeAz=0,gcFreeEl=0.5,gcFreeRad=20;
+
+  layer.addEventListener('mousedown',function(e){
+    if(gcMode==='free'){gcFreeDrag=true;gcFreeLX=e.clientX;gcFreeLY=e.clientY;}
+  });
+  window.addEventListener('mouseup',function(){gcFreeDrag=false;});
+  window.addEventListener('mousemove',function(e){
+    if(!gcFreeDrag||gcMode!=='free')return;
+    gcFreeAz+=(e.clientX-gcFreeLX)*.008;
+    gcFreeEl+=(e.clientY-gcFreeLY)*.003;
+    gcFreeEl=Math.max(.15,Math.min(1.2,gcFreeEl));
+    gcFreeLX=e.clientX; gcFreeLY=e.clientY;
+  });
+  layer.addEventListener('wheel',function(e){
+    if(gcMode==='free') gcFreeRad=Math.max(5,Math.min(45,gcFreeRad+e.deltaY*.02));
+  },{passive:true});
+
+  window.gcSetMode=function(m){
+    gcMode=m;
+    document.getElementById('gc-btn-tour').classList.toggle('on',m==='tour');
+    document.getElementById('gc-btn-free').classList.toggle('on',m==='free');
+    if(m==='free'){gcFreeAz=0;gcFreeEl=0.5;gcFreeRad=20;}
+    /* Show/hide nav buttons in free mode */
+    document.getElementById('gc-nav').style.opacity=m==='tour'?'1':'0';
+    document.getElementById('gc-nav').style.pointerEvents=m==='tour'?'all':'none';
+  };
+
+  /* ── ANIMATION LOOP ── */
+  var CLK=new THREE.Clock();
+  (function loop(){
+    requestAnimationFrame(loop);
+    var t=CLK.getElapsedTime();
+
+    if(gcMode==='free'){
+      var fx=Math.sin(gcFreeAz)*Math.cos(gcFreeEl)*gcFreeRad;
+      var fy=Math.sin(gcFreeEl)*gcFreeRad;
+      var fz=Math.cos(gcFreeAz)*Math.cos(gcFreeEl)*gcFreeRad;
+      C.position.set(fx,fy+3,fz); C.lookAt(0,4,-10);
+    } else {
+      /* Read GSAP-tweened camTgt */
+      C.position.set(camTgt.px, camTgt.py, camTgt.pz);
+      C.lookAt(camTgt.lx, camTgt.ly, camTgt.lz);
+    }
+
+    /* Orb pulse */
+    BLDS.forEach(function(g,i){
+      var p=Math.sin(t*1.4+i*.65)*.5+.5;
+      g.userData.orb.material.opacity=.38+p*.42;
+      g.userData.orb.position.y=.28+Math.sin(t*1.8+i)*.1;
+    });
+
+    /* Skyscraper breathe */
+    SKY.userData.body.material.emissiveIntensity=.22+Math.sin(t*1.1)*.14;
+
+    /* Particles float */
+    var pa=pG.attributes.position.array;
+    for(var k=0;k<180;k++){pa[k*3+1]+=.007;if(pa[k*3+1]>28)pa[k*3+1]=0;}
+    pG.attributes.position.needsUpdate=true;
+
+    /* Light pulse */
+    PL1.intensity=1.4+Math.sin(t*.75)*.4;
+    PL2.intensity=1.1+Math.sin(t*.85+1)*.35;
+    PL3.intensity=0.9+Math.sin(t*1.0+2)*.3;
+
+    R.render(S,C);
+  })();
+
+  /* ── Resize ── */
+  window.addEventListener('resize',function(){
+    R.setSize(GW(),GH());
+    C.aspect=GW()/GH();
+    C.updateProjectionMatrix();
+  });
+
+  /* ── INIT ── */
+  showHUD(0);
+  updateNav();
+  /* Kick progress bar to 0 */
+  document.getElementById('gc-bar').style.width='0%';
+  dotsEl.querySelectorAll('.gc-dot')[0].classList.add('on');
+  document.getElementById('gc-step-count').textContent='1 / '+STOPS.length;
+
+})();
+</script>
+
+<!-- ══ END GROWTH CITY ══ -->
+
+
+
 <!-- ══ OUR DIVISIONS ══ -->
 <section id="divisions" class="sec sec-accent" aria-labelledby="div-heading">
   <div class="wrap">
