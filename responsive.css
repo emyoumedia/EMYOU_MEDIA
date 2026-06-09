@@ -1,0 +1,429 @@
+/* ═══════════════════════════════════════════════════════════════
+   EMYOU MEDIA — responsive.css  v3
+   Universal mobile-first responsive overrides.
+   Link AFTER styles.css on EVERY page.
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Prevent horizontal overflow globally ── */
+html, body { overflow-x: hidden; width: 100%; }
+*, *::before, *::after { box-sizing: border-box; }
+img { max-width: 100%; height: auto; }
+
+/* ── Font shorthands (used in HTML files) ── */
+:root {
+  --fd: 'Poppins', system-ui, sans-serif;
+  --fb: 'Poppins', system-ui, sans-serif;
+}
+
+/* ═══════════════════════════════════════
+   TYPOGRAPHY SCALE
+═══════════════════════════════════════ */
+@media (max-width: 768px) {
+  .h1 { font-size: clamp(1.9rem, 9vw, 3rem) !important; word-break: break-word; }
+  .h2 { font-size: clamp(1.5rem, 7vw, 2.4rem) !important; }
+  .h3 { font-size: clamp(1rem, 5vw, 1.5rem) !important; }
+}
+
+/* ═══════════════════════════════════════
+   SPACING
+═══════════════════════════════════════ */
+@media (max-width: 768px) {
+  :root { --sec: clamp(3rem, 8vw, 5rem); }
+  .wrap { padding: 0 clamp(16px, 5vw, 28px); }
+  .sec  { padding: var(--sec) 0; }
+  .mb3  { margin-bottom: 2rem; }
+}
+
+/* ═══════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════ */
+@media (max-width: 960px) {
+  .nlinks, .ncta { display: none !important; }
+  .ham { display: flex !important; }
+  #nav { padding: 0 clamp(16px, 4vw, 28px); }
+}
+@media (max-width: 400px) {
+  .nlogo-text .n1 { font-size: .95rem; }
+  .nlogo-text .n2 { display: none; }
+  .nlogo img      { height: 36px; }
+}
+
+/* ═══════════════════════════════════════
+   MOBILE MENU
+═══════════════════════════════════════ */
+@media (max-width: 480px) {
+  .mmenu { padding: 88px 24px 40px; }
+  .mmenu a { font-size: 1.1rem; padding: .7rem 0; }
+  .mm-cta  { font-size: .82rem !important; padding: 12px 24px !important; }
+}
+
+/* ═══════════════════════════════════════
+   PAGE HERO (inner pages)
+═══════════════════════════════════════ */
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 110px clamp(16px, 5vw, 28px) 2.5rem;
+  }
+  .page-hero .h1 { font-size: clamp(1.9rem, 9vw, 3rem) !important; }
+  .page-hero p   { font-size: .84rem; }
+  .page-hero::before,
+  .page-hero::after { display: none; }
+}
+@media (max-width: 480px) {
+  .page-hero .h1 {
+    font-size: clamp(2rem, 10vw, 2.8rem) !important;
+    line-height: 1.1 !important;
+  }
+  .page-hero p { font-size: .82rem !important; }
+}
+
+/* ═══════════════════════════════════════
+   HOMEPAGE HERO
+═══════════════════════════════════════ */
+@media (max-width: 768px) {
+  .hero { padding-bottom: 4.5rem; }
+  .hero-badge { margin-bottom: 2.5rem; }
+  .hero-orb1  { width: 260px; height: 260px; top: -40px; right: -40px; }
+  .hero-orb2  { width: 200px; height: 200px; bottom: -40px; left: -30px; }
+}
+
+/* ═══════════════════════════════════════
+   DIVISIONS (2-col → 1-col)
+═══════════════════════════════════════ */
+@media (max-width: 700px) {
+  .divisions { grid-template-columns: 1fr !important; }
+}
+
+/* ═══════════════════════════════════════
+   SERVICE CARD GRIDS
+═══════════════════════════════════════ */
+@media (max-width: 900px) {
+  .svc-grid,
+  .svc-grid-4 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 520px) {
+  .svc-grid,
+  .svc-grid-2,
+  .svc-grid-4 { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════
+   STATS ROW
+═══════════════════════════════════════ */
+@media (max-width: 700px) {
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .stat-cell:nth-child(2) { border-right: none; }
+  .stat-cell:nth-child(1),
+  .stat-cell:nth-child(2) { border-bottom: 1px solid rgba(123,47,247,.15); }
+}
+@media (max-width: 380px) {
+  .stats-row { grid-template-columns: 1fr; }
+  .stat-cell { border-right: none !important; border-bottom: 1px solid rgba(123,47,247,.15) !important; }
+  .stat-cell:last-child { border-bottom: none !important; }
+}
+
+/* ═══════════════════════════════════════
+   FEATURES GRID
+═══════════════════════════════════════ */
+@media (max-width: 800px) { .features-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 500px) { .features-grid { grid-template-columns: 1fr; } }
+
+/* ═══════════════════════════════════════
+   TESTIMONIALS
+═══════════════════════════════════════ */
+@media (max-width: 800px) { .testi-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .testi-grid { grid-template-columns: 1fr; } }
+
+/* ═══════════════════════════════════════
+   PROCESS STEPS
+═══════════════════════════════════════ */
+@media (max-width: 800px) {
+  .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .process-steps::before { display: none; }
+}
+@media (max-width: 480px) {
+  .process-steps { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════
+   CONTACT FORM
+═══════════════════════════════════════ */
+@media (max-width: 760px) {
+  .contact-grid { grid-template-columns: 1fr !important; }
+  .fg-row       { grid-template-columns: 1fr !important; }
+}
+
+/* ═══════════════════════════════════════
+   FOOTER — all cols stack on mobile
+═══════════════════════════════════════ */
+@media (max-width: 800px) {
+  .foot-top { grid-template-columns: 1fr 1fr; gap: 1.5rem 2rem; }
+  .foot-brand { grid-column: span 2; }
+}
+@media (max-width: 600px) {
+  .foot-top {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  .foot-brand { grid-column: span 1 !important; }
+  .foot-col   { grid-column: span 1 !important; }
+  .foot-bot   { flex-direction: column; text-align: center; }
+}
+
+/* ═══════════════════════════════════════
+   CTA BAND
+═══════════════════════════════════════ */
+@media (max-width: 768px) {
+  .cta-band { padding: 3rem 0; }
+  .btn-row { flex-direction: column; align-items: center; }
+  .btn-row .btn { width: 100%; max-width: 300px; justify-content: center; }
+}
+
+/* ═══════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════ */
+@media (max-width: 480px) {
+  .btn { padding: 12px 22px; font-size: .78rem; }
+}
+
+/* ═══════════════════════════════════════
+   FLOATING ACTION BUTTONS
+═══════════════════════════════════════ */
+@media (max-width: 480px) {
+  .fab { bottom: 1rem; right: 1rem; gap: .5rem; }
+  .fab a { width: 46px; height: 46px; }
+}
+
+/* ═══════════════════════════════════════
+   UNIVERSAL INLINE GRID OVERRIDES
+   Classes auto-injected by patch_all_pages.py
+═══════════════════════════════════════ */
+
+/* 2-col → 1-col */
+@media (max-width: 768px) {
+  .grid-2col {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+  .grid-divided {
+    background: none !important;
+  }
+  .grid-divided > div {
+    border-bottom: 1px solid rgba(123,47,247,.10) !important;
+  }
+  .grid-divided > div:last-child {
+    border-bottom: none !important;
+  }
+}
+
+/* 3-col → 2-col → 1-col */
+@media (max-width: 768px) {
+  .grid-3col {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+  }
+}
+@media (max-width: 480px) {
+  .grid-3col { grid-template-columns: 1fr !important; }
+}
+
+/* 4-col → 2-col → 1-col */
+@media (max-width: 768px) {
+  .grid-4col {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1.25rem !important;
+  }
+}
+@media (max-width: 400px) {
+  .grid-4col { grid-template-columns: 1fr !important; }
+}
+
+/* ═══════════════════════════════════════
+   UTILITY CLASSES
+═══════════════════════════════════════ */
+.gold-line {
+  width: 48px; height: 3px;
+  background: var(--grad);
+  border-radius: 2px;
+  margin: 1.25rem 0;
+}
+.gold-line-c { margin-left: auto; margin-right: auto; }
+
+.btn-secondary-dark {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid rgba(255,255,255,.25);
+  border-radius: var(--rpill);
+}
+.btn-secondary-dark:hover {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(123,47,247,.15);
+}
+
+/* ═══════════════════════════════════════
+   EXTRA-SMALL DEVICES (< 360px)
+═══════════════════════════════════════ */
+@media (max-width: 360px) {
+  .h1 { font-size: 1.7rem !important; }
+  .h2 { font-size: 1.35rem !important; }
+  .eyebrow { font-size: .54rem; padding: 4px 12px; }
+  .feat-card { padding: 1.4rem; }
+  .div-card  { padding: 1.5rem; }
+}
+
+/* ═══════════════════════════════════════
+   ABOUT PAGE — Named grid class overrides
+   Fixes sections that use semantic class names
+   but weren't covered by generic grid-Ncol rules
+═══════════════════════════════════════ */
+
+/* Company Story: 2-col text + image → stack */
+@media (max-width: 768px) {
+  .about-story-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+  .about-story-grid > div:nth-child(2) img {
+    width: 100% !important;
+    max-height: 260px !important;
+    object-fit: cover !important;
+  }
+}
+
+/* Vision & Mission: side-by-side divided panels → stack */
+@media (max-width: 768px) {
+  .about-vm-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    background: none !important;
+    gap: 0 !important;
+  }
+  .about-vm-grid > div {
+    border-bottom: 1px solid rgba(123,47,247,.15) !important;
+  }
+  .about-vm-grid > div:last-child {
+    border-bottom: none !important;
+  }
+}
+
+/* Core Values: 3-col → 2-col → 1-col */
+@media (max-width: 768px) {
+  .about-values-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+  }
+}
+@media (max-width: 480px) {
+  .about-values-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Team: 4-col → 2-col on all mobile sizes */
+@media (max-width: 900px) {
+  .about-team-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1.5rem !important;
+  }
+}
+
+/* Founder section: remove max-width constraint on small screens */
+@media (max-width: 768px) {
+  #founder .wrap {
+    max-width: 100% !important;
+  }
+}
+
+/* ═══════════════════════════════════════
+   DIGITAL MARKETING PAGE — Named grid overrides
+═══════════════════════════════════════ */
+
+/* Services: 2-col → 1-col */
+@media (max-width: 768px) {
+  .dm-services-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Why EmYou: divided 2-col panels → stack */
+@media (max-width: 768px) {
+  .dm-why-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    background: none !important;
+    gap: 0 !important;
+  }
+  .dm-why-grid > div {
+    border-bottom: 1px solid rgba(123,47,247,.15) !important;
+    border-left: none !important;
+  }
+  .dm-why-grid > div:last-child {
+    border-bottom: none !important;
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   MEDIA PRODUCTION PAGE — Named grid overrides
+═══════════════════════════════════════ */
+
+/* Services: 3-col → 2-col → 1-col */
+@media (max-width: 768px) {
+  .mp-services-grid { grid-template-columns: 1fr 1fr !important; }
+}
+@media (max-width: 480px) {
+  .mp-services-grid { grid-template-columns: 1fr !important; }
+}
+
+
+
+/* Formats: 4-col → 2-col → 1-col */
+@media (max-width: 768px) {
+  .mp-formats-grid {
+    grid-template-columns: 1fr 1fr !important;
+    background: none !important;
+  }
+  .mp-formats-grid > div {
+    border-bottom: 1px solid rgba(123,47,247,.12) !important;
+  }
+  
+}
+@media (max-width: 400px) {
+  .mp-formats-grid { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 700px) {
+  .media-showcase { grid-template-columns: 1fr 1fr !important; }
+  .media-tile { min-height: 180px; }
+  .media-tile { min-height: 200px; }
+  .media-tile-label {
+    position: absolute !important;
+    bottom: 0 !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .mp-services-grid { grid-template-columns: 1fr 1fr !important; }
+}
+@media (max-width: 600px) {
+  .mp-services-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ═══════════════════════════════════════
+   SERVICES PAGE — Named grid overrides
+═══════════════════════════════════════ */
+
+/* Industries: 3-col → 2-col → 1-col */
+@media (max-width: 768px) {
+  .svc-industries-grid {
+    grid-template-columns: 1fr 1fr !important;
+    background: none !important;
+  }
+}
+@media (max-width: 480px) {
+  .svc-industries-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

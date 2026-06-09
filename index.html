@@ -21,6 +21,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="responsive.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
   <!-- STATS: force 4-col on mobile + fix desktop scroll overlap -->
   <style>
@@ -302,6 +306,13 @@
         grid-template-columns: 1fr;
       }
     }
+
+    #hero-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
   </style>
 
   <script type="application/ld+json">
@@ -393,6 +404,7 @@
 
 <!-- ══ HERO ══ -->
 <section id="hero" class="hero" aria-labelledby="hero-heading">
+  <canvas id="hero-canvas"></canvas>
   <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1800&q=80')"></div>
   <div class="hero-overlay"></div>
   <div class="hero-grain"></div>
@@ -475,7 +487,7 @@
   <div class="wrap">
     <div class="rv text-center mb3">
       <p class="eyebrow">Our Divisions</p>
-      <h2 class="h2 h2-w" id="div-heading" style="margin-top:1rem">
+      <h2 class="h2 " id="div-heading" style="margin-top:1rem">
         One Company.<br><span class="gt">Two Powerhouses.</span>
       </h2>
       <p style="font-family:var(--fb);font-size:.90rem;color:rgba(255,255,255,.40);max-width:480px;margin:1.25rem auto 0;line-height:1.8">
@@ -567,7 +579,7 @@
   <div class="wrap">
     <div class="rv mb3">
       <p class="eyebrow">Why Choose Us</p>
-      <h2 class="h2 h2-w" id="why-heading" style="margin-top:1rem;max-width:480px">
+      <h2 class="h2 " id="why-heading" style="margin-top:1rem;max-width:480px">
         We Don't Just Do Marketing.<br><span class="gt">We Build Businesses.</span>
       </h2>
     </div>
@@ -611,7 +623,7 @@
   <div class="wrap">
     <div class="rv text-center mb3">
       <p class="eyebrow">Industries We Serve</p>
-      <h2 class="h2 h2-w" id="ind-heading" style="margin-top:1rem">
+      <h2 class="h2 " id="ind-heading" style="margin-top:1rem">
         Built for Your <span class="gt">Industry</span>
       </h2>
       <p style="font-family:var(--fb);font-size:.88rem;color:rgba(255,255,255,.40);max-width:440px;margin:1rem auto 0;line-height:1.8">
@@ -641,7 +653,7 @@
     <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;margin-bottom:3rem">
       <div class="rv">
         <p class="eyebrow">Our Work</p>
-        <h2 class="h2 h2-w" id="port-heading" style="margin-top:1rem">
+        <h2 class="h2 " id="port-heading" style="margin-top:1rem">
           Real Work.<br><span class="gt">Real Results.</span>
         </h2>
         <p style="font-family:var(--fb);font-size:.82rem;color:rgba(255,255,255,.38);max-width:420px;margin-top:.75rem;line-height:1.8">
@@ -815,7 +827,7 @@
 <section class="cta-band" aria-label="Get started">
   <div class="wrap">
     <p class="eyebrow" style="justify-content:center;margin-bottom:1rem">Ready to Grow?</p>
-    <h2 class="h2 h2-w rv" style="font-size:clamp(2rem,5vw,3.8rem)">
+    <h2 class="h2  rv" style="font-size:clamp(2rem,5vw,3.8rem)">
       Ready to Grow Your <span class="gt">Business?</span>
     </h2>
     <p class="rv d1">Tell us about your goals. We'll build you a clear, actionable path to more leads, stronger brand presence, and real growth.</p>
@@ -886,5 +898,231 @@
 </div>
 
 <script src="main.js"></script>
+<script>
+// ══════════════════════════════════════════
+//  THREE.JS — 3D floating shapes
+// ══════════════════════════════════════════
+const canvas = document.getElementById('hero-canvas');
+const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+ 
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
+camera.position.z = 8;
+ 
+// Brand colors
+const C_PURPLE = 0x7B2FF7;
+const C_PINK   = 0xD946EF;
+const C_ORANGE = 0xFF8C42;
+ 
+// Wireframe material factory
+function wireMat(color, opacity = 0.18) {
+  return new THREE.MeshBasicMaterial({
+    color,
+    wireframe: true,
+    transparent: true,
+    opacity
+  });
+}
+ 
+// Solid glass-like material
+function glassMat(color, opacity = 0.07) {
+  return new THREE.MeshStandardMaterial({
+    color,
+    transparent: true,
+    opacity,
+    roughness: 0.1,
+    metalness: 0.8,
+    side: THREE.DoubleSide
+  });
+}
+ 
+// Lights
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+scene.add(ambientLight);
+ 
+const pointLight1 = new THREE.PointLight(C_PURPLE, 2, 20);
+pointLight1.position.set(3, 3, 3);
+scene.add(pointLight1);
+ 
+const pointLight2 = new THREE.PointLight(C_ORANGE, 1.5, 15);
+pointLight2.position.set(-4, -2, 2);
+scene.add(pointLight2);
+ 
+const pointLight3 = new THREE.PointLight(C_PINK, 1.5, 15);
+pointLight3.position.set(0, 4, -2);
+scene.add(pointLight3);
+ 
+// Shape definitions: [geometry, wireColor, glassColor, x, y, z, scale, rotSpeed]
+const shapeDefs = [
+  // Large torus — right side
+  {
+    geo: new THREE.TorusGeometry(1.8, 0.45, 16, 60),
+    wc: C_PURPLE, gc: C_PURPLE,
+    x: 4.5, y: 0.5, z: -1.5,
+    s: 1, rx: 0.003, ry: 0.005, rz: 0.002
+  },
+  // Icosahedron — left side
+  {
+    geo: new THREE.IcosahedronGeometry(1.4, 1),
+    wc: C_PINK, gc: C_PINK,
+    x: -5, y: 1, z: -2,
+    s: 1, rx: 0.004, ry: 0.006, rz: 0.003
+  },
+  // Octahedron — top right
+  {
+    geo: new THREE.OctahedronGeometry(1.1, 0),
+    wc: C_ORANGE, gc: C_ORANGE,
+    x: 5.5, y: 3.5, z: -3,
+    s: 1, rx: 0.007, ry: 0.004, rz: 0.005
+  },
+  // Small torus — bottom left
+  {
+    geo: new THREE.TorusGeometry(0.9, 0.25, 12, 40),
+    wc: C_PINK, gc: C_PINK,
+    x: -4.5, y: -2.5, z: -1,
+    s: 1, rx: 0.005, ry: 0.008, rz: 0.003
+  },
+  // Tetrahedron — center back
+  {
+    geo: new THREE.TetrahedronGeometry(1.2, 0),
+    wc: C_PURPLE, gc: C_PURPLE,
+    x: 0.5, y: 3, z: -4,
+    s: 1, rx: 0.006, ry: 0.003, rz: 0.007
+  },
+  // Small icosahedron — bottom right
+  {
+    geo: new THREE.IcosahedronGeometry(0.75, 0),
+    wc: C_ORANGE, gc: C_ORANGE,
+    x: 3.5, y: -3, z: -1,
+    s: 1, rx: 0.008, ry: 0.005, rz: 0.004
+  },
+  // Torus knot — far back center
+  {
+    geo: new THREE.TorusKnotGeometry(0.9, 0.25, 80, 12),
+    wc: C_PINK, gc: C_PINK,
+    x: -1.5, y: -1, z: -5,
+    s: 1, rx: 0.004, ry: 0.007, rz: 0.003
+  },
+];
+ 
+const meshGroups = [];
+ 
+shapeDefs.forEach(def => {
+  const group = new THREE.Group();
+ 
+  // Glass solid inner
+  const solidMesh = new THREE.Mesh(def.geo, glassMat(def.gc));
+  group.add(solidMesh);
+ 
+  // Wireframe outer
+  const wireMesh = new THREE.Mesh(def.geo, wireMat(def.wc));
+  group.add(wireMesh);
+ 
+  group.position.set(def.x, def.y, def.z);
+  group.scale.setScalar(def.s);
+  group.userData = { rx: def.rx, ry: def.ry, rz: def.rz, floatOffset: Math.random() * Math.PI * 2 };
+  scene.add(group);
+  meshGroups.push(group);
+});
+ 
+// Mouse parallax
+let mouseX = 0, mouseY = 0;
+let targetX = 0, targetY = 0;
+document.addEventListener('mousemove', e => {
+  mouseX = (e.clientX / window.innerWidth  - 0.5) * 2;
+  mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+});
+ 
+// Resize
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+ 
+// Animate
+const clock = new THREE.Clock();
+ 
+function animate() {
+  requestAnimationFrame(animate);
+  const t = clock.getElapsedTime();
+ 
+  // Smooth mouse follow
+  targetX += (mouseX - targetX) * 0.05;
+  targetY += (mouseY - targetY) * 0.05;
+ 
+  // Subtle camera drift from mouse
+  camera.position.x = targetX * 0.4;
+  camera.position.y = -targetY * 0.3;
+  camera.lookAt(scene.position);
+ 
+  // Rotate + float each shape
+  meshGroups.forEach((g, i) => {
+    g.rotation.x += g.userData.rx;
+    g.rotation.y += g.userData.ry;
+    g.rotation.z += g.userData.rz;
+    // Gentle floating up/down
+    g.position.y += Math.sin(t * 0.5 + g.userData.floatOffset) * 0.003;
+  });
+ 
+  renderer.render(scene, camera);
+}
+animate();
+ 
+ 
+// ══════════════════════════════════════════
+//  GSAP — entrance animations
+// ══════════════════════════════════════════
+gsap.registerPlugin(ScrollTrigger);
+ 
+const tl = gsap.timeline({ delay: 0.3 });
+ 
+tl.to('#hb', {
+  opacity: 1, y: 0,
+  duration: 0.7, ease: 'power3.out',
+  from: { y: 20 }
+})
+.to('#hero-heading', {
+  opacity: 1, y: 0,
+  duration: 0.9, ease: 'power3.out',
+  from: { y: 30 }
+}, '-=0.4')
+.to('#gl', {
+  opacity: 1, scaleX: 1,
+  duration: 0.6, ease: 'power2.out'
+}, '-=0.3')
+.to('#hs', {
+  opacity: 1, y: 0,
+  duration: 0.7, ease: 'power3.out',
+  from: { y: 20 }
+}, '-=0.4')
+.to('#br', {
+  opacity: 1, y: 0,
+  duration: 0.6, ease: 'power3.out',
+  from: { y: 20 }
+}, '-=0.3')
+.to('#tr', {
+  opacity: 1, y: 0,
+  duration: 0.6, ease: 'power3.out',
+  from: { y: 15 }
+}, '-=0.2')
+.to('#hsc', {
+  opacity: 1,
+  duration: 0.5
+}, '-=0.1');
+ 
+// Scroll fade out hero shapes
+gsap.to('#hero-canvas', {
+  scrollTrigger: {
+    trigger: '#hero',
+    start: 'top top',
+    end: 'bottom top',
+    scrub: true
+  },
+  opacity: 0
+});
+</script>
 </body>
 </html>

@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="responsive.css">
   <style>
     /* ── Media page extras ── */
     .media-showcase {
@@ -22,7 +23,7 @@
       background: rgba(123,47,247,.08);
     }
     .media-tile {
-      aspect-ratio: 4/3;
+      aspect-ratio: 3/2;
       background: var(--accent-dark);
       position: relative;
       overflow: hidden;
@@ -85,7 +86,7 @@
       font-family: var(--fd);
       font-size: 4rem;
       font-weight: 700;
-      color: rgba(0,0,0,.04);
+      color: rgba(217, 70, 239, 0.18);
       line-height: 1;
       margin-bottom: .5rem;
     }
@@ -93,7 +94,7 @@
       font-family: var(--fd);
       font-size: 1.3rem;
       font-weight: 600;
-      color: var(--primary-dark);
+      color: var(--white);
       margin-bottom: .75rem;
       letter-spacing: -.01em;
     }
@@ -206,7 +207,7 @@
 <main id="main">
 
 <!-- ══ HERO ══ -->
-<section class="hero" aria-labelledby="mp-heading" style="min-height:80vh">
+<section class="hero" aria-labelledby="mp-heading" style="min-height:100svh;padding-bottom:2rem">
   <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1574717024453-354056aad6f8?w=1800&q=80')"></div>
   <div class="hero-overlay"></div>
   <div class="hero-grain"></div>
@@ -219,7 +220,7 @@
     <p class="rv d2" style="font-family:var(--fb);font-size:clamp(.9rem,1.5vw,1.05rem);color:rgba(255,255,255,.55);max-width:520px;line-height:1.85;margin-bottom:2.5rem">
       EmYou Media Production creates video, design, and storytelling content that stops the scroll, communicates your brand, and converts audiences into customers.
     </p>
-    <div class="btn-row rv d3" style="justify-content:flex-start">
+    <div class="btn-row rv d3" style="justify-content:flex-start;margin-bottom:4rem">
       <a href="contact.html" class="btn btn-primary">Start a Project →</a>
       <a href="#services" class="btn btn-secondary">Our Services</a>
     </div>
@@ -251,30 +252,32 @@
 
 <!-- ══ SHOWCASE GRID ══ -->
 <section aria-label="Content showcase">
-  <div class="media-showcase">
-    <div class="media-tile rv">
-      <img src="https://images.unsplash.com/photo-1536240478700-b869ad10a2eb?w=800&q=80" alt="Video production" loading="lazy">
-      <div class="media-tile-label"><span>Video Editing</span><h4>Brand Films & Ads</h4></div>
-    </div>
-    <div class="media-tile rv d1">
-      <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=80" alt="Reels production" loading="lazy">
-      <div class="media-tile-label"><span>Short-Form</span><h4>Reels & Stories</h4></div>
-    </div>
-    <div class="media-tile rv d2">
-      <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80" alt="Graphic design" loading="lazy">
-      <div class="media-tile-label"><span>Design</span><h4>Graphic & Ad Creative</h4></div>
-    </div>
-    <div class="media-tile rv d1">
-      <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&q=80" alt="Brand storytelling" loading="lazy">
-      <div class="media-tile-label"><span>Storytelling</span><h4>Brand Narratives</h4></div>
-    </div>
-    <div class="media-tile rv d2">
-      <img src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=800&q=80" alt="Content strategy" loading="lazy">
-      <div class="media-tile-label"><span>Strategy</span><h4>Content Systems</h4></div>
-    </div>
-    <div class="media-tile rv d3">
-      <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80" alt="Motion graphics" loading="lazy">
-      <div class="media-tile-label"><span>Motion</span><h4>Animations & Graphics</h4></div>
+  <div class="wrap">
+    <div class="media-showcase">
+      <div class="media-tile rv">
+        <img src="https://images.unsplash.com/photo-1574717024453-354056aad6f8?w=800&q=80" alt="Video production" loading="lazy">
+        <div class="media-tile-label"><span>Video Editing</span><h4>Brand Films & Ads</h4></div>
+      </div>
+      <div class="media-tile rv d1">
+        <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=80" alt="Reels production" loading="lazy">
+        <div class="media-tile-label"><span>Short-Form</span><h4>Reels & Stories</h4></div>
+      </div>
+      <div class="media-tile rv d2">
+        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80" alt="Graphic design" loading="lazy">
+        <div class="media-tile-label"><span>Design</span><h4>Graphic & Ad Creative</h4></div>
+      </div>
+      <div class="media-tile rv d1">
+        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&q=80" alt="Brand storytelling" loading="lazy">
+        <div class="media-tile-label"><span>Storytelling</span><h4>Brand Narratives</h4></div>
+      </div>
+      <div class="media-tile rv d2">
+        <img src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=800&q=80" alt="Content strategy" loading="lazy">
+        <div class="media-tile-label"><span>Strategy</span><h4>Content Systems</h4></div>
+      </div>
+      <div class="media-tile rv d3">
+        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80" alt="Motion graphics" loading="lazy">
+        <div class="media-tile-label"><span>Motion</span><h4>Animations & Graphics</h4></div>
+      </div>
     </div>
   </div>
 </section>
@@ -291,7 +294,8 @@
         Content that doesn't just look good — content that works. Every deliverable is engineered for your specific platform, audience, and goal.
       </p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem">
+
+   <div class="mp-services-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem">
 
       <div class="offer-card rv">
         <div class="offer-num">01</div>
@@ -367,10 +371,10 @@
 <!-- ══ HOW WE CREATE ══ -->
 <section id="process" class="sec sec-dark" aria-labelledby="proc-mp-heading">
   <div class="wrap">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,7rem);align-items:center">
+    <div class="mp-process-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,7rem);align-items:center">
       <div class="rv">
         <p class="eyebrow">Our Creative Process</p>
-        <h2 class="h2 h2-w" id="proc-mp-heading" style="margin-top:1rem">
+        <h2 class="h2 " id="proc-mp-heading" style="margin-top:1rem">
           How We Bring<br><span class="gt">Ideas to Life</span>
         </h2>
         <div class="gold-line"></div>
@@ -411,7 +415,7 @@
         Every Format. Every <span class="gt">Platform.</span>
       </h2>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(123,47,247,.12)">
+   <div class="mp-formats-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(123,47,247,.12)">
       <div class="rv" style="background:var(--secondary-dark);padding:2rem;text-align:center">
         <div style="font-size:2rem;margin-bottom:.75rem">🎬</div>
         <h5 style="font-family:var(--fd);font-size:1rem;font-weight:600;color:var(--white);margin-bottom:.35rem">Long-Form Video</h5>
@@ -441,7 +445,7 @@
   <div class="wrap">
     <div class="rv text-center mb3">
       <p class="eyebrow">Our Difference</p>
-      <h2 class="h2 h2-w" id="why-mp-heading" style="margin-top:1rem">
+      <h2 class="h2 " id="why-mp-heading" style="margin-top:1rem">
         Creative That <span class="gt">Converts</span>
       </h2>
     </div>
@@ -484,7 +488,7 @@
 <section class="cta-band">
   <div class="wrap">
     <p class="eyebrow" style="justify-content:center;margin-bottom:1rem">Ready to Create?</p>
-    <h2 class="h2 h2-w rv" style="font-size:clamp(2rem,5vw,3.8rem)">
+    <h2 class="h2  rv" style="font-size:clamp(2rem,5vw,3.8rem)">
       Let's Make Something<br><span class="gt">Worth Watching.</span>
     </h2>
     <p class="rv d1">Tell us about your next project — video, design, brand film, or reels campaign. We'll come back with a creative concept.</p>

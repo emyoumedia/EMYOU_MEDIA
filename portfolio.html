@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="responsive.css">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
@@ -413,6 +414,27 @@
       padding: .35rem .9rem;
     }
     .promise-pill span { color: #7af97a; font-size: .75rem; }
+
+@media (max-width: 768px) {
+  .client-hero-img {
+    aspect-ratio: 4/3 !important;
+  }
+  .client-hero-label {
+    position: relative !important;
+    background: var(--primary-dark);
+    padding: 1.5rem;
+  }
+  .client-hero-label h2 {
+    font-size: 1.2rem;
+  }
+  .client-hero-label p {
+    font-size: .74rem;
+    line-height: 1.6;
+  }
+  .client-hero-overlay {
+    display: none;
+  }
+}
   </style>
 </head>
 <body>
@@ -483,18 +505,18 @@
 
     <div class="rv mb3">
       <p class="eyebrow"><span class="dot"></span>Featured Client</p>
-      <h2 class="h2 h2-w" id="client-heading" style="margin-top:1rem">
+      <h2 class="h2 " id="client-heading" style="margin-top:1rem">
         Saanidhya Builders —<br><span class="gt">Construction · Coimbatore</span>
       </h2>
     </div>
 
     <!-- Big featured card -->
     <div class="client-hero rv d1">
-      <div class="client-hero-img">
+      <div class="client-hero-img" style="background:#0d0a2e">
         <img
-          src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80"
-          alt="Saanidhya Builders — Construction Company Coimbatore"
-          loading="eager">
+  src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=80"
+  alt="Saanidhya Builders — Construction Company Coimbatore"
+  loading="eager">
         <div class="client-hero-overlay"></div>
         <div class="client-hero-badge-row">
           <span class="live-badge"><span class="live-dot"></span>Live Project</span>
@@ -693,7 +715,7 @@
   <div class="wrap">
     <div class="rv text-center mb3">
       <p class="eyebrow"><span class="dot"></span>How We Work</p>
-      <h2 class="h2 h2-w" id="approach-heading" style="margin-top:1rem">
+      <h2 class="h2 " id="approach-heading" style="margin-top:1rem">
         The EmYou <span class="gt">Approach</span>
       </h2>
       <p style="font-family:var(--ff);font-size:.85rem;color:var(--text-secondary);max-width:440px;margin:1rem auto 0;line-height:1.8">
@@ -752,7 +774,7 @@
   <div class="wrap">
     <div class="rv text-center mb3">
       <p class="eyebrow"><span class="dot"></span>Growing Portfolio</p>
-      <h2 class="h2 h2-w" id="coming-heading" style="margin-top:1rem">
+      <h2 class="h2 " id="coming-heading" style="margin-top:1rem">
         More Work <span class="gt">Coming Soon</span>
       </h2>
       <p style="font-family:var(--ff);font-size:.85rem;color:var(--text-secondary);max-width:440px;margin:1rem auto 0;line-height:1.8">
@@ -783,7 +805,7 @@
 <section class="cta-band" aria-label="Get started">
   <div class="wrap">
     <p class="eyebrow" style="justify-content:center;margin-bottom:1rem"><span class="dot"></span>Ready to Grow?</p>
-    <h2 class="h2 h2-w rv" style="font-size:clamp(2rem,5vw,3.8rem)">
+    <h2 class="h2  rv" style="font-size:clamp(2rem,5vw,3.8rem)">
       Ready to Be Our<br><span class="gt">Next Success Story?</span>
     </h2>
     <p class="rv d1 sub">Let's talk about your goals. We'll build a clear, honest plan to get you there.</p>
