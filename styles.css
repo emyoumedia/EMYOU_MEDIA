@@ -1213,3 +1213,15 @@ footer {
 .fab a:hover .fab-lbl { opacity: 1; }
 
 
+.fg input:focus,
+.fg select:focus,
+.fg textarea:focus {
+  outline: none;
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(123,47,247,.25);
+}
+.fg .err { border-color: #ff5a5f !important; }
+.form-error {
+  color: #ff8a8a; font-family: var(--fb); font-size: .78rem;
+  margin-top: .75rem; display: none;
+}
