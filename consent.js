@@ -15,7 +15,12 @@
 
   let gaLoaded = false, pixelLoaded = false;
 
+  function isConfigured(id) {
+    return Boolean(id && !id.includes('XXXX') && !id.startsWith('G-XXX'));
+  }
+
   function loadGA() {
+    if (!isConfigured(GA_ID)) return;
     if (gaLoaded) return; gaLoaded = true;
     const s = document.createElement('script');
     s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
@@ -25,6 +30,7 @@
   }
 
   function loadPixel() {
+    if (!isConfigured(PIXEL_ID)) return;
     if (pixelLoaded) return; pixelLoaded = true;
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;

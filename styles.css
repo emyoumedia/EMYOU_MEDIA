@@ -20,7 +20,7 @@
   --white:           #FFFFFF;
   --text-primary:    #FFFFFF;
   --text-secondary:  #BBBBD0;
-  --text-muted:      #7F7F9D;
+  --text-muted:      #9E9EB8;
 
   /* Master Gradient */
   --grad:       linear-gradient(90deg, #7B2FF7 0%, #D946EF 50%, #FF8C42 100%);
@@ -94,7 +94,32 @@ a { text-decoration: none; color: inherit; }
   padding: 8px 16px; z-index: 9999;
   font-size: .8rem; font-weight: 600;
 }
-.skip:focus { top: 0; }
+.skip:focus, .skip:focus-visible { top: 0; }
+
+/* ── Accessible Focus Indicators ── */
+:focus-visible {
+  outline: 2px solid var(--orange) !important;
+  outline-offset: 3px !important;
+}
+
+/* ── Reduced Motion Support (WCAG 2.2 AA) ── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .mtrack {
+    animation: none !important;
+    transform: none !important;
+  }
+  .rv, .stat-cell {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
 
 /* ════════════════════════════════════
    UTILITY — EYEBROW, HEADINGS, GRADIENT TEXT

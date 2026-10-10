@@ -213,11 +213,15 @@ if (psteps.length) {
 ───────────────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
-    const target = document.querySelector(link.getAttribute('href'));
-    if (!target) return;
-    e.preventDefault();
-    const offset = nav ? nav.offsetHeight + 16 : 80;
-    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+    const href = link.getAttribute('href');
+    if (!href || href === '#' || href === '#!') return;
+    try {
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      const offset = nav ? nav.offsetHeight + 16 : 80;
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+    } catch (_) {}
   });
 });
 
@@ -308,7 +312,9 @@ document.querySelectorAll('form#cfrm').forEach(form => {
     // Loading state
     const btn = getSubmitBtn(this);
     const originalText = btn ? btn.textContent : '';
-    if (btn) { btn.textContent = 'Sending…'; btn.disabled = true; btn.style.opacity = '.7'; }
+    const allSubmitBtns = this.querySelectorAll('button[type="submit"], .bsub');
+    allSubmitBtns.forEach(b => { b.disabled = true; b.style.opacity = '.7'; });
+    if (btn) { btn.textContent = 'Sending…'; }
 
     emToast('info', 'Sending your message…', 'Please wait a moment.', 3000);
 
@@ -320,6 +326,14 @@ document.querySelectorAll('form#cfrm').forEach(form => {
       const data = await res.json();
 
       if (data.success) {
+        // Fire analytics lead events if available and consent granted
+        if (typeof window.gtag === 'function') {
+          try { window.gtag('event', 'generate_lead', { form_id: this.id || 'form' }); } catch (_) {}
+        }
+        if (typeof window.fbq === 'function') {
+          try { window.fbq('track', 'Lead'); } catch (_) {}
+        }
+
         // Hide form, show success block
         this.style.display = 'none';
         if (successBox) {
@@ -331,13 +345,73 @@ document.querySelectorAll('form#cfrm').forEach(form => {
         throw new Error(data.message || 'Submission failed');
       }
     } catch (err) {
-      if (btn) { btn.textContent = originalText; btn.disabled = false; btn.style.opacity = ''; }
+      allSubmitBtns.forEach(b => { b.disabled = false; b.style.opacity = ''; });
+      if (btn) { btn.textContent = originalText; }
       emToast(
         'error',
         'Something went wrong',
         'Please try WhatsApp or email us at hello@emyoumedia.com',
         7000
       );
+    }
+  });
+});
+
+/* ─────────────────────────────────────
+   NEWSLETTER FORM (Web3Forms)
+   Honest handling: only confirms on real success
+───────────────────────────────────── */
+document.querySelectorAll('form#newsletter-form').forEach(form => {
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const emailInput = this.querySelector('input[type="email"]');
+    const emailVal = emailInput ? emailInput.value.trim() : '';
+
+    if (!emailVal || !emailRx.test(emailVal)) {
+      if (emailInput) {
+        emailInput.classList.add('em-field-error');
+        emailInput.focus();
+      }
+      if (window.emToast) {
+        window.emToast('error', 'Invalid Email', 'Please enter a valid email address.');
+      }
+      return;
+    }
+
+    const btn = this.querySelector('button[type="submit"]');
+    const originalText = btn ? btn.textContent : 'Subscribe →';
+    if (btn) {
+      btn.disabled = true;
+      btn.style.opacity = '.7';
+      btn.textContent = 'Subscribing…';
+    }
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(this)
+      });
+      const data = await res.json();
+      if (data.success) {
+        if (typeof window.gtag === 'function') {
+          try { window.gtag('event', 'newsletter_signup', { form_id: 'newsletter-form' }); } catch (_) {}
+        }
+        this.innerHTML = '<div style="color:var(--white);font-family:var(--ff);font-size:.85rem;padding:12px 20px;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);border-radius:var(--rpill);width:100%;text-align:center;">✓ Subscribed! You will receive our weekly strategy insights.</div>';
+        if (window.emToast) {
+          window.emToast('success', 'Subscribed!', 'Thank you for subscribing to weekly insights.', 5000);
+        }
+      } else {
+        throw new Error(data.message || 'Subscription failed');
+      }
+    } catch (err) {
+      if (btn) {
+        btn.disabled = false;
+        btn.style.opacity = '';
+        btn.textContent = originalText;
+      }
+      if (window.emToast) {
+        window.emToast('error', 'Subscription Failed', 'Could not subscribe right now. Please try again later.');
+      }
     }
   });
 });

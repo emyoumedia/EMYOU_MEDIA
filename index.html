@@ -22,9 +22,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="responsive.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
 <!-- Vercel Web Analytics Script -->
   <script defer src="/_vercel/insights/script.js"></script>
 
@@ -332,29 +332,9 @@
     "telephone": "+917448811611",
     "email": "hello@emyoumedia.com",
     "address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressRegion": "Karnataka", "addressCountry": "IN" },
-    "sameAs": ["https://https://www.instagram.com/emyoumarketing","https://www.linkedin.com/company/emyou-digital-marketing/"]
+    "sameAs": ["https://www.instagram.com/emyoumarketing","https://www.linkedin.com/company/emyou-digital-marketing/"]
   }
   </script>
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
-
-  <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-    document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'XXXXXXXXXXXXXXXX');
-    fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXXX&ev=PageView&noscript=1"/></noscript>
 
 </head>
 <body>
@@ -365,7 +345,7 @@
 <header>
 <nav id="nav" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="index.html" class="nlogo" aria-label="EmYou Media Home">
+    <a href="/" class="nlogo" aria-label="EmYou Media Home">
       <img src="logo.png" alt="EmYou Media" width="48" height="48" onerror="this.style.display='none'">
       <div class="nlogo-text">
         <span class="n1">EmYou Media</span>
@@ -373,38 +353,38 @@
       </div>
     </a>
     <ul class="nlinks">
-      <li><a href="about.html">About</a></li>
+      <li><a href="/about">About</a></li>
       <li class="ndrop">
-        <a href="services.html">Services ▾</a>
+        <a href="/services">Services ▾</a>
         <div class="ndrop-menu">
-          <a href="digital-marketing.html">Digital Marketing</a>
-          <a href="media-production.html">Media Production</a>
-          <a href="services.html">All Services</a>
+          <a href="/digital-marketing">Digital Marketing</a>
+          <a href="/media-production">Media Production</a>
+          <a href="/services">All Services</a>
         </div>
       </li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="services.html#industries">Industries</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="careers.html">Careers</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="/portfolio">Portfolio</a></li>
+      <li><a href="/services#industries">Industries</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/careers">Careers</a></li>
+      <li><a href="/contact">Contact</a></li>
     </ul>
-    <a href="contact.html" class="ncta">Get Free Consultation</a>
+    <a href="/contact" class="ncta">Get Free Consultation</a>
     <button class="ham" id="ham" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
 </header>
 
 <div class="mmenu" id="mm" role="dialog" aria-label="Mobile navigation" aria-hidden="true">
-  <a href="about.html" onclick="closeMobileMenu()">About Us</a>
-  <a href="digital-marketing.html" onclick="closeMobileMenu()">Digital Marketing</a>
-  <a href="media-production.html" onclick="closeMobileMenu()">Media Production</a>
-  <a href="services.html" onclick="closeMobileMenu()">All Services</a>
-  <a href="portfolio.html" onclick="closeMobileMenu()">Portfolio</a>
-  <a href="services.html#industries" onclick="closeMobileMenu()">Industries</a>
-  <a href="blog.html" onclick="closeMobileMenu()">Blog</a>
-  <a href="careers.html" onclick="closeMobileMenu()">Careers</a>
-  <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
-  <a href="contact.html" onclick="closeMobileMenu()" class="mm-cta">Get Free Consultation →</a>
+  <a href="/about" onclick="closeMobileMenu()">About Us</a>
+  <a href="/digital-marketing" onclick="closeMobileMenu()">Digital Marketing</a>
+  <a href="/media-production" onclick="closeMobileMenu()">Media Production</a>
+  <a href="/services" onclick="closeMobileMenu()">All Services</a>
+  <a href="/portfolio" onclick="closeMobileMenu()">Portfolio</a>
+  <a href="/services#industries" onclick="closeMobileMenu()">Industries</a>
+  <a href="/blog" onclick="closeMobileMenu()">Blog</a>
+  <a href="/careers" onclick="closeMobileMenu()">Careers</a>
+  <a href="/contact" onclick="closeMobileMenu()">Contact</a>
+  <a href="/contact" onclick="closeMobileMenu()" class="mm-cta">Get Free Consultation →</a>
 </div>
 
 <main id="main">
@@ -419,23 +399,23 @@
   <div aria-hidden="true" style="position:absolute;top:72px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(123,47,247,.15),transparent);z-index:3;pointer-events:none"></div>
 
   <div class="hero-content">
-    <p class="hero-badge rv"><span class="dot"></span>Full-Service Creative & Digital Growth</p>
+    <p class="hero-badge rv" id="hb"><span class="dot"></span>Full-Service Creative & Digital Growth</p>
     <h1 class="h1 rv d1" id="hero-heading">
       Build Powerful Brands.<br>
       Generate More Leads.<br>
       <span class="gt">Create Lasting Impact.</span>
     </h1>
-    <div class="gold-line rv d2"></div>
-    <p class="rv d2" style="font-family:var(--fb);font-size:clamp(.9rem,1.5vw,1.1rem);color:rgba(255,255,255,.55);max-width:520px;line-height:1.85;margin-bottom:2.5rem">
+    <div class="gold-line rv d2" id="gl"></div>
+    <p class="rv d2" id="hs" style="font-family:var(--fb);font-size:clamp(.9rem,1.5vw,1.1rem);color:rgba(255,255,255,.55);max-width:520px;line-height:1.85;margin-bottom:2.5rem">
       EmYou Media combines digital marketing and creative production to help businesses grow faster and stand out in a competitive world.
     </p>
-    <div class="btn-row rv d3" style="justify-content:flex-start">
-      <a href="contact.html" class="btn btn-primary">Get Free Consultation →</a>
-      <a href="services.html" class="btn btn-secondary">View Services</a>
+    <div class="btn-row rv d3" id="br" style="justify-content:flex-start">
+      <a href="/contact" class="btn btn-primary">Get Free Consultation →</a>
+      <a href="/services" class="btn btn-secondary">View Services</a>
     </div>
 
     <!-- Trust badges -->
-<div class="rv d4" style="display:grid;grid-template-columns:auto 1px auto 1px auto 1px auto;gap:0 1.5rem;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,.06);align-items:center">      <div>
+<div class="rv d4" id="tr" style="display:grid;grid-template-columns:auto 1px auto 1px auto 1px auto;gap:0 1.5rem;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,.06);align-items:center">      <div>
         <div style="font-family:var(--fd);font-size:1.6rem;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">360°</div>
         <div style="font-family:var(--fb);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.30)">Growth Solutions</div>
       </div>
@@ -457,7 +437,7 @@
     </div>
   </div>
 
-  <div class="hero-scroll" aria-hidden="true">
+  <div class="hero-scroll" id="hsc" aria-hidden="true">
     <span>Scroll</span>
     <div class="hero-scroll-line"></div>
   </div>
@@ -663,7 +643,7 @@
 </section>
 
 <script>
-(function(){
+function initGrowthCity(){
   /* ── Guard ── */
   if(typeof THREE==='undefined'||typeof gsap==='undefined') return;
 
@@ -978,10 +958,20 @@
     document.getElementById('gc-nav').style.pointerEvents=m==='tour'?'all':'none';
   };
 
+  /* ── IntersectionObserver: pause rendering off-screen ── */
+  var isGcVisible = true;
+  if ('IntersectionObserver' in window && wrap) {
+    var gcObserver = new IntersectionObserver(function(entries) {
+      isGcVisible = entries[0].isIntersecting;
+    }, { threshold: 0.05 });
+    gcObserver.observe(wrap);
+  }
+
   /* ── ANIMATION LOOP ── */
   var CLK=new THREE.Clock();
-  (function loop(){
+  function loop(){
     requestAnimationFrame(loop);
+    if (!isGcVisible) return;
     var t=CLK.getElapsedTime();
 
     if(gcMode==='free'){
@@ -1016,7 +1006,14 @@
     PL3.intensity=0.9+Math.sin(t*1.0+2)*.3;
 
     R.render(S,C);
-  })();
+  }
+
+  var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) {
+    R.render(S, C);
+  } else {
+    loop();
+  }
 
   /* ── Resize ── */
   window.addEventListener('resize',function(){
@@ -1033,7 +1030,13 @@
   dotsEl.querySelectorAll('.gc-dot')[0].classList.add('on');
   document.getElementById('gc-step-count').textContent='1 / '+STOPS.length;
 
-})();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initGrowthCity);
+} else {
+  initGrowthCity();
+}
 </script>
 
 <!-- ══ END GROWTH CITY ══ -->
@@ -1066,7 +1069,7 @@
         <span class="div-tag">SEO</span>
         <span class="div-tag">Web Dev</span>
       </div>
-      <a href="digital-marketing.html" class="div-link">Explore Digital Marketing →</a>
+      <a href="/digital-marketing" class="div-link">Explore Digital Marketing →</a>
     </div>
     <div class="div-card">
       <div class="div-num">02</div>
@@ -1079,7 +1082,7 @@
         <span class="div-tag">Ad Films</span>
         <span class="div-tag">Brand Stories</span>
       </div>
-      <a href="media-production.html" class="div-link">Explore Media Production →</a>
+      <a href="/media-production" class="div-link">Explore Media Production →</a>
     </div>
   </div>
 </section>
@@ -1097,7 +1100,7 @@
     </div>
     <div class="stat-cell">
       <span class="stat-n">100%</span>
-      <span class="stat-l">First Team</span>
+      <span class="stat-l">In-House Execution</span>
     </div>
     <div class="stat-cell">
       <span class="stat-n">100%</span>
@@ -1127,7 +1130,7 @@
       <div class="svc-card"><div class="svc-n">09</div><h4>Brand Storytelling</h4><p>Narratives that make your brand human, memorable, and worth choosing — across every touchpoint and format.</p></div>
     </div>
     <div class="text-center mt3 rv">
-      <a href="services.html" class="btn btn-secondary-dark">View All Services →</a>
+      <a href="/services" class="btn btn-secondary-dark">View All Services →</a>
     </div>
   </div>
 </section>
@@ -1200,7 +1203,7 @@
       <span class="ind-tag">Corporate</span>
     </div>
     <div class="text-center mt3 rv d2">
-      <a href="services.html#industries" class="btn btn-secondary">See Industry Solutions →</a>
+      <a href="/services#industries" class="btn btn-secondary">See Industry Solutions →</a>
     </div>
   </div>
 </section>
@@ -1218,7 +1221,7 @@
           We're a young agency — and proud of it. Every project we take on gets our full attention, fresh thinking, and hunger to prove ourselves.
         </p>
       </div>
-      <a href="portfolio.html" class="btn btn-secondary rv">View Full Portfolio →</a>
+      <a href="/portfolio" class="btn btn-secondary rv">View Full Portfolio →</a>
     </div>
 
     <!-- FEATURED: Saanidhya Builders — real client -->
@@ -1293,7 +1296,7 @@
       <div class="port-coming-cell" style="border:1px dashed rgba(123,47,247,.25)">
         <div style="font-family:var(--fd);font-size:1.5rem;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.6rem">+</div>
         <div class="port-coming-label" style="margin-bottom:1rem">Your business<br>could be featured here</div>
-        <a href="contact.html" class="btn btn-secondary" style="font-size:.65rem;padding:8px 18px;min-height:auto">Work With Us →</a>
+        <a href="/contact" class="btn btn-secondary" style="font-size:.65rem;padding:8px 18px;min-height:auto">Work With Us →</a>
       </div>
     </div>
   </div>
@@ -1390,8 +1393,8 @@
     </h2>
     <p class="rv d1">Tell us about your goals. We'll build you a clear, actionable path to more leads, stronger brand presence, and real growth.</p>
     <div class="btn-row rv d2">
-      <a href="contact.html" class="btn btn-primary">Book Free Strategy Call →</a>
-      <a href="contact.html#form" class="btn btn-secondary">Request Proposal</a>
+      <a href="/contact" class="btn btn-primary">Book Free Strategy Call →</a>
+      <a href="/contact#form" class="btn btn-secondary">Request Proposal</a>
     </div>
   </div>
 </section>
@@ -1402,38 +1405,38 @@
 <footer>
   <div class="foot-top">
     <div class="foot-brand">
-      <a href="index.html" class="flogo">
+      <a href="/" class="flogo">
         <img src="logo.png" alt="EmYou Media" width="44" height="44" onerror="this.style.display='none'">
-        <div class="nlogo-text"><span class="n1">EmYou Media</span><span class="n2">Creative · Digital · Growth</span></div>
+        
       </a>
       <p>A full-service creative and digital growth company helping businesses attract more customers and scale faster. Based in Bangalore, India.</p>
     </div>
     <div class="foot-col">
       <h6>Company</h6>
-      <a href="about.html">About Us</a>
-      <a href="about.html#vision">Vision & Mission</a>
-      <a href="about.html#team">Our Team</a>
-      <a href="contact.html">Careers</a>
+      <a href="/about">About Us</a>
+      <a href="/about#vision">Vision & Mission</a>
+      <a href="/about#team">Our Team</a>
+      <a href="/careers">Careers</a>
     </div>
     <div class="foot-col">
       <h6>Services</h6>
-      <a href="digital-marketing.html">Digital Marketing</a>
-      <a href="media-production.html">Media Production</a>
-      <a href="services.html">Technology</a>
-      <a href="services.html">All Services</a>
+      <a href="/digital-marketing">Digital Marketing</a>
+      <a href="/media-production">Media Production</a>
+      <a href="/services">Technology</a>
+      <a href="/services">All Services</a>
     </div>
     <div class="foot-col">
       <h6>Connect</h6>
-      <a href="https://https://www.instagram.com/emyoumarketing" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.instagram.com/emyoumarketing" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.linkedin.com/company/emyou-digital-marketing/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://www.facebook.com/profile.php?id=61575408970606" target="_blank" rel="noopener">Facebook</a>
       <a href="mailto:hello@emyoumedia.com">Email Us</a>
     </div>
   </div>
   <div class="foot-bot">
-     <p>© 2026 EmYou Media. All rights reserved. · Bangalore, India · <a href="privacy.html">Privacy Policy</a> · <a href="#" onclick="openCookieSettings();return false">Cookie Settings</a></p>
+     <p>© 2026 EmYou Media. All rights reserved. · Bangalore, India · <a href="/privacy">Privacy Policy</a> · <a href="#" onclick="openCookieSettings();return false">Cookie Settings</a></p>
     <div class="fsoc">
-      <a href="https://https://www.instagram.com/emyoumarketing" target="_blank" rel="noopener" aria-label="Instagram">
+      <a href="https://www.instagram.com/emyoumarketing" target="_blank" rel="noopener" aria-label="Instagram">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
       </a>
       <a href="https://www.linkedin.com/company/emyou-digital-marketing/" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -1457,10 +1460,14 @@
 
 <script src="main.js"></script>
 <script>
+function initHeroScene() {
+  if (typeof THREE === 'undefined' || typeof gsap === 'undefined') return;
+
 // ══════════════════════════════════════════
 //  THREE.JS — 3D floating shapes
 // ══════════════════════════════════════════
 const canvas = document.getElementById('hero-canvas');
+if (!canvas) return;
 const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -1600,22 +1607,34 @@ window.addEventListener('resize', () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
  
+// IntersectionObserver: pause hero 3D rendering off-screen
+let isHeroVisible = true;
+const heroSection = document.getElementById('hero') || canvas;
+if ('IntersectionObserver' in window && heroSection) {
+  const heroObserver = new IntersectionObserver(entries => {
+    isHeroVisible = entries[0].isIntersecting;
+  }, { threshold: 0.05 });
+  heroObserver.observe(heroSection);
+}
+
 // Animate
 const clock = new THREE.Clock();
- 
+const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 function animate() {
   requestAnimationFrame(animate);
+  if (!isHeroVisible) return;
   const t = clock.getElapsedTime();
- 
+
   // Smooth mouse follow
   targetX += (mouseX - targetX) * 0.05;
   targetY += (mouseY - targetY) * 0.05;
- 
+
   // Subtle camera drift from mouse
   camera.position.x = targetX * 0.4;
   camera.position.y = -targetY * 0.3;
   camera.lookAt(scene.position);
- 
+
   // Rotate + float each shape
   meshGroups.forEach((g, i) => {
     g.rotation.x += g.userData.rx;
@@ -1624,10 +1643,15 @@ function animate() {
     // Gentle floating up/down
     g.position.y += Math.sin(t * 0.5 + g.userData.floatOffset) * 0.003;
   });
- 
+
   renderer.render(scene, camera);
 }
-animate();
+
+if (prefersReducedMotion) {
+  renderer.render(scene, camera);
+} else {
+  animate();
+}
  
  
 // ══════════════════════════════════════════
@@ -1681,6 +1705,13 @@ gsap.to('#hero-canvas', {
   },
   opacity: 0
 });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initHeroScene);
+} else {
+  initHeroScene();
+}
 </script>
 </body>
 </html>
