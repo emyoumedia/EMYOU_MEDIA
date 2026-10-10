@@ -278,6 +278,37 @@ img { max-width: 100%; height: auto; }
    but weren't covered by generic grid-Ncol rules
 ═══════════════════════════════════════ */
 
+/* Three Founders Grid (Three Founders. One Goal.) */
+@media (max-width: 960px) {
+  .founders-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.25rem !important;
+  }
+  .founders-grid > article:last-child {
+    grid-column: 1 / -1;
+    max-width: 520px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  .founders-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+  .founders-grid > article:last-child {
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  .shared-goal-pillars {
+    gap: 0.75rem !important;
+    padding: 8px 16px !important;
+  }
+  .pillar-sep {
+    display: none !important;
+  }
+}
+
 /* Company Story: 2-col text + image → stack */
 @media (max-width: 768px) {
   .about-story-grid {
@@ -425,5 +456,46 @@ img { max-width: 100%; height: auto; }
 @media (max-width: 480px) {
   .svc-industries-grid {
     grid-template-columns: 1fr !important;
+  }
+}
+
+/* ═══════════════════════════════════════
+   AI PLATFORM & AUDIT WIDGET RESPONSIVE
+═══════════════════════════════════════ */
+@media (max-width: 960px) {
+  .ai-pillars-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+  .audit-form-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .audit-form-grid > button {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+  }
+  .res-grid-cols {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 600px) {
+  .ai-pillars-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .audit-form-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .res-header-bar {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .res-action-bar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .res-action-bar a,
+  .res-action-bar button {
+    width: 100% !important;
+    text-align: center !important;
   }
 }

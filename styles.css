@@ -1250,3 +1250,588 @@ footer {
   color: #ff8a8a; font-family: var(--fb); font-size: .78rem;
   margin-top: .75rem; display: none;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   AI GROWTH PLATFORM & AUDIT WIDGET STYLES
+═══════════════════════════════════════════════════════════════ */
+.ai-platform-banner {
+  background: linear-gradient(135deg, rgba(20, 0, 51, 0.95), rgba(4, 8, 42, 0.98));
+  border: 1px solid rgba(123, 47, 247, 0.28);
+  border-radius: var(--r);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 3.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.40);
+}
+.ai-platform-banner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--grad);
+}
+.ai-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin: 2.5rem 0 3.5rem;
+}
+.ai-pillar-card {
+  background: var(--glass-bg);
+  border: var(--glass-border);
+  border-radius: var(--r);
+  padding: 1.75rem 1.5rem;
+  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.ai-pillar-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(123, 47, 247, 0.35);
+  box-shadow: 0 12px 36px rgba(123, 47, 247, 0.15);
+}
+.ai-pillar-num {
+  font-family: var(--ff);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 0.75rem;
+}
+.ai-pillar-icon {
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+}
+.ai-pillar-card h4 {
+  font-family: var(--ff);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+.ai-pillar-card p {
+  font-family: var(--ff);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ── AUDIT WIDGET ── */
+.ai-audit-widget {
+  background: rgba(11, 11, 45, 0.85);
+  border: 1px solid rgba(123, 47, 247, 0.25);
+  border-radius: var(--r);
+  padding: clamp(1.75rem, 4vw, 3rem);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+.audit-form-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 1.2fr auto;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1.75rem;
+}
+.audit-input,
+.audit-select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--rpill);
+  padding: 14px 20px;
+  color: var(--white);
+  font-family: var(--ff);
+  font-size: 0.84rem;
+  outline: none;
+  transition: border-color .3s, box-shadow .3s;
+}
+.audit-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  padding-right: 36px;
+  cursor: pointer;
+}
+.audit-select option {
+  background: var(--primary-dark);
+  color: var(--white);
+}
+.audit-input:focus,
+.audit-select:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(123, 47, 247, 0.25);
+}
+
+/* ── LOADING DIAGNOSTIC ── */
+.audit-loading {
+  display: none;
+  padding: 2.5rem 1rem;
+  text-align: center;
+}
+.audit-step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 480px;
+  margin: 1.5rem auto 0;
+  text-align: left;
+}
+.audit-step-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  transition: color .3s ease;
+}
+.audit-step-item.active {
+  color: var(--white);
+  font-weight: 600;
+}
+.audit-step-item.done {
+  color: #22c55e;
+}
+.audit-step-indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  flex-shrink: 0;
+}
+.audit-step-item.active .audit-step-indicator {
+  border-color: var(--orange);
+  background: rgba(255, 140, 66, 0.15);
+  animation: pulse 1.5s infinite;
+}
+.audit-step-item.done .audit-step-indicator {
+  border-color: #22c55e;
+  background: #22c55e;
+  color: #fff;
+}
+
+/* ── RESULTS CARD ── */
+.audit-results {
+  display: none;
+  animation: toastIn .4s ease forwards;
+}
+.res-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1.25rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.res-title-group h3 {
+  font-family: var(--ff);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.res-submeta {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 0.35rem;
+  flex-wrap: wrap;
+}
+.res-grid-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem;
+  margin-bottom: 2rem;
+}
+.res-panel {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--rm);
+  padding: 1.5rem;
+}
+.res-panel-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--rpill);
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.badge-measured {
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: #93c5fd;
+}
+.badge-strategic {
+  background: rgba(217, 70, 239, 0.15);
+  border: 1px solid rgba(217, 70, 239, 0.35);
+  color: #f0abfc;
+}
+.res-item-row {
+  margin-bottom: 1.25rem;
+}
+.res-item-row:last-child {
+  margin-bottom: 0;
+}
+.res-item-title {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.3rem;
+}
+.res-item-desc {
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.priority-tag {
+  font-size: 0.58rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.p1-tag { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+.p2-tag { background: rgba(249, 115, 22, 0.2); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.4); }
+.p3-tag { background: rgba(123, 47, 247, 0.2); color: #c084fc; border: 1px solid rgba(123, 47, 247, 0.4); }
+
+.badge-pass {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+}
+.badge-warn {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+}
+.res-transparency-note {
+  font-size: 0.70rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+.res-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+
+/* ════════════════════════════════════════════════════════════════
+   NEURAL DESIGN SYSTEM — Hero Integration
+   Applied selectively to the homepage hero. All other pages, nav,
+   forms, and sections continue to use the existing EmYou tokens.
+   ════════════════════════════════════════════════════════════════
+
+   Scale system:
+     --u  = 1 design unit (1/1536 of the desktop artboard width)
+     --c  = 1 character width (flow-relative: vw in hero, 1ch outside)
+   These are scoped to #hero to avoid polluting global layout.
+════════════════════════════════════════════════════════════════ */
+
+/* ── Sora variable font: hero headlines only ── */
+/* Loaded via Google Fonts <link> in index.html head.
+   Applied scoped to #hero so the rest of the site keeps Poppins. */
+--fs: 'Sora', 'Poppins', system-ui, sans-serif; /* fallback chain */
+
+/* ── NEURAL hero scale tokens (scoped to #hero) ── */
+#hero {
+  --u: calc(100vw / 1536);   /* 1 design-unit = 1/1536 vw              */
+  --c: 1vw;                   /* character-width approximation in hero   */
+}
+
+/* ════════════════════════════════════
+   VIDEO ART BACKGROUND
+════════════════════════════════════ */
+.hero .art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── NEURAL veil: 5-layer dark scrim over the video ── */
+/* Layer order (bottom → top):
+   1. Base dark: keeps deepest shadows navy
+   2. Radial centre block: dims the brightest centre flare
+   3. Bottom-up gradient: lifts the floor so text is readable
+   4. Top-down gradient: darkens under the fixed nav
+   5. Left-side gradient: pulls text copy out of the frame chaos */
+.hero-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    /* 1. Base navy tint */
+    linear-gradient(
+      to bottom,
+      rgba(2, 11, 79, 0.35) 0%,
+      rgba(2, 11, 79, 0.20) 50%,
+      rgba(2, 11, 79, 0.55) 100%
+    ),
+    /* 2. Radial centre bloom dampener */
+    radial-gradient(
+      ellipse 60% 50% at 50% 40%,
+      rgba(2, 11, 79, 0.10) 0%,
+      rgba(2, 11, 79, 0.50) 100%
+    ),
+    /* 3. Bottom-up hard floor */
+    linear-gradient(
+      to top,
+      var(--primary-dark) 0%,
+      rgba(2, 11, 79, 0.0) 38%
+    ),
+    /* 4. Top-down nav guard */
+    linear-gradient(
+      to bottom,
+      rgba(2, 11, 79, 0.70) 0%,
+      rgba(2, 11, 79, 0.0) 22%
+    ),
+    /* 5. Left-side copy guard */
+    linear-gradient(
+      to right,
+      rgba(2, 11, 79, 0.62) 0%,
+      rgba(2, 11, 79, 0.0) 55%
+    );
+}
+
+/* ── Three.js canvas sits above the video, below the veil ── */
+/* (already z-index:1 via inline style in HTML) */
+
+/* ── Grain sits above veil ── */
+/* .hero-grain z-index is already 2; this fine is intentional —
+   veil and grain share z-index:2 so grain renders on top via DOM order */
+
+/* ════════════════════════════════════
+   HERO HEADLINE — Sora variable font
+════════════════════════════════════ */
+#hero .h1 {
+  font-family: 'Sora', 'Poppins', system-ui, sans-serif;
+  /* Fractional weight for maximum typographic polish */
+  font-variation-settings: 'wght' 780;
+  font-weight: 800; /* static fallback */
+  letter-spacing: -0.025em;
+  line-height: 1.04;
+  /* Slightly larger on the hero — overrides the global .h1 clamp */
+  font-size: clamp(2.9rem, 7.5vw, 6.4rem);
+}
+
+/* Eyebrow badge also picks up Sora in the hero */
+#hero .hero-badge {
+  font-family: 'Sora', 'Poppins', system-ui, sans-serif;
+  font-variation-settings: 'wght' 600;
+}
+
+/* ════════════════════════════════════
+   GLASS CTA BUTTON — NEURAL recipe
+   Multi-layer gradient fill + frosted
+   border + ambient glow beneath
+════════════════════════════════════ */
+.btn-glass {
+  /* Text */
+  color: #ffffff;
+  font-family: 'Sora', 'Poppins', system-ui, sans-serif;
+  font-variation-settings: 'wght' 620;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+
+  /* Multi-layer fill: brand gradient under a glass sheen */
+  background:
+    /* Inner highlight sheen (top) */
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.14) 0%,
+      rgba(255, 255, 255, 0.00) 55%
+    ),
+    /* Brand gradient base */
+    linear-gradient(
+      100deg,
+      #7B2FF7 0%,
+      #D946EF 50%,
+      #FF8C42 100%
+    );
+
+  /* Frosted glass rim */
+  border: 1px solid rgba(255, 255, 255, 0.28);
+
+  /* Deep ambient glow */
+  box-shadow:
+    0 0 0 1px rgba(123, 47, 247, 0.35),
+    0 6px 32px rgba(123, 47, 247, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+  /* Backdrop blur for the frosted glass feel */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-radius: var(--rpill);
+  padding: 15px 36px;
+  min-height: 52px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.25s cubic-bezier(.34,1.56,.64,1),
+              box-shadow 0.25s ease,
+              border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle top-light glint */
+.btn-glass::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.btn-glass:hover {
+  transform: translateY(-3px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow:
+    0 0 0 1px rgba(217, 70, 239, 0.50),
+    0 12px 48px rgba(123, 47, 247, 0.60),
+    0 4px 16px rgba(255, 140, 66, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.btn-glass:active {
+  transform: translateY(-1px) scale(0.99);
+  transition-duration: 0.08s;
+}
+
+/* ════════════════════════════════════
+   NEURAL ENTRANCE SYSTEM
+   html:not(.is-entered) hides hero
+   children before JS fires.
+   DOMContentLoaded adds .is-entered.
+   GSAP runs at delay:0.3 — by then
+   .is-entered is already set so the
+   css transition fires only once.
+════════════════════════════════════ */
+
+/* Pre-entrance hidden state for hero content */
+html:not(.is-entered) #hero .hero-content > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: none; /* no flash before GSAP takes over */
+}
+
+/* Once entered (class added by JS), let GSAP/CSS handle each element */
+html.is-entered #hero .hero-content > * {
+  /* GSAP will set opacity/transform — no-op rule, just documents intent */
+}
+
+/* ════════════════════════════════════
+   REDUCED-MOTION: pause video
+   (also handled by the IIFE in HTML)
+════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .hero .art {
+    animation-play-state: paused !important;
+    /* Modern browsers also respect this attribute in JS; the IIFE
+       calls .pause() to cover older browsers */
+  }
+  /* Entrance transitions already disabled by the global rule above */
+}
+
+/* ════════════════════════════════════
+   RESPONSIVE — NEURAL hero breakpoints
+════════════════════════════════════ */
+
+/* Tablet (600–1199 px): flow layout, Sora stays, scale adapts */
+@media (max-width: 1199px) {
+  #hero {
+    --u: calc(100vw / 960);
+    --c: 1.2vw;
+  }
+  #hero .h1 {
+    font-size: clamp(2.4rem, 6.5vw, 4.8rem);
+  }
+}
+
+/* Phone portrait (< 600 px) */
+@media (max-width: 599px) {
+  #hero {
+    --u: calc(100vw / 390);
+    --c: 2vw;
+  }
+  #hero .h1 {
+    font-size: clamp(2rem, 8.5vw, 3rem);
+    font-variation-settings: 'wght' 740;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+  }
+  .btn-glass {
+    padding: 13px 28px;
+    font-size: 0.80rem;
+  }
+  /* Video: crop to portrait-friendly region */
+  .hero .art {
+    object-position: 50% 40%;
+  }
+}
+
+/* Landscape phone (height < 500 px) */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: 100vw;
+  }
+  .hero .art {
+    object-position: 50% 50%;
+  }
+  #hero .h1 {
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+  }
+}

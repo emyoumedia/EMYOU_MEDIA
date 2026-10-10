@@ -415,3 +415,35 @@ document.querySelectorAll('form#newsletter-form').forEach(form => {
     }
   });
 });
+
+/* ─────────────────────────────────────
+   URL PARAMS PRE-FILLER (Audit -> Contact)
+───────────────────────────────────── */
+(function () {
+  if (!window.location.search) return;
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const auditUrl = params.get('url');
+    const industry = params.get('industry');
+    const goal = params.get('goal');
+
+    if (auditUrl || industry || goal) {
+      const cb = document.getElementById('cb');
+      const cs = document.getElementById('cs');
+      const cm = document.getElementById('cm');
+
+      if (cb && auditUrl && !cb.value) cb.value = auditUrl;
+      if (cs) {
+        for (let i = 0; i < cs.options.length; i++) {
+          if (cs.options[i].text.includes('Website Audit') || cs.options[i].text.includes('Strategy Session')) {
+            cs.selectedIndex = i;
+            break;
+          }
+        }
+      }
+      if (cm && !cm.value) {
+        cm.value = `I generated an AI marketing audit for ${auditUrl || 'my website'}${industry ? ` (Industry: ${industry})` : ''}${goal ? ` (Focus: ${goal})` : ''}. I'd like to review the strategic findings with an EmYou strategist.`;
+      }
+    }
+  } catch (_) {}
+})();

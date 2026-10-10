@@ -20,6 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..900&display=optional" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="responsive.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
@@ -347,10 +348,6 @@
   <div class="nav-inner">
     <a href="/" class="nlogo" aria-label="EmYou Media Home">
       <img src="logo.png" alt="EmYou Media" width="48" height="48" onerror="this.style.display='none'">
-      <div class="nlogo-text">
-        <span class="n1">EmYou Media</span>
-        <span class="n2">Creative · Digital · Growth</span>
-      </div>
     </a>
     <ul class="nlinks">
       <li><a href="/about">About</a></li>
@@ -363,6 +360,7 @@
         </div>
       </li>
       <li><a href="/portfolio">Portfolio</a></li>
+      <li><a href="/audit">AI Audit</a></li>
       <li><a href="/services#industries">Industries</a></li>
       <li><a href="/blog">Blog</a></li>
       <li><a href="/careers">Careers</a></li>
@@ -380,6 +378,7 @@
   <a href="/media-production" onclick="closeMobileMenu()">Media Production</a>
   <a href="/services" onclick="closeMobileMenu()">All Services</a>
   <a href="/portfolio" onclick="closeMobileMenu()">Portfolio</a>
+  <a href="/audit" onclick="closeMobileMenu()">AI Marketing Audit</a>
   <a href="/services#industries" onclick="closeMobileMenu()">Industries</a>
   <a href="/blog" onclick="closeMobileMenu()">Blog</a>
   <a href="/careers" onclick="closeMobileMenu()">Careers</a>
@@ -391,9 +390,13 @@
 
 <!-- ══ HERO ══ -->
 <section id="hero" class="hero" aria-labelledby="hero-heading">
+  <!-- NEURAL: looping video background (CloudFront CDN, silent, autoplay) -->
+  <video class="art" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260912_104303_0c6d60b2-9353-408e-9449-585108a22fb5.mp4"
+         poster="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/130837c4-0244-4f37-9c61-8d801d93fd29.jpg"
+         autoplay muted loop playsinline preload="none"
+         aria-hidden="true"></video>
   <canvas id="hero-canvas"></canvas>
-  <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1800&q=80')"></div>
-  <div class="hero-overlay"></div>
+  <div class="hero-veil" aria-hidden="true"></div>
   <div class="hero-grain"></div>
 
   <div aria-hidden="true" style="position:absolute;top:72px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(123,47,247,.15),transparent);z-index:3;pointer-events:none"></div>
@@ -410,7 +413,7 @@
       EmYou Media combines digital marketing and creative production to help businesses grow faster and stand out in a competitive world.
     </p>
     <div class="btn-row rv d3" id="br" style="justify-content:flex-start">
-      <a href="/contact" class="btn btn-primary">Get Free Consultation →</a>
+      <a href="/contact" class="btn btn-glass">Get Free Consultation →</a>
       <a href="/services" class="btn btn-secondary">View Services</a>
     </div>
 
@@ -1135,6 +1138,221 @@ if (document.readyState === 'loading') {
   </div>
 </section>
 
+<!-- ══ AI-POWERED DIGITAL GROWTH ENGINE ══ -->
+<section id="ai-engine" class="sec sec-dark" aria-labelledby="ai-heading">
+  <div class="wrap">
+    <!-- Header -->
+    <div class="rv text-center mb3">
+      <p class="eyebrow"><span class="dot"></span>HYBRID INTELLIGENCE · HUMAN TASTE × STRATEGIC AI</p>
+      <h2 class="h2" id="ai-heading" style="margin-top:1rem">
+        Human Creativity.<br><span class="gt">Algorithmic Precision.</span>
+      </h2>
+      <div class="grad-line grad-line-c"></div>
+      <p style="font-family:var(--fb);font-size:.92rem;color:var(--text-secondary);max-width:680px;margin:1.25rem auto 0;line-height:1.85">
+        AI alone generates generic noise. Traditional agencies move too slowly. EmYou Media unifies senior human creative direction with proprietary AI workflows — analyzing markets deeper, generating variations faster, and engineering campaigns for compounding business growth.
+      </p>
+    </div>
+
+    <!-- 4 Hybrid Pillars -->
+    <div class="ai-pillars-grid">
+      <div class="ai-pillar-card rv d1">
+        <div class="ai-pillar-num">Pillar 01</div>
+        <div class="ai-pillar-icon">🧠</div>
+        <h4>Market &amp; Audience Intelligence</h4>
+        <p>Deep algorithmic sentiment analysis, competitor positioning, and search intent mapping — directed by senior strategists to uncover untapped demand.</p>
+      </div>
+
+      <div class="ai-pillar-card rv d2">
+        <div class="ai-pillar-num">Pillar 02</div>
+        <div class="ai-pillar-icon">⚡</div>
+        <h4>Creative Velocity Engine</h4>
+        <p>Rapid generation of ad creative concepts, visual angles, and copy variants — allowing us to test and validate ideas at 5× speed while preserving brand identity.</p>
+      </div>
+
+      <div class="ai-pillar-card rv d3">
+        <div class="ai-pillar-num">Pillar 03</div>
+        <div class="ai-pillar-icon">📊</div>
+        <h4>Performance &amp; Conversion Optimization</h4>
+        <p>Continuous conversion-rate optimization, algorithmic ad bidding, and lead-scoring funnels designed to lower customer acquisition costs.</p>
+      </div>
+
+      <div class="ai-pillar-card rv d4">
+        <div class="ai-pillar-num">Pillar 04</div>
+        <div class="ai-pillar-icon">🛡️</div>
+        <h4>100% Human Verification</h4>
+        <p>Strict human governance on all claims, creative direction, and campaign budgets. Every asset is reviewed and signed off by our in-house team.</p>
+      </div>
+    </div>
+
+    <!-- Live Interactive AI Marketing Audit Widget -->
+    <div class="ai-audit-widget rv d2">
+      <div class="text-center" style="max-width:640px;margin:0 auto 1.5rem">
+        <p class="eyebrow" style="font-size:.56rem;padding:3px 12px"><span class="dot"></span>Self-Serve Diagnostic</p>
+        <h3 style="font-family:var(--ff);font-size:clamp(1.3rem,2.8vw,1.9rem);font-weight:700;color:var(--white);margin-top:.75rem">
+          Run an Instant <span class="gt">AI Growth Assessment</span>
+        </h3>
+        <p style="font-family:var(--fb);font-size:.80rem;color:var(--text-secondary);margin-top:.5rem;line-height:1.7">
+          Enter your website URL below to receive an evidence-based assessment of your technical health, search discoverability, and conversion architecture.
+        </p>
+      </div>
+
+      <!-- Audit Form -->
+      <form class="audit-form" novalidate>
+        <div class="audit-form-grid">
+          <div>
+            <label for="audit-url-home" style="display:none">Website URL</label>
+            <input id="audit-url-home" class="audit-input" type="url" name="audit_url" placeholder="https://yourwebsite.com" required autocomplete="url">
+          </div>
+          <div>
+            <label for="audit-ind-home" style="display:none">Industry</label>
+            <select id="audit-ind-home" class="audit-select" name="audit_industry">
+              <option value="real-estate">Real Estate &amp; Construction</option>
+              <option value="b2b-tech">B2B &amp; Technology</option>
+              <option value="healthcare">Healthcare &amp; Wellness</option>
+              <option value="ecommerce">E-commerce &amp; Retail</option>
+              <option value="services">Professional Services</option>
+              <option value="other">Other Industry</option>
+            </select>
+          </div>
+          <div>
+            <label for="audit-obj-home" style="display:none">Growth Goal</label>
+            <select id="audit-obj-home" class="audit-select" name="audit_objective">
+              <option value="leads">High-Intent Leads</option>
+              <option value="seo">Organic Search &amp; SEO</option>
+              <option value="ads">Paid Ads &amp; ROAS</option>
+              <option value="media">Brand Media &amp; Video</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary" style="min-height:50px;padding:14px 28px">
+            Analyze Website →
+          </button>
+        </div>
+        <p style="font-size:.66rem;color:var(--text-muted);text-align:center;margin-top:1rem">
+          🔒 Privacy-First: Evaluates public header &amp; markup signals only. Zero cookies, logins, or tracking accessed.
+        </p>
+      </form>
+
+      <!-- Loading State -->
+      <div class="audit-loading">
+        <div class="eyebrow"><span class="dot"></span>Diagnostic in Progress</div>
+        <h4 style="font-family:var(--ff);color:var(--white);font-size:1.15rem;margin-top:.75rem">Analyzing Domain Architecture</h4>
+        <div class="audit-step-list">
+          <div class="audit-step-item">
+            <span class="audit-step-indicator">1</span>
+            <span>Verifying SSL/TLS protocol, clean routing &amp; header integrity...</span>
+          </div>
+          <div class="audit-step-item">
+            <span class="audit-step-indicator">2</span>
+            <span>Scanning mobile responsiveness &amp; layout stability heuristics...</span>
+          </div>
+          <div class="audit-step-item">
+            <span class="audit-step-indicator">3</span>
+            <span>Checking search metadata, Open Graph sharing &amp; schema readiness...</span>
+          </div>
+          <div class="audit-step-item">
+            <span class="audit-step-indicator">4</span>
+            <span>Synthesizing sector conversion benchmarks &amp; strategic growth priorities...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Report Card -->
+      <div class="audit-results">
+        <div class="res-header-bar">
+          <div class="res-title-group">
+            <h3>Assessment Report: <span class="res-domain gt">domain.com</span></h3>
+            <div class="res-submeta">
+              <span>Sector: <strong class="res-industry" style="color:var(--white)">Real Estate</strong></span>
+              <span>·</span>
+              <span>Goal: <strong class="res-objective" style="color:var(--white)">High-Intent Leads</strong></span>
+              <span>·</span>
+              <span>Generated: <span class="res-date">Today</span></span>
+            </div>
+          </div>
+          <button type="button" class="btn btn-outline-dark audit-reset-btn" style="min-height:40px;padding:8px 18px;font-size:.74rem">
+            ↺ New Assessment
+          </button>
+        </div>
+
+        <div class="res-grid-cols">
+          <!-- Measured Technical Signals -->
+          <div class="res-panel">
+            <span class="res-panel-badge badge-measured">Measured Technical Signals (Verified Telemetry)</span>
+            <div class="res-item-row">
+              <div class="res-item-title">
+                <span>Security Protocol</span>
+                <span class="res-protocol badge-pass">HTTPS Active</span>
+              </div>
+              <p class="res-item-desc">Secure transport layer is required for conversion trust and Google search ranking.</p>
+            </div>
+            <div class="res-item-row">
+              <div class="res-item-title">
+                <span>Viewport &amp; Mobile Readiness</span>
+                <span class="badge-pass">Responsive Configured</span>
+              </div>
+              <p class="res-item-desc">Over 68% of Indian digital traffic originates from mobile devices. Mobile-first rendering is critical.</p>
+            </div>
+            <div class="res-item-row">
+              <div class="res-item-title">
+                <span>Social Metadata &amp; Open Graph</span>
+                <span class="badge-pass">Card Architecture</span>
+              </div>
+              <p class="res-item-desc">Rich previews ensure shared links across WhatsApp, LinkedIn, and Meta generate high click-through rates.</p>
+            </div>
+          </div>
+
+          <!-- Strategic Growth Recommendations -->
+          <div class="res-panel">
+            <span class="res-panel-badge badge-strategic">AI Strategic Hypotheses (EmYou Growth Models)</span>
+            <div class="res-item-row">
+              <div class="res-item-title">
+                <span class="priority-tag p1-tag">P1 Priority</span>
+                <span>Immediate Conversion Impact</span>
+              </div>
+              <p class="res-item-desc res-p1">Strategic action item tailored to sector.</p>
+            </div>
+            <div class="res-item-row">
+              <div class="res-item-title">
+                <span class="priority-tag p2-tag">P2 Priority</span>
+                <span>Compounding Visibility</span>
+              </div>
+              <p class="res-item-desc res-p2">Mid-term growth initiative.</p>
+            </div>
+            <div class="res-item-row">
+              <div class="res-item-title">
+                <span class="priority-tag p3-tag">P3 Priority</span>
+                <span>Authority &amp; Creative Scale</span>
+              </div>
+              <p class="res-item-desc res-p3">Long-term brand dominance roadmap.</p>
+            </div>
+            <div class="res-item-row" style="margin-top:1rem;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.06)">
+              <div class="res-item-title" style="font-size:.76rem;color:var(--orange)">
+                <span>Strategic Focus Direction</span>
+              </div>
+              <p class="res-item-desc res-obj-strategy">Custom strategy insight based on goal.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="res-transparency-note">
+          ⚖️ <strong>Transparency Disclosure:</strong> Measured signals reflect verified public DOM and header configurations. Strategic recommendations are generated using EmYou Media's sector heuristics. Final campaign implementation is tailored and reviewed by our senior human strategists.
+        </div>
+
+        <div class="res-action-bar">
+          <a href="/contact" class="btn btn-primary res-consult-btn">
+            Discuss This Audit with a Senior Strategist →
+          </a>
+          <a href="https://wa.me/917448811611" target="_blank" rel="noopener noreferrer" class="btn btn-secondary-dark res-wa-btn">
+            💬 Share via WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="audit-error" style="display:none;color:#ff8a8a;font-size:.80rem;margin-top:1rem;text-align:center"></div>
+    </div>
+  </div>
+</section>
+
 <!-- ══ WHY CHOOSE US ══ -->
 <section id="why" class="sec sec-dark" aria-labelledby="why-heading">
   <div class="wrap">
@@ -1459,6 +1677,7 @@ if (document.readyState === 'loading') {
 </div>
 
 <script src="main.js"></script>
+<script src="audit.js" defer></script>
 <script>
 function initHeroScene() {
   if (typeof THREE === 'undefined' || typeof gsap === 'undefined') return;
@@ -1712,6 +1931,32 @@ if (document.readyState === 'loading') {
 } else {
   initHeroScene();
 }
+</script>
+<script>
+/* NEURAL: retire pre-entrance hidden state once DOM is ready */
+(function () {
+  function enter() { document.documentElement.classList.add('is-entered'); }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', enter, { once: true });
+  } else {
+    enter();
+  }
+})();
+
+/* NEURAL: pause hero video when visitor prefers reduced motion */
+(function () {
+  var mq = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (!mq || !mq.matches) return;
+  function pauseArt() {
+    var art = document.querySelector('#hero .art');
+    if (art) { art.pause(); art.removeAttribute('autoplay'); }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', pauseArt, { once: true });
+  } else {
+    pauseArt();
+  }
+})();
 </script>
 </body>
 </html>
