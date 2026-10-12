@@ -2,7 +2,7 @@
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const TO = 'emyoumedia@gmail.com';
+const TO = 'marketing@emyoumedia.com';
 const FROM = 'EmYou Media <noreply@emyoumedia.com>'; // domain must be verified in Resend
 
 const esc = (s = '') =>

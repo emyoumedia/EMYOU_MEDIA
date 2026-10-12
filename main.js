@@ -373,7 +373,7 @@ document.querySelectorAll('form#cfrm').forEach(form => {
       emToast(
         'error',
         'Something went wrong',
-        'Please try WhatsApp or email us at emyoumedia@gmail.com',
+        'Please try WhatsApp or email us at marketing@emyoumedia.com',
         7000
       );
     }
