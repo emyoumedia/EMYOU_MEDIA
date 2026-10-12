@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us | EmYou Media</title>
-  <meta name="description" content="Learn about EmYou Media — our story, vision, mission, core values, and the team behind one of India's most innovative creative and digital growth companies.">
+  <meta name="description" content="Learn about EmYou Media — our story, vision, mission, core values, and the four founders behind one of India's most innovative creative and digital growth companies.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://emyoumedia.com/about">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://emyoumedia.com/about">
   <meta property="og:title" content="About Us | EmYou Media">
-We're <span class="gt">Hiring</span>  <meta property="og:image" content="https://emyoumedia.com/og-image.jpg">
+  <meta property="og:image" content="https://emyoumedia.com/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="var(--primary-dark)">
+  <meta name="theme-color" content="#140033">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +20,7 @@ We're <span class="gt">Hiring</span>  <meta property="og:image" content="https:/
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="responsive.css">
   <style>
-    /* ── THREE FOUNDERS. ONE GOAL SECTION ── */
+    /* ── FOUR MINDS. ONE MISSION SECTION ── */
     .founders-intro-text {
       font-size: clamp(0.90rem, 1.8vw, 1.02rem);
       color: var(--text-secondary);
@@ -30,15 +30,15 @@ We're <span class="gt">Hiring</span>  <meta property="og:image" content="https:/
     }
     .founders-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.75rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
       margin-bottom: 3.5rem;
     }
     .founder-card {
       background: var(--glass-bg);
       border: var(--glass-border);
       border-radius: var(--r);
-      padding: 1.75rem;
+      padding: 1.5rem;
       display: flex;
       flex-direction: column;
       position: relative;
@@ -70,7 +70,13 @@ We're <span class="gt">Hiring</span>  <meta property="og:image" content="https:/
       position: relative;
       background: linear-gradient(145deg, rgba(20, 0, 51, 0.95), rgba(11, 11, 45, 0.98));
       border: 1px solid rgba(255, 255, 255, 0.08);
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.3rem;
+    }
+    .founder-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .founder-photo-placeholder {
       width: 100%;
@@ -112,25 +118,28 @@ We're <span class="gt">Hiring</span>  <meta property="og:image" content="https:/
       margin-bottom: 0.25rem;
     }
     .founder-name {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--white);
       letter-spacing: -0.01em;
-      margin-bottom: 0.15rem;
+      margin-bottom: 0.25rem;
     }
     .founder-role {
-      font-size: 0.74rem;
+      display: block;
+      font-size: 0.72rem;
       font-weight: 600;
       color: var(--pink);
       letter-spacing: 0.04em;
       text-transform: uppercase;
+      line-height: 1.5;
     }
     .founder-focus {
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
       margin: 0.85rem 0 1rem;
-      padding: 6px 12px;
+      padding: 8px 12px;
       background: rgba(123, 47, 247, 0.09);
       border: 1px solid rgba(123, 47, 247, 0.22);
       border-radius: 8px;
@@ -147,10 +156,11 @@ We're <span class="gt">Hiring</span>  <meta property="og:image" content="https:/
     .founder-focus-val {
       color: var(--white);
       font-weight: 500;
+      line-height: 1.5;
       word-break: break-word;
     }
     .founder-bio {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--text-secondary);
       line-height: 1.75;
       margin-bottom: 1.25rem;
@@ -178,6 +188,23 @@ We're <span class="gt">Hiring</span>  <meta property="og:image" content="https:/
       color: #0A66C2;
       flex-shrink: 0;
     }
+
+    @media (max-width: 1180px) {
+      .founders-grid { grid-template-columns: repeat(2, 1fr); gap: 1.75rem; }
+    }
+    @media (max-width: 640px) {
+      .founders-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── EQUAL ALIGNMENT ACROSS FOUNDER CARDS ──
+       Cards stretch to equal height; a small script (bottom of page)
+       equalises name/role, focus and bio blocks so every section starts
+       at the same height in every card. LinkedIn sits at the bottom. */
+    .founders-grid { align-items: stretch; }
+    .founder-card { height: 100%; }
+    .founder-meta { display: flex; flex-direction: column; justify-content: flex-start; }
+    .founder-focus { box-sizing: border-box; }
+    .founder-connect { margin-top: auto; }
 
     /* ── SHARED GOAL CARD ── */
     .shared-goal-card {
@@ -346,7 +373,7 @@ We're <span class="gt">Hiring</span>  <meta property="og:image" content="https:/
           So we built something different. A company that thinks like a strategist, creates like an artist, and measures like an analyst — all under one roof.
         </p>
         <p style="font-size:.90rem;color:var(--text-secondary);line-height:1.9">
-          Today, EmYou Media operates as a full-service growth company with two core divisions: EmYou Digital Marketing and EmYou Media Production — each world-class in its own right, and exponentially more powerful together.
+          Today, EmYou Media brings together Marketing, Media, Technology, and Business Solutions as one integrated growth company — with EmYou Digital Marketing and EmYou Media Production at its core, each world-class in its own right, and exponentially more powerful together.
         </p>
       </div>
       <div class="rv d2">
@@ -365,45 +392,49 @@ We're <span class="gt">Hiring</span>  <meta property="og:image" content="https:/
   </div>
 </section>
 
-<!-- THREE FOUNDERS. ONE GOAL -->
+<!-- FOUR MINDS. ONE MISSION -->
 <section id="founders" class="sec sec-surface" aria-labelledby="founders-heading">
   <div class="wrap">
     <div class="rv text-center mb3">
       <p class="eyebrow"><span class="dot"></span>THE PEOPLE BEHIND EMYOU</p>
       <h2 class="h2" id="founders-heading" style="margin-top:1rem">
-        Three Founders. <span class="gt">One Goal.</span>
+        Four Minds. <span class="gt">One Mission.</span>
       </h2>
       <div class="gold-line gold-line-c"></div>
       <p class="founders-intro-text">
-        Three perspectives. One shared ambition. We came together with a common belief that creativity, technology, and strategic thinking can help businesses reach their full potential. Together, we're building EmYou Media with a clear purpose: turning ambitious ideas into meaningful business growth.
+        Four areas of expertise, united by one shared vision. Strategy, technology, marketing, and design come together at EmYou Media as one integrated company — each founder owning a clear function, all driven by the same mission: turning ambitious ideas into meaningful business growth.
       </p>
     </div>
 
     <!-- Founder Cards Grid -->
     <div class="founders-grid">
-      <!-- Founder 1 -->
+
+      <!-- Founder 1: Sandeep Kumar -->
       <article class="founder-card rv d1" aria-labelledby="f1-name">
         <div class="founder-photo-frame">
-          <div class="founder-photo-placeholder" role="img" aria-label="Portrait placeholder for [FOUNDER 1 NAME]">
+          <!-- To use a real photo, replace the placeholder div below with: -->
+               <img src="images/sandeep-kumar.jpg" alt="Sandeep Kumar, Founder &amp; Creative Strategist at EmYou Media" loading="lazy">
+          <!-- <div class="founder-photo-placeholder" role="img" aria-label="Portrait placeholder for Sandeep Kumar">
             <svg class="founder-avatar-icon" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
             <span class="founder-photo-tag">Portrait Placeholder</span>
-          </div>
+          </div> -->
         </div>
         <div class="founder-info">
           <div class="founder-meta">
-            <h3 class="founder-name" id="f1-name">[FOUNDER 1 NAME]</h3>
-            <span class="founder-role">Co-Founder</span>
+            <h3 class="founder-name" id="f1-name">Sandeep Kumar</h3>
+            <span class="founder-role">Founder &amp; Creative Strategist</span>
           </div>
           <div class="founder-focus">
             <span class="founder-focus-label">Focus</span>
-            <span class="founder-focus-val">[AREA OF RESPONSIBILITY]</span>
+            <span class="founder-focus-val">Business Strategy, Creative Direction &amp; Growth</span>
           </div>
-          <p class="founder-bio">[SHORT BIO]</p>
+          <p class="founder-bio">Leads the company's vision, business development, creative concepts, partnerships, and long-term growth. Connects marketing, media, and technology to develop meaningful solutions for businesses and audiences — turning ideas into strategies that help brands grow and create impact.</p>
           <div class="founder-connect">
-            <a href="#" class="founder-linkedin" aria-label="LinkedIn profile for [FOUNDER 1 NAME]" target="_blank" rel="noopener noreferrer">
+            <!-- TODO: replace # with Sandeep Kumar's LinkedIn URL -->
+            <a href="https://www.linkedin.com/in/sandeepacchu" class="founder-linkedin" aria-label="LinkedIn profile for Sandeep Kumar" target="_blank" rel="noopener noreferrer">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
               </svg>
@@ -413,29 +444,32 @@ We're <span class="gt">Hiring</span>  <meta property="og:image" content="https:/
         </div>
       </article>
 
-      <!-- Founder 2 -->
+      <!-- Founder 2: Rohith S Moolya -->
       <article class="founder-card rv d2" aria-labelledby="f2-name">
         <div class="founder-photo-frame">
-          <div class="founder-photo-placeholder" role="img" aria-label="Portrait placeholder for [FOUNDER 2 NAME]">
+           <!-- To use a real photo: -->
+            <img src="images/rohith-s-moolya.png" alt="Rohith S Moolya, Co-Founder &amp; Technology Lead at EmYou Media" loading="lazy">
+          <!-- <div class="founder-photo-placeholder" role="img" aria-label="Portrait placeholder for Rohith S Moolya">
             <svg class="founder-avatar-icon" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
             <span class="founder-photo-tag">Portrait Placeholder</span>
-          </div>
+          </div> -->
         </div>
         <div class="founder-info">
           <div class="founder-meta">
-            <h3 class="founder-name" id="f2-name">[FOUNDER 2 NAME]</h3>
-            <span class="founder-role">Co-Founder</span>
+            <h3 class="founder-name" id="f2-name">Rohith S Moolya</h3>
+            <span class="founder-role">Co-Founder &amp; Technology Lead</span>
           </div>
           <div class="founder-focus">
             <span class="founder-focus-label">Focus</span>
-            <span class="founder-focus-val">[AREA OF RESPONSIBILITY]</span>
+            <span class="founder-focus-val">IT Solutions, Web Development &amp; Digital Systems</span>
           </div>
-          <p class="founder-bio">[SHORT BIO]</p>
+          <p class="founder-bio">Leads the technology division, building websites, mobile applications, CRM platforms, and practical IT solutions that help organisations improve their digital presence, streamline operations, and work smarter.</p>
           <div class="founder-connect">
-            <a href="#" class="founder-linkedin" aria-label="LinkedIn profile for [FOUNDER 2 NAME]" target="_blank" rel="noopener noreferrer">
+            <!-- TODO: replace # with Rohith S Moolya's LinkedIn URL -->
+            <a href="www.linkedin.com/in/rohithsofficial" class="founder-linkedin" aria-label="LinkedIn profile for Rohith S Moolya" target="_blank" rel="noopener noreferrer">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
               </svg>
@@ -445,29 +479,67 @@ We're <span class="gt">Hiring</span>  <meta property="og:image" content="https:/
         </div>
       </article>
 
-      <!-- Founder 3 -->
+      <!-- Founder 3: Rohit Kumar -->
       <article class="founder-card rv d3" aria-labelledby="f3-name">
         <div class="founder-photo-frame">
-          <div class="founder-photo-placeholder" role="img" aria-label="Portrait placeholder for [FOUNDER 3 NAME]">
+           <!-- To use a real photo: -->
+            <img src="images/rohit-kumar.png" alt="Rohit Kumar, Co-Founder &amp; Marketing Operations Lead at EmYou Media" loading="lazy"> 
+          <!-- <div class="founder-photo-placeholder" role="img" aria-label="Portrait placeholder for Rohit Kumar">
             <svg class="founder-avatar-icon" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
             <span class="founder-photo-tag">Portrait Placeholder</span>
-          </div>
+          </div> -->
         </div>
         <div class="founder-info">
           <div class="founder-meta">
-            <h3 class="founder-name" id="f3-name">[FOUNDER 3 NAME]</h3>
-            <span class="founder-role">Co-Founder</span>
+            <h3 class="founder-name" id="f3-name">Rohit Kumar</h3>
+            <span class="founder-role">Co-Founder &amp; Marketing Operations Lead</span>
           </div>
           <div class="founder-focus">
             <span class="founder-focus-label">Focus</span>
-            <span class="founder-focus-val">[AREA OF RESPONSIBILITY]</span>
+            <span class="founder-focus-val">Digital Marketing, Social Media &amp; Reporting</span>
           </div>
-          <p class="founder-bio">[SHORT BIO]</p>
+          <p class="founder-bio">Leads day-to-day marketing operations — social media management, campaign coordination, analytics, and reporting. Ensures marketing activity is organised, performance is measurable, and clients receive clear communication and structured updates.</p>
           <div class="founder-connect">
-            <a href="#" class="founder-linkedin" aria-label="LinkedIn profile for [FOUNDER 3 NAME]" target="_blank" rel="noopener noreferrer">
+            <!-- TODO: replace # with Rohit Kumar's LinkedIn URL -->
+            <a href="www.linkedin.com/in/rohit-kr-dev" class="founder-linkedin" aria-label="LinkedIn profile for Rohit Kumar" target="_blank" rel="noopener noreferrer">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              <span>Connect on LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Founder 4: Chethan -->
+      <article class="founder-card rv d4" aria-labelledby="f4-name">
+        <div class="founder-photo-frame">
+          <!-- To use a real photo: -->
+            <img src="images/chethan.png" alt="Chethan, Co-Founder &amp; Design Lead at EmYou Media" loading="lazy">
+          <!-- <div class="founder-photo-placeholder" role="img" aria-label="Portrait placeholder for Chethan">
+            <svg class="founder-avatar-icon" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span class="founder-photo-tag">Portrait Placeholder</span>
+          </div> -->
+        </div>
+        <div class="founder-info">
+          <div class="founder-meta">
+            <h3 class="founder-name" id="f4-name">Chethan</h3>
+            <span class="founder-role">Co-Founder &amp; Design Lead</span>
+          </div>
+          <div class="founder-focus">
+            <span class="founder-focus-label">Focus</span>
+            <span class="founder-focus-val">Branding, Visual Identity &amp; Creative Design</span>
+          </div>
+          <p class="founder-bio">Leads branding and creative design, developing visual identities and creative assets that communicate a brand's personality, strengthen recognition, and maintain consistency across digital platforms and marketing materials.</p>
+          <div class="founder-connect">
+            <!-- TODO: replace # with Chethan's LinkedIn URL -->
+            <a href="https://www.linkedin.com/in/chethan-naik-1ab86b2a0" class="founder-linkedin" aria-label="LinkedIn profile for Chethan" target="_blank" rel="noopener noreferrer">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
               </svg>
@@ -482,16 +554,11 @@ We're <span class="gt">Hiring</span>  <meta property="og:image" content="https:/
     <div class="shared-goal-card rv d2">
       <div class="shared-goal-glow" aria-hidden="true"></div>
       <div class="shared-goal-badge"><span class="dot"></span>Unified Purpose</div>
-      <h3 class="shared-goal-title">One Vision. One Team. <span class="shared-goal-highlight">One Goal.</span></h3>
+      <h3 class="shared-goal-title">One Vision. One Team. <span class="shared-goal-highlight">One Purpose.</span></h3>
       <p class="shared-goal-copy">
-        We're not building three individual brands. We're building one company with a shared purpose. By combining our strengths, challenging each other's ideas, and working towards the same vision, we're committed to helping businesses grow and creating something meaningful together.
+        We're not building four individual brands. We're building one company with a shared purpose. Each of us owns a clear function, but our strategy and major decisions are made together — combining our strengths, challenging each other's ideas, and working towards the same vision of helping businesses grow.
       </p>
       <div class="shared-goal-pillars">
-        <div class="pillar-chip">
-          <span class="pillar-symbol">✦</span>
-          <span>Creativity</span>
-        </div>
-        <div class="pillar-sep" aria-hidden="true">•</div>
         <div class="pillar-chip">
           <span class="pillar-symbol">✦</span>
           <span>Strategy</span>
@@ -500,6 +567,16 @@ We're <span class="gt">Hiring</span>  <meta property="og:image" content="https:/
         <div class="pillar-chip">
           <span class="pillar-symbol">✦</span>
           <span>Technology</span>
+        </div>
+        <div class="pillar-sep" aria-hidden="true">•</div>
+        <div class="pillar-chip">
+          <span class="pillar-symbol">✦</span>
+          <span>Marketing</span>
+        </div>
+        <div class="pillar-sep" aria-hidden="true">•</div>
+        <div class="pillar-chip">
+          <span class="pillar-symbol">✦</span>
+          <span>Design</span>
         </div>
       </div>
     </div>
@@ -593,7 +670,7 @@ We're <span class="gt">Hiring</span>  <meta property="og:image" content="https:/
     <div class="rv d1" style="background:var(--accent-dark);border:1px solid rgba(123,47,247,.12);padding:clamp(2rem,4vw,3.5rem);position:relative;margin-top:2.5rem">
       <div style="font-size:5rem;color:rgba(123,47,247,.10);line-height:1;position:absolute;top:1rem;left:2rem;pointer-events:none">"</div>
       <p style="font-size:clamp(.9rem,2.5vw,1.3rem);font-style:italic;color:var(--white);line-height:1.75;position:relative;z-index:1;margin-bottom:1.75rem">
-        I started EmYou Media because I believed there was a better way to do marketing — one that was rooted in genuine understanding, driven by real strategy, and measured by what actually matters: business growth. We're not here to sell services. We're here to build something great with every client we work with.
+        We started EmYou Media because we believed there was a better way to do marketing — one that was rooted in genuine understanding, driven by real strategy, and measured by what actually matters: business growth. We're not here to sell services. We're here to build something great with every client we work with.
       </p>
       <div style="display:flex;align-items:center;gap:1rem">
         <div style="width:48px;height:48px;background:var(--grad);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:700;color:var(--white);flex-shrink:0">E</div>
@@ -686,5 +763,53 @@ We're <span class="gt">Hiring</span>  <meta property="og:image" content="https:/
 </div>
 
 <script src="main.js"></script>
+<script>
+/* Align founder card sections (name/role, focus, bio) across cards in the same row */
+(function () {
+  var grid = document.querySelector('.founders-grid');
+  if (!grid) return;
+  var parts = ['.founder-meta', '.founder-focus', '.founder-bio'];
+
+  function equalise() {
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.founder-card'));
+    // reset
+    cards.forEach(function (c) {
+      parts.forEach(function (sel) {
+        var el = c.querySelector(sel);
+        if (el) el.style.minHeight = '';
+      });
+    });
+    // group cards by visual row (offsetTop ignores the reveal/hover transforms)
+    var rows = {};
+    cards.forEach(function (c) {
+      var k = c.offsetTop;
+      (rows[k] = rows[k] || []).push(c);
+    });
+    Object.keys(rows).forEach(function (k) {
+      var group = rows[k];
+      if (group.length < 2) return;
+      parts.forEach(function (sel) {
+        var max = 0;
+        group.forEach(function (c) {
+          var el = c.querySelector(sel);
+          if (el) max = Math.max(max, el.offsetHeight);
+        });
+        group.forEach(function (c) {
+          var el = c.querySelector(sel);
+          if (el) el.style.minHeight = max + 'px';
+        });
+      });
+    });
+  }
+
+  var t;
+  function schedule() { clearTimeout(t); t = setTimeout(equalise, 80); }
+
+  window.addEventListener('load', equalise);
+  window.addEventListener('resize', schedule);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(equalise);
+  equalise();
+})();
+</script>
 </body>
 </html>
