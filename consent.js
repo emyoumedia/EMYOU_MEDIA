@@ -1,6 +1,6 @@
 (function () {
-  const GA_ID = 'G-XXXXXXXXXX';          // your GA4 Measurement ID
-  const PIXEL_ID = 'XXXXXXXXXXXXXXXX';   // your Meta Pixel ID
+  const GA_ID = 'G-5ZC0LBL081';          // your GA4 Measurement ID
+  const PIXEL_ID = '1774413280475277';   // your Meta Pixel ID
   const KEY = 'emyou_consent_v1';
 
   // ── Google Consent Mode v2: everything denied by default ──

@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════
    EMYOU MEDIA — main.js
-   Nav · Mobile Menu · Reveal · Stats · Process · Form (Web3Forms)
+   Nav · Mobile Menu · Reveal · Stats · Process · Forms (/api/send)
    Toast notifications — no browser alerts
 ═══════════════════════════════════════════════════════════ */
 
@@ -227,7 +227,35 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 
 
 /* ─────────────────────────────────────
-   FORM — VALIDATION + RESEND SUBMIT
+   FORM SUBMIT HELPER — posts JSON to /api/send
+   (Vercel serverless function + Resend)
+───────────────────────────────────── */
+async function postForm(form, defaults) {
+  const payload = Object.assign({}, defaults || {}, Object.fromEntries(new FormData(form)));
+
+  const res = await fetch('/api/send', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+
+  // If the endpoint is missing (404) or crashes, the body may not be JSON
+  let data;
+  try {
+    data = await res.json();
+  } catch (_) {
+    throw new Error('Server returned HTTP ' + res.status + ' (not JSON). Is /api/send deployed?');
+  }
+
+  if (!res.ok || !data.success) {
+    throw new Error(data.message || 'Request failed with HTTP ' + res.status);
+  }
+  return data;
+}
+
+
+/* ─────────────────────────────────────
+   FORM — VALIDATION + SUBMIT
    Works for: contact.html & careers.html
 ───────────────────────────────────── */
 const FIELD_RULES = [
@@ -267,10 +295,11 @@ function validateForm(form) {
     if (!el.value.trim()) {
       el.classList.add('em-field-error');
       if (!firstBad) firstBad = el;
+      if (!errors.length) errors.push('Please fill in all required fields');
     }
   });
 
-  return { ok: errors.length === 0, firstBad, errors };
+  return { ok: errors.length === 0 && !firstBad, firstBad, errors };
 }
 
 function getSubmitBtn(form) {
@@ -319,32 +348,26 @@ document.querySelectorAll('form#cfrm').forEach(form => {
     emToast('info', 'Sending your message…', 'Please wait a moment.', 3000);
 
     try {
-      const res  = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: new FormData(this)
-      });
-      const data = await res.json();
+      // formType comes from the hidden input; falls back to "contact"
+      await postForm(this, { formType: 'contact' });
 
-      if (data.success) {
-        // Fire analytics lead events if available and consent granted
-        if (typeof window.gtag === 'function') {
-          try { window.gtag('event', 'generate_lead', { form_id: this.id || 'form' }); } catch (_) {}
-        }
-        if (typeof window.fbq === 'function') {
-          try { window.fbq('track', 'Lead'); } catch (_) {}
-        }
-
-        // Hide form, show success block
-        this.style.display = 'none';
-        if (successBox) {
-          successBox.style.display = 'block';
-          successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-        emToast('success', 'Message sent!', 'We\'ll get back to you within 24 hours.', 6000);
-      } else {
-        throw new Error(data.message || 'Submission failed');
+      // Fire analytics lead events if available and consent granted
+      if (typeof window.gtag === 'function') {
+        try { window.gtag('event', 'generate_lead', { form_id: this.id || 'form' }); } catch (_) {}
       }
+      if (typeof window.fbq === 'function') {
+        try { window.fbq('track', 'Lead'); } catch (_) {}
+      }
+
+      // Hide form, show success block
+      this.style.display = 'none';
+      if (successBox) {
+        successBox.style.display = 'block';
+        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      emToast('success', 'Message sent!', 'We\'ll get back to you within 24 hours.', 6000);
     } catch (err) {
+      console.error('Form submit error:', err);
       allSubmitBtns.forEach(b => { b.disabled = false; b.style.opacity = ''; });
       if (btn) { btn.textContent = originalText; }
       emToast(
@@ -358,7 +381,7 @@ document.querySelectorAll('form#cfrm').forEach(form => {
 });
 
 /* ─────────────────────────────────────
-   NEWSLETTER FORM (Web3Forms)
+   NEWSLETTER FORM
    Honest handling: only confirms on real success
 ───────────────────────────────────── */
 document.querySelectorAll('form#newsletter-form').forEach(form => {
@@ -387,23 +410,18 @@ document.querySelectorAll('form#newsletter-form').forEach(form => {
     }
 
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: new FormData(this)
-      });
-      const data = await res.json();
-      if (data.success) {
-        if (typeof window.gtag === 'function') {
-          try { window.gtag('event', 'newsletter_signup', { form_id: 'newsletter-form' }); } catch (_) {}
-        }
-        this.innerHTML = '<div style="color:var(--white);font-family:var(--ff);font-size:.85rem;padding:12px 20px;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);border-radius:var(--rpill);width:100%;text-align:center;">✓ Subscribed! You will receive our weekly strategy insights.</div>';
-        if (window.emToast) {
-          window.emToast('success', 'Subscribed!', 'Thank you for subscribing to weekly insights.', 5000);
-        }
-      } else {
-        throw new Error(data.message || 'Subscription failed');
+      // Make sure the API treats this as a newsletter signup
+      const data = await postForm(this, { formType: 'newsletter' });
+
+      if (typeof window.gtag === 'function') {
+        try { window.gtag('event', 'newsletter_signup', { form_id: 'newsletter-form' }); } catch (_) {}
+      }
+      this.innerHTML = '<div style="color:var(--white);font-family:var(--ff);font-size:.85rem;padding:12px 20px;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);border-radius:var(--rpill);width:100%;text-align:center;">✓ Subscribed! You will receive our weekly strategy insights.</div>';
+      if (window.emToast) {
+        window.emToast('success', 'Subscribed!', 'Thank you for subscribing to weekly insights.', 5000);
       }
     } catch (err) {
+      console.error('Newsletter submit error:', err);
       if (btn) {
         btn.disabled = false;
         btn.style.opacity = '';
