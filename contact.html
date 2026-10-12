@@ -186,9 +186,9 @@
         </p>
 
         <div class="cinfo-items rv d2" style="margin-top:2rem">
-          <a class="cinfo-item" href="mailto:hello@emyoumedia.com" aria-label="Email us" style="border-color:rgba(123,47,247,.12);background:var(--glass-bg)">
+          <a class="cinfo-item" href="mailto:emyoumedia@gmail.com" aria-label="Email us" style="border-color:rgba(123,47,247,.12);background:var(--glass-bg)">
             <div class="cinfo-ic" style="border-color:rgba(123,47,247,.25);color:var(--purple)">✉️</div>
-            <div><span style="color:var(--text-secondary)">Email us at</span><strong style="color:var(--white)">hello@emyoumedia.com</strong></div>
+            <div><span style="color:var(--text-secondary)">Email us at</span><strong style="color:var(--white)">emyoumedia@gmail.com</strong></div>
           </a>
           <a class="cinfo-item" href="tel:+917448811611" aria-label="Call us" style="border-color:rgba(123,47,247,.12);background:var(--glass-bg)">
             <div class="cinfo-ic" style="border-color:rgba(123,47,247,.25);color:var(--purple)">📞</div>
@@ -239,10 +239,8 @@
         <h3>Start Your Project</h3>
         <div id="frm-wrap">
           <form id="cfrm" novalidate>
-            <!-- Web3Forms config -->
-            <input type="hidden" name="access_key" value="692ea3e7-828f-4d72-9f6a-e029493e5ae8">
-            <input type="hidden" name="subject" value="New Enquiry — EmYou Media">
-            <input type="hidden" name="from_name" value="EmYou Media Website">
+            <!-- Resend config -->
+           <input type="hidden" name="formType" value="contact">
             <!-- Honeypot -->
             <input type="checkbox" name="botcheck" style="display:none">
 
@@ -322,7 +320,6 @@
             <div style="margin-top:.75rem">
               <button type="submit" class="bsub" id="btn-consult" style="margin-top:0;width:100%">Send Message & Request Consultation →</button>
             </div>
-<p class="form-error" id="form-error" role="alert"></p>
           </form>
 
           <div class="form-success" id="form-success" aria-live="polite">
@@ -392,7 +389,7 @@
     </div>
     <div class="foot-col"><h6>Company</h6><a href="/about">About Us</a><a href="/about#vision">Vision & Mission</a><a href="/about#team">Our Team</a><a href="/careers">Careers</a></div>
     <div class="foot-col"><h6>Services</h6><a href="/digital-marketing">Digital Marketing</a><a href="/media-production">Media Production</a><a href="/services">Technology</a><a href="/services">All Services</a></div>
-    <div class="foot-col"><h6>Connect</h6><a href="https://www.instagram.com/emyoumarketing" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/company/emyou-digital-marketing/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/profile.php?id=61575408970606" target="_blank" rel="noopener">Facebook</a><a href="mailto:hello@emyoumedia.com">Email Us</a></div>
+    <div class="foot-col"><h6>Connect</h6><a href="https://www.instagram.com/emyoumarketing" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/company/emyou-digital-marketing/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/profile.php?id=61575408970606" target="_blank" rel="noopener">Facebook</a><a href="mailto:emyoumedia@gmail.com">Email Us</a></div>
   </div>
   <div class="foot-bot">
      <p>© 2026 EmYou Media. All rights reserved. · Bangalore, India · <a href="/privacy">Privacy Policy</a> · <a href="#" onclick="openCookieSettings();return false">Cookie Settings</a></p>
@@ -410,76 +407,11 @@
 
 <script src="main.js"></script>
 <script>
-(function () {
-  const form    = document.getElementById('cfrm');
-  const success = document.getElementById('form-success');
-  const errBox  = document.getElementById('form-error');
-  const nameEl  = document.getElementById('cn');
-
-  // ── Auto-focus the Name field ──
-  window.addEventListener('load', () => {
-    // If the user clicked an audit button (#form), scroll to the form too.
-    // Otherwise focus without scrolling, so the hero section stays visible.
-    const fromAudit = location.hash === '#form';
-    setTimeout(() => nameEl.focus({ preventScroll: !fromAudit }), 400);
-  });
-
-  // ── Submit handler ──
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    errBox.style.display = 'none';
-
-    // Basic validation
-    let valid = true;
-    ['cn', 'ce', 'cm'].forEach(id => {
-      const el = document.getElementById(id);
-      const bad = !el.value.trim() || (id === 'ce' && !/^\S+@\S+\.\S+$/.test(el.value));
-      el.classList.toggle('err', bad);
-      if (bad) valid = false;
-    });
-    if (!valid) {
-      errBox.textContent = 'Please fill in your name, a valid email, and your goals.';
-      errBox.style.display = 'block';
-      return;
-    }
-
-    // Which button was clicked? (optional: tag the enquiry type)
-    const clicked = e.submitter ? e.submitter.id : '';
-    const buttons = form.querySelectorAll('button[type="submit"]');
-    const originals = [...buttons].map(b => b.textContent);
-    buttons.forEach(b => { b.disabled = true; b.textContent = 'Sending…'; });
-
-    try {
-      const data = Object.fromEntries(new FormData(form));
-      if (clicked === 'btn-consult') data.subject = 'Consultation Request — EmYou Media';
-
-      const res  = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      const json = await res.json();
-
-      if (res.ok && json.success) {
-        form.style.display = 'none';
-        success.style.display = 'block';
-        success.classList.add('show');
-        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        if (typeof gtag === 'function') gtag('event', 'generate_lead', { method: 'contact_form' });
-        if (typeof fbq === 'function')  fbq('track', 'Lead');
-      } else {
-        throw new Error(json.message || 'Submission failed');
-      }
-    } catch (err) {
-      errBox.textContent = 'Something went wrong. Please try again or WhatsApp us directly.';
-      errBox.style.display = 'block';
-      buttons.forEach((b, i) => { b.disabled = false; b.textContent = originals[i]; });
-    }
-  });
-
-  // Clear red border while typing
-  form.addEventListener('input', e => e.target.classList.remove('err'));
-})();
+window.addEventListener('load', () => {
+  const nameEl = document.getElementById('cn');
+  const fromAudit = location.hash === '#form';
+  setTimeout(() => nameEl && nameEl.focus({ preventScroll: !fromAudit }), 400);
+});
 </script>
 </body>
 </html>

@@ -227,7 +227,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 
 
 /* ─────────────────────────────────────
-   FORM — VALIDATION + WEB3FORMS SUBMIT
+   FORM — VALIDATION + RESEND SUBMIT
    Works for: contact.html & careers.html
 ───────────────────────────────────── */
 const FIELD_RULES = [
@@ -350,7 +350,7 @@ document.querySelectorAll('form#cfrm').forEach(form => {
       emToast(
         'error',
         'Something went wrong',
-        'Please try WhatsApp or email us at hello@emyoumedia.com',
+        'Please try WhatsApp or email us at emyoumedia@gmail.com',
         7000
       );
     }

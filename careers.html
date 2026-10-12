@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Careers | EmYou Media</title>
-  <meta name="description" content="Join EmYou Media — we welcome all creative and digital skills. Currently hiring a Video Editor. Bangalore-based, fast-growing agency.">
+  <meta name="description" content="Currently hiring a Video Editor and a Sales Executive.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://emyoumedia.com/careers">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://emyoumedia.com/careers">
   <meta property="og:title" content="Careers | EmYou Media">
-  <meta property="og:description" content="Join EmYou Media — we welcome all creative and digital skills. Currently hiring a Video Editor. Bangalore-based, fast-growing agency.">
+  <meta property="og:description" content="Currently hiring a Video Editor and a Sales Executive.">
   <meta property="og:image" content="https://emyoumedia.com/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#020B4F">
@@ -22,6 +22,11 @@
   
   
   <style>
+    html { scroll-behavior: smooth; }
+.job-card { scroll-margin-top: 110px; }
+#apply, #open-positions { scroll-margin-top: 90px; }
+.job-card + .job-card { margin-top: 2rem; }
+.job-card:target { border-color: rgba(123,47,247,.55); box-shadow: var(--s3); }
     .job-card {
       background: var(--glass-bg);
       border: var(--glass-border);
@@ -87,7 +92,7 @@
     <p class="rv d2">
       We're a young, ambitious agency that welcomes all creative and digital talent.
       Whether you're a marketer, designer, developer, or storyteller — if you have skill and hunger, there's a place for you here.<br><br>
-      <strong style="color:var(--white)">Right now, we're actively hiring a Video Editor.</strong>
+      <strong style="color:var(--white)">Right now, we're actively hiring a <strong>Video Editor</strong> and a <strong>Sales Executive</strong>
     </p>
   </div>
 </section>
@@ -110,18 +115,18 @@
   </div>
 </section>
 
-<!-- OPEN POSITION — VIDEO EDITOR ONLY -->
+<!-- OPEN POSITION — VIDEO EDITOR AND SALES EXECUTIVE ONLY -->
 <section id="open-positions" class="sec sec-dark" aria-labelledby="jobs-heading">
   <div class="wrap">
     <div class="rv mb3">
       <p class="eyebrow"><span class="dot"></span>Current Opening</p>
-      <h2 class="h2" id="jobs-heading" style="margin-top:1rem">We're Hiring a <span class="gt">Video Editor</span></h2>
+      <h2 class="h2" id="jobs-heading" style="margin-top:1rem">We're <span class="gt">Hiring</span> <span class="gt">Current Openings</span></h2>
       <p style="font-family:var(--ff);font-size:.86rem;color:var(--text-secondary);max-width:500px;margin-top:1rem;line-height:1.8">
         This is a hands-on creative role. You'll edit reels, brand films, and ad creatives for real clients — work that goes live and gets seen.
       </p>
     </div>
 
-    <div class="job-card rv d1">
+    <div class="job-card rv d1" id="video-editor" >
       <span class="job-type">Full-Time · Bangalore</span>
       <h4>Video Editor & Motion Designer</h4>
       <p>
@@ -167,9 +172,54 @@
         }
       </style>
       <div style="margin-top:2rem">
-        <a href="#apply" class="btn btn-primary">Apply for This Role →</a>
+        <a href="#apply" class="btn btn-primary" data-role="Video Editor & Motion Designer">Apply for This Role →</a>
       </div>
     </div>
+
+    <div class="job-card rv d2" id="sales-executive">
+  <span class="job-type">Full-Time · Bangalore</span>
+  <h4>Sales Executive</h4>
+  <p>
+    We're looking for a driven sales professional to bring in new clients for our digital marketing,
+    media production, and technology services. You'll own the pipeline from first conversation to signed
+    project, working closely with our strategy and creative teams.
+  </p>
+  <div class="job-tags">
+    <span class="job-tag">B2B Sales</span>
+    <span class="job-tag">Lead Follow-up</span>
+    <span class="job-tag">Proposals</span>
+    <span class="job-tag">Negotiation</span>
+    <span class="job-tag">CRM</span>
+    <span class="job-tag">Client Onboarding</span>
+  </div>
+
+  <div style="margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 3rem">
+    <div>
+      <p style="font-family:var(--ff);font-size:.60rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:.75rem">What You'll Do</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem">
+        <li style="font-family:var(--ff);font-size:.78rem;color:var(--text-secondary);display:flex;gap:.6rem;line-height:1.5"><span style="color:var(--purple);font-size:.8rem;margin-top:.1rem">→</span>Follow up on inbound leads and run discovery calls</li>
+        <li style="font-family:var(--ff);font-size:.78rem;color:var(--text-secondary);display:flex;gap:.6rem;line-height:1.5"><span style="color:var(--purple);font-size:.8rem;margin-top:.1rem">→</span>Identify and reach out to new prospects across industries</li>
+        <li style="font-family:var(--ff);font-size:.78rem;color:var(--text-secondary);display:flex;gap:.6rem;line-height:1.5"><span style="color:var(--purple);font-size:.8rem;margin-top:.1rem">→</span>Prepare proposals with the strategy team and close deals</li>
+        <li style="font-family:var(--ff);font-size:.78rem;color:var(--text-secondary);display:flex;gap:.6rem;line-height:1.5"><span style="color:var(--purple);font-size:.8rem;margin-top:.1rem">→</span>Maintain the pipeline and report on targets</li>
+      </ul>
+    </div>
+    <div>
+      <p style="font-family:var(--ff);font-size:.60rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:.75rem">What We're Looking For</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem">
+        <li style="font-family:var(--ff);font-size:.78rem;color:var(--text-secondary);display:flex;gap:.6rem;line-height:1.5"><span style="color:var(--purple);font-size:.8rem;margin-top:.1rem">→</span>Excellent communication in English (Kannada/Hindi a plus)</li>
+        <li style="font-family:var(--ff);font-size:.78rem;color:var(--text-secondary);display:flex;gap:.6rem;line-height:1.5"><span style="color:var(--purple);font-size:.8rem;margin-top:.1rem">→</span>Experience in agency, SaaS, or services sales preferred</li>
+        <li style="font-family:var(--ff);font-size:.78rem;color:var(--text-secondary);display:flex;gap:.6rem;line-height:1.5"><span style="color:var(--purple);font-size:.8rem;margin-top:.1rem">→</span>Comfortable with targets, follow-ups, and negotiation</li>
+        <li style="font-family:var(--ff);font-size:.78rem;color:var(--text-secondary);display:flex;gap:.6rem;line-height:1.5"><span style="color:var(--purple);font-size:.8rem;margin-top:.1rem">→</span>Bonus: knowledge of digital marketing services</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem">
+    <a href="#apply" class="btn btn-primary" data-role="Sales Executive">Apply for This Role →</a>
+  </div>
+</div>
+
+    
 
   </div>
 </section>
@@ -216,9 +266,7 @@
       <h3>Your Application</h3>
       <div id="frm-wrap">
         <form id="cfrm" novalidate>
-          <input type="hidden" name="access_key" value="692ea3e7-828f-4d72-9f6a-e029493e5ae8">
-          <input type="hidden" name="subject" value="Career Application — EmYou Media">
-          <input type="hidden" name="from_name" value="EmYou Careers">
+        <input type="hidden" name="formType" value="career">
           <input type="checkbox" name="botcheck" style="display:none">
           <div class="fg-row">
             <div class="fg"><label for="cn">Full Name *</label><input id="cn" type="text" name="name" placeholder="Your full name" autocomplete="name" required></div>
@@ -228,14 +276,10 @@
             <div class="fg"><label for="cp">Phone Number</label><input id="cp" type="tel" name="phone" placeholder="+91 XXXXX XXXXX"></div>
             <div class="fg">
               <label for="cr">Role / Skill *</label>
-              <select id="cr" name="role">
+              <select id="cr" name="role" required>
                 <option value="">Select a role…</option>
                 <option>Video Editor & Motion Designer</option>
-                <option>Digital Marketing</option>
-                <option>Graphic Design</option>
-                <option>Content & Copywriting</option>
-                <option>Web Development</option>
-                <option>Photography & Videography</option>
+                <option>Sales Executive</option>
                 <option>Other</option>
               </select>
             </div>
@@ -268,7 +312,7 @@
       <a href="https://www.instagram.com/emyoumarketing" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.linkedin.com/company/emyou-digital-marketing/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://www.facebook.com/profile.php?id=61575408970606" target="_blank" rel="noopener">Facebook</a>
-      <a href="mailto:hello@emyoumedia.com">Email Us</a>
+      <a href="mailto:emyoumedia@gmail.com">Email Us</a>
     </div>
   </div>
   <div class="foot-bot">
@@ -286,5 +330,15 @@
 </div>
 
 <script src="main.js"></script>
+<script>
+(function () {
+  const roleSel = document.getElementById('cr');
+  document.querySelectorAll('[data-role]').forEach(btn =>
+    btn.addEventListener('click', () => { roleSel.value = btn.dataset.role; }));
+  const map = { sales: 'Sales Executive', 'video-editor': 'Video Editor & Motion Designer' };
+  const p = new URLSearchParams(location.search).get('role');
+  if (p && map[p]) roleSel.value = map[p];
+})();
+</script>
 </body>
 </html>
