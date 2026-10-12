@@ -465,3 +465,36 @@ document.querySelectorAll('form#newsletter-form').forEach(form => {
     }
   } catch (_) {}
 })();
+
+
+
+/* ─────────────────────────────────────
+   ACTIVE NAV LINK (path + hash aware)
+───────────────────────────────────── */
+function setActiveNav() {
+  const norm = p => p.replace(/\/$/, '').replace(/\.html$/, '') || '/';
+  const path = norm(location.pathname);
+  const hash = location.hash;
+
+  // Clear hardcoded/old state
+  document.querySelectorAll('.nlinks a, .ndrop-menu a').forEach(a => a.classList.remove('active'));
+
+  const links = Array.from(document.querySelectorAll('.nlinks a, .ndrop-menu a')).map(a => {
+    const u = new URL(a.getAttribute('href'), location.origin);
+    return { a, path: norm(u.pathname), hash: u.hash };
+  });
+
+  // 1. Exact path + hash match wins (e.g. /services#industries)
+  let matches = hash ? links.filter(l => l.path === path && l.hash === hash) : [];
+
+  // 2. Otherwise match on path only, ignoring links that carry a hash
+  if (!matches.length) matches = links.filter(l => l.path === path && !l.hash);
+
+  matches.forEach(l => {
+    l.a.classList.add('active');
+    const parent = l.a.closest('.ndrop');          // highlight "Services ▾" for dropdown items
+    if (parent) parent.querySelector(':scope > a').classList.add('active');
+  });
+}
+setActiveNav();
+window.addEventListener('hashchange', setActiveNav);
