@@ -1,5 +1,9 @@
 # emyou-media: rules for AI agents
 
+**Cloud session (phone, claude.ai/code)?** If `~/.claude/CLAUDE.md` with Rohith's global rules isn't there, first do
+`prompts/cloud-session.md` from github.com/rohithsofficial/playbook ("cloud start"): connect or clone the playbook to
+`../playbook`, follow its `global/CLAUDE.md`, save playbook items there and push (fallback: `docs/playbook-inbox.md`).
+
 <!-- about-rohith:start (kept in sync from playbook/templates/project/about-rohith.md; edit it there, not here) -->
 ## Who you are working with
 - **Rohith S Moolya**, full-stack developer and designer in Bangalore. Builds websites, CRMs, CMSs, dashboards,
